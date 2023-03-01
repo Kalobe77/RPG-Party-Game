@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class InputScript : MonoBehaviour
 {
+
+    public Rigidbody2D rb;
+    public float movementSpeed;
+    
     // Start is called before the first frame update
     void Start()
     {
