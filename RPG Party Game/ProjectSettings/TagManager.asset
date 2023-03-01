@@ -38,11 +38,14 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Background
-    uniqueID: 1378001137
+  - name: Ground Layer
+    uniqueID: 2566492067
     locked: 0
-  - name: Spaces
-    uniqueID: 106931089
+  - name: Space Layer
+    uniqueID: 1233406787
+    locked: 0
+  - name: Player Characters
+    uniqueID: 1355725151
     locked: 0
   - name: Default
     uniqueID: 0
