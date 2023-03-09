@@ -41,7 +41,7 @@ public class DiceRoll : MonoBehaviour
         // Checks if T is pressed and if dice has already been rolled
         if (Input.GetKeyDown(KeyCode.T) && !inputScript.isCamera && !inputScript.diceRolled)
         {
-            int randomNumber = Random.Range(1,6);
+            int randomNumber = Random.Range(1,7);
             inputScript.spacesRemaining = randomNumber;
             StartCoroutine(ChangeSprite(randomNumber));
         }
