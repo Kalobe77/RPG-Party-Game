@@ -459,6 +459,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!4 &100477777 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8925741757105283906, guid: 8709fa114aad5a64094e509df57771f7, type: 3}
+  m_PrefabInstance: {fileID: 8925741757033646099}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &127338137
 GameObject:
   m_ObjectHideFlags: 0
@@ -1903,7 +1908,7 @@ MonoBehaviour:
   offset: {x: 0, y: 0, z: -1}
   damping: 0.1
   inputScript: {fileID: 1305823583}
-  inputScript2: {fileID: 0}
+  inputScript2: {fileID: 1566091251}
   tag: Player 1
 --- !u!1 &534847608
 GameObject:
@@ -14921,6 +14926,10 @@ PrefabInstance:
       value: Player 2
       objectReference: {fileID: 0}
     - target: {fileID: 8925741756164194636, guid: 8709fa114aad5a64094e509df57771f7, type: 3}
+      propertyPath: dot
+      value: 
+      objectReference: {fileID: 100477777}
+    - target: {fileID: 8925741756164194636, guid: 8709fa114aad5a64094e509df57771f7, type: 3}
       propertyPath: node
       value: 76
       objectReference: {fileID: 0}
@@ -26433,6 +26442,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!4 &1845667211 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8925741757105283906, guid: 8709fa114aad5a64094e509df57771f7, type: 3}
+  m_PrefabInstance: {fileID: 1166636201}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1872684918
 GameObject:
   m_ObjectHideFlags: 0
@@ -27495,6 +27509,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8925741756164194636, guid: 8709fa114aad5a64094e509df57771f7, type: 3}
+      propertyPath: dot
+      value: 
+      objectReference: {fileID: 1845667211}
     - target: {fileID: 8925741756164194636, guid: 8709fa114aad5a64094e509df57771f7, type: 3}
       propertyPath: routeScript
       value: 
