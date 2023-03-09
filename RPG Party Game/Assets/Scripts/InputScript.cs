@@ -12,7 +12,9 @@ public class InputScript : MonoBehaviour
     public float movementSpeed;
     Vector2 movement;
     int node = 0;
-    bool isMoving = false;
+    public int isMoving = 0;
+    public bool isCamera = false;
+
     public float characterOffset = .7f;
 
     public Route routeScript;
@@ -21,7 +23,7 @@ public class InputScript : MonoBehaviour
     void Update()
     {
         // Input
-        if (!isMoving)
+        if (isMoving == 0)
         {
             movement.x = Input.GetAxisRaw("Horizontal");
             movement.y = Input.GetAxisRaw("Vertical");
@@ -34,11 +36,11 @@ public class InputScript : MonoBehaviour
 
     IEnumerator Move()
     {
-        if (isMoving)
+        if (isMoving == 1)
         {
             yield break;
         }
-        isMoving = true;
+        isMoving = 1;
         if (movement.x > 0)
         {
             for (int i = 0; i < routeScript.childNodeList.Count; i++)
@@ -131,7 +133,7 @@ public class InputScript : MonoBehaviour
                 }
             }
         }
-        isMoving = false;
+        isMoving = 0;
     }
 
     bool MoveToSquare(Vector3 goal)
