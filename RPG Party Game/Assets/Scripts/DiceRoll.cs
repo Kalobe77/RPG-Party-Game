@@ -27,11 +27,20 @@ public class DiceRoll : MonoBehaviour
     // Despawn time for the dice
     public int despawnTime;
 
+    // Tag for connection to correct player
+    public string tag;
+
     // Start is called before the first frame update
     void Start()
     {
         // Links the input script using the tag
-        inputScript = GameObject.FindGameObjectWithTag("Player").GetComponent<InputScript>();
+        if (tag == "Player 1"){
+            inputScript = GameObject.FindGameObjectWithTag("Player 1").GetComponent<InputScript>();
+        }
+        else if (tag == "Player 2"){
+            inputScript = GameObject.FindGameObjectWithTag("Player 2").GetComponent<InputScript>();
+        }
+        
         diceAnimator = GetComponent<Animator>();
     }
 
@@ -39,7 +48,7 @@ public class DiceRoll : MonoBehaviour
     void Update()
     {
         // Checks if T is pressed and if dice has already been rolled
-        if (Input.GetKeyDown(KeyCode.T) && !inputScript.isCamera && !inputScript.diceRolled)
+        if (Input.GetKeyDown(KeyCode.T) && !inputScript.isCamera && !inputScript.diceRolled && inputScript.isAbleToRoll)
         {
             int randomNumber = Random.Range(1,7);
             inputScript.spacesRemaining = randomNumber;

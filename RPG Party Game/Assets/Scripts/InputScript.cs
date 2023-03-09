@@ -8,11 +8,20 @@ public class InputScript : MonoBehaviour
     // Used to change velocity and position
     public Rigidbody2D rb;
 
+    // Target position is the character's position
+    public Transform target;
+
+    // Dot's position is the camera's position
+    public Transform dot;
+
     // Adds animator to object to add in walking animations
     public Animator animator;
 
     // Creats a vector to store input direction
     Vector2 movement;
+
+    // Creats a vector to store input direction for camera movement
+    public Vector2 cameraMovement;
 
     // Stores what node the character is currently on
     public int node = 0;
@@ -21,6 +30,8 @@ public class InputScript : MonoBehaviour
     public bool isAbleToMove = true;
     public bool isCamera = false;
     public bool diceRolled = false;
+    public bool isTurn = true;
+    public bool isAbleToRoll = true;
 
     // Character offset to adjust character to center of tile
     public float characterOffset = .7f;
@@ -37,27 +48,75 @@ public class InputScript : MonoBehaviour
     // List to store what nodes were visited
     public List<int> nodesVisited;
 
+    // Grabs Camera Follow Script
+    public CameraFollow cameraFollow;
+
+    // Connect the Turn Handler Script
+    public TurnHandlerScript turnHandler;
+
+    // Start is called before the first frame update
+    void Start()
+    {  
+        // Links the input script using the tag
+        cameraFollow = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>();
+        turnHandler = GameObject.FindGameObjectWithTag("TurnLogic").GetComponent<TurnHandlerScript>();
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (spacesRemaining == 0){
-            // Resets Everything
-            movement.x = 0;
-            movement.y = 0;
-            diceRolled = false;
-            dice.transform.position = new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z);
-            dice.SetActive(true);
-            nodesVisited.Clear();
-        }
-        // Movement only enabled if character is able to move and is not controlling the camera
-        if (isAbleToMove && !isCamera && diceRolled)
+        if (isTurn)
         {
-            // Grabs X and Y of the inputs
-            movement.x = Input.GetAxisRaw("Horizontal");
-            movement.y = Input.GetAxisRaw("Vertical");
+            if (spacesRemaining == 0 && !diceRolled)
+            {
+                dice.SetActive(true);
+            }
+            if (spacesRemaining == 0 && diceRolled){
+                // Resets Everything
+                movement.x = 0;
+                movement.y = 0;
+                diceRolled = false;
+                dice.transform.position = new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z);
+                nodesVisited.Clear();
+                turnHandler.ProgressTurn();
+            }
+            // Movement only enabled if character is able to move and is not controlling the camera
+            if (isAbleToMove && !isCamera && diceRolled)
+            {
+                // Grabs X and Y of the inputs
+                movement.x = Input.GetAxisRaw("Horizontal");
+                movement.y = Input.GetAxisRaw("Vertical");
 
-            // Starts Move Function
-            StartCoroutine(Move());
+                // Starts Move Function
+                StartCoroutine(Move());
+            }
+
+            // Toggles control to give control to player over the camera if they are not moving and hit space
+            if (Input.GetKeyDown(KeyCode.Space) && isAbleToMove)
+            {
+                // Toggles Flags to enable camera movement and no more player movement
+                isCamera = true;
+                isAbleToMove = false;
+                isAbleToRoll = false;
+                dice.SetActive(false);
+
+                // Initializes camera to be where the player is
+                dot.position = target.position;
+            }
+            // Toggles control to give control to player over the camera if they are in camera movement mode and hit space
+            else if (Input.GetKeyDown(KeyCode.Space) && isCamera && !isAbleToRoll)
+            {
+                // Toggles Flags to enable character movement and disable camera control
+                isCamera = false;
+                isAbleToMove = true;
+                isAbleToRoll = true;
+                dice.SetActive(true);
+            }
+            // Allows control of camera if in camera mode
+            if(isCamera){
+                cameraMovement.x = Input.GetAxisRaw("Horizontal");
+                cameraMovement.y = Input.GetAxisRaw("Vertical");
+            }
         }
         // Animations for the character when moving
         animator.SetFloat("Horizontal", movement.x);
