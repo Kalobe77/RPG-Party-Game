@@ -15,7 +15,7 @@ public class InputScript : MonoBehaviour
     Vector2 movement;
 
     // Stores what node the character is currently on
-    int node = 0;
+    public int node = 0;
 
     // Flags for character's ability to move and control of the camera object
     public bool isAbleToMove = true;
@@ -34,6 +34,9 @@ public class InputScript : MonoBehaviour
     // Grab dice object and location
     public GameObject dice;
 
+    // List to store what nodes were visited
+    public List<int> nodesVisited;
+
     // Update is called once per frame
     void Update()
     {
@@ -44,6 +47,7 @@ public class InputScript : MonoBehaviour
             diceRolled = false;
             dice.transform.position = new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z);
             dice.SetActive(true);
+            nodesVisited.Clear();
         }
         // Movement only enabled if character is able to move and is not controlling the camera
         if (isAbleToMove && !isCamera && diceRolled)
@@ -91,7 +95,7 @@ public class InputScript : MonoBehaviour
                         yield return new WaitForSeconds(0.1f);
                         // Sets characters current node to node it moved to
                         node = i;
-                        spacesRemaining = spacesRemaining - 1;
+                        CheckPath();
                         break;
                     }
                     // If not makes sure no animation plays
@@ -122,7 +126,7 @@ public class InputScript : MonoBehaviour
                         yield return new WaitForSeconds(0.1f);
                         // Sets characters current node to node it moved to
                         node = i;
-                        spacesRemaining = spacesRemaining - 1;
+                        CheckPath();
                         break;
                     }
                     // If not makes sure no animation plays
@@ -153,7 +157,7 @@ public class InputScript : MonoBehaviour
                         yield return new WaitForSeconds(0.1f);
                         // Sets characters current node to node it moved to
                         node = i;
-                        spacesRemaining = spacesRemaining - 1;
+                        CheckPath();
                         break;
                     }
                     // If not makes sure no animation plays
@@ -184,7 +188,7 @@ public class InputScript : MonoBehaviour
                         yield return new WaitForSeconds(0.1f);
                         // Sets characters current node to node it moved to
                         node = i;
-                        spacesRemaining = spacesRemaining - 1;
+                        CheckPath();
                         break;
                     }
                     // If not makes sure no animation plays
@@ -204,5 +208,28 @@ public class InputScript : MonoBehaviour
     bool MoveToSquare(Vector3 goal)
     {
         return new Vector3(goal.x, goal.y+characterOffset, goal.z) != (this.transform.position = Vector3.MoveTowards(this.transform.position, new Vector3(goal.x, goal.y+characterOffset, goal.z), 5f*Time.deltaTime));
+    }
+
+    void CheckPath()
+    {
+        if (nodesVisited.Count == 1)
+        {
+            nodesVisited.Add(node);
+            spacesRemaining = spacesRemaining - 1;
+        }
+        else
+        {
+            if (node != nodesVisited[nodesVisited.Count-2])
+            {
+                nodesVisited.Add(node);
+                spacesRemaining = spacesRemaining - 1;
+            }
+            else
+            {
+                nodesVisited.RemoveAt(nodesVisited.Count - 1);
+                spacesRemaining = spacesRemaining + 1;
+            }
+        }
+        
     }
 }

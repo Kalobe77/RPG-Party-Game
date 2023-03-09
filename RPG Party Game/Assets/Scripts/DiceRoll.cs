@@ -84,5 +84,6 @@ public class DiceRoll : MonoBehaviour
         dice.SetActive(false);
         diceAnimator.GetComponent<Animator>().enabled = true;
         inputScript.isAbleToMove = true;
+        inputScript.nodesVisited.Add(inputScript.node);
     }
 }
