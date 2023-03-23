@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class InputScript : MonoBehaviour
 {
@@ -54,12 +55,64 @@ public class InputScript : MonoBehaviour
     // Connect the Turn Handler Script
     public TurnHandlerScript turnHandler;
 
+    // Stats for character
+    public int remaininghp;
+    public int maxhp;
+    public int atk;
+    public int def;
+    public int mag;
+    public int res;
+    public int spd;
+
+    // To Allow Data to be loaded from scriptable object
+    public PlayerCharacterStatus pcs;
+
     // Start is called before the first frame update
     void Start()
     {  
         // Links the input script using the tag
         cameraFollow = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>();
         turnHandler = GameObject.FindGameObjectWithTag("TurnLogic").GetComponent<TurnHandlerScript>();
+        Debug.Log(gameObject.tag);
+        if (gameObject.tag == "Player 1")
+        {
+            remaininghp = pcs.remaininghp_one;
+            maxhp = pcs.maxhp_one;
+            atk = pcs.atk_one;
+            def = pcs.def_one;
+            mag = pcs.mag_one;
+            res = pcs.res_one;
+            spd = pcs.spd_one;
+            node = pcs.node_one;
+            target.position = pcs.player1pos;
+            isTurn = pcs.isPlayerOneTurn;
+            turnHandler.isGameHappening = true;
+            isAbleToMove = pcs.isAbleToMovePlayerOne;
+            isCamera = pcs.isCameraPlayerOne;
+            diceRolled = pcs.diceRolledPlayerOne;
+            isAbleToRoll = pcs.isAbleToRollPlayerOne;
+            
+        }
+        else if (gameObject.tag == "Player 2")
+        {
+            remaininghp = pcs.remaininghp_two;
+            maxhp = pcs.maxhp_two;
+            atk = pcs.atk_two;
+            def = pcs.def_two;
+            mag = pcs.mag_two;
+            res = pcs.res_two;
+            spd = pcs.spd_two;
+            node = pcs.node_two;
+            target.position = pcs.player2pos;
+            isTurn = pcs.isPlayerTwoTurn;
+            turnHandler.isGameHappening = true;
+            isAbleToMove = pcs.isAbleToMovePlayerTwo;
+            isCamera = pcs.isCameraPlayerTwo;
+            diceRolled = pcs.diceRolledPlayerTwo;
+            isAbleToRoll = pcs.isAbleToRollPlayerTwo;
+        }
+        Debug.Log(isTurn);
+        dice.transform.position = new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z);
     }
 
     // Update is called once per frame
@@ -79,6 +132,8 @@ public class InputScript : MonoBehaviour
                 dice.transform.position = new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z);
                 nodesVisited.Clear();
                 turnHandler.ProgressTurn();
+                turnHandler.UpdateStatus();
+                SceneManager.LoadScene("Scenes/Battle");
             }
             // Movement only enabled if character is able to move and is not controlling the camera
             if (isAbleToMove && !isCamera && diceRolled)

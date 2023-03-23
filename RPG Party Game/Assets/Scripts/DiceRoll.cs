@@ -42,6 +42,7 @@ public class DiceRoll : MonoBehaviour
         }
         
         diceAnimator = GetComponent<Animator>();
+        dice.SetActive(false);
     }
 
     // Update is called once per frame

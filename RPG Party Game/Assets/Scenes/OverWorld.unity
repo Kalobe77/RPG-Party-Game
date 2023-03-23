@@ -14926,16 +14926,48 @@ PrefabInstance:
       value: Player 2
       objectReference: {fileID: 0}
     - target: {fileID: 8925741756164194636, guid: 8709fa114aad5a64094e509df57771f7, type: 3}
+      propertyPath: atk
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925741756164194636, guid: 8709fa114aad5a64094e509df57771f7, type: 3}
+      propertyPath: def
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925741756164194636, guid: 8709fa114aad5a64094e509df57771f7, type: 3}
       propertyPath: dot
       value: 
       objectReference: {fileID: 100477777}
+    - target: {fileID: 8925741756164194636, guid: 8709fa114aad5a64094e509df57771f7, type: 3}
+      propertyPath: mag
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925741756164194636, guid: 8709fa114aad5a64094e509df57771f7, type: 3}
+      propertyPath: pcs
+      value: 
+      objectReference: {fileID: 11400000, guid: 617a17ef434a8974b8cef8b243a0e6be, type: 2}
+    - target: {fileID: 8925741756164194636, guid: 8709fa114aad5a64094e509df57771f7, type: 3}
+      propertyPath: res
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925741756164194636, guid: 8709fa114aad5a64094e509df57771f7, type: 3}
+      propertyPath: spd
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8925741756164194636, guid: 8709fa114aad5a64094e509df57771f7, type: 3}
       propertyPath: node
       value: 76
       objectReference: {fileID: 0}
     - target: {fileID: 8925741756164194636, guid: 8709fa114aad5a64094e509df57771f7, type: 3}
+      propertyPath: maxhp
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925741756164194636, guid: 8709fa114aad5a64094e509df57771f7, type: 3}
       propertyPath: isTurn
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925741756164194636, guid: 8709fa114aad5a64094e509df57771f7, type: 3}
+      propertyPath: remaininghp
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 8925741756164194636, guid: 8709fa114aad5a64094e509df57771f7, type: 3}
       propertyPath: routeScript
@@ -26728,9 +26760,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: add33a6a52fc00144bb725462b4d4e16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGameHappening: 0
   inputScript: {fileID: 1305823583}
-  inputScript2: {fileID: 0}
-  cameraFollow: {fileID: 0}
+  inputScript2: {fileID: 1566091251}
+  cameraFollow: {fileID: 519420033}
+  pcs: {fileID: 11400000, guid: 617a17ef434a8974b8cef8b243a0e6be, type: 2}
 --- !u!4 &1912540897
 Transform:
   m_ObjectHideFlags: 0
@@ -27513,6 +27547,10 @@ PrefabInstance:
       propertyPath: dot
       value: 
       objectReference: {fileID: 1845667211}
+    - target: {fileID: 8925741756164194636, guid: 8709fa114aad5a64094e509df57771f7, type: 3}
+      propertyPath: pcs
+      value: 
+      objectReference: {fileID: 11400000, guid: 617a17ef434a8974b8cef8b243a0e6be, type: 2}
     - target: {fileID: 8925741756164194636, guid: 8709fa114aad5a64094e509df57771f7, type: 3}
       propertyPath: routeScript
       value: 

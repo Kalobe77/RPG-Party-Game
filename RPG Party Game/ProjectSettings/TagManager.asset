@@ -5,8 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Player 1
-  - Player 2
   - TurnLogic
+  - Player 2
   layers:
   - Default
   - TransparentFX
