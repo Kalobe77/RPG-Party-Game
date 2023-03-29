@@ -51,6 +51,7 @@ public class DiceRoll : MonoBehaviour
         // Checks if T is pressed and if dice has already been rolled
         if (Input.GetKeyDown(KeyCode.T) && !inputScript.isCamera && !inputScript.diceRolled && inputScript.isAbleToRoll)
         {
+            inputScript.diceRolled = true;
             int randomNumber = Random.Range(1,7);
             inputScript.spacesRemaining = randomNumber;
             StartCoroutine(ChangeSprite(randomNumber));
@@ -90,7 +91,6 @@ public class DiceRoll : MonoBehaviour
 
         // Waits so many seconds before despawning dice and allowing movement control
         yield return new WaitForSeconds(despawnTime);
-        inputScript.diceRolled = true;
         dice.SetActive(false);
         diceAnimator.GetComponent<Animator>().enabled = true;
         inputScript.isAbleToMove = true;
