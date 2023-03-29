@@ -11,6 +11,11 @@ public class MenuScript : MonoBehaviour
         SceneManager.LoadScene("NewLoad Game");
     }
 
+    public void Tutorial()
+    {
+        SceneManager.LoadScene("Tutorial");
+    }
+
     public void QuitGame()
     {
         Application.Quit();
