@@ -129,6 +129,7 @@ public class InputScript : MonoBehaviour
                 diceRolled = false;
                 dice.transform.position = new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z);
                 nodesVisited.Clear();
+                isAbleToMove = false;
                 turnHandler.UpdateStatus();
                 turnHandler.ProgressTurn();
                 SceneManager.LoadScene("Scenes/Battle");
@@ -163,7 +164,7 @@ public class InputScript : MonoBehaviour
             }
 
             // Toggles control to give control to player over the camera if they are not moving and hit space
-            if (Input.GetKeyDown(KeyCode.Space) && isAbleToMove)
+            if (Input.GetKeyDown(KeyCode.Space) && (isAbleToMove || !diceRolled))
             {
                 // Toggles Flags to enable camera movement and no more player movement
                 isCamera = true;
@@ -181,7 +182,15 @@ public class InputScript : MonoBehaviour
                 isCamera = false;
                 isAbleToMove = true;
                 isAbleToRoll = true;
-                dice.SetActive(true);
+                if (spacesRemaining > 0)
+                {
+                    dice.SetActive(false);
+                }
+                else 
+                {
+                    dice.SetActive(true);
+                }
+                
             }
             // Allows control of camera if in camera mode
             if(isCamera){
