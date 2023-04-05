@@ -37,13 +37,9 @@ public class TurnHandlerScript : MonoBehaviour
     public void ProgressTurn()
     {
         if (inputScript.isTurn){
-            inputScript.isTurn = !inputScript.isTurn;
-            inputScript2.isTurn = !inputScript2.isTurn;
             cameraFollow.tag = "Player 2";
         }
         else if (inputScript2.isTurn){
-            inputScript.isTurn = !inputScript.isTurn;
-            inputScript2.isTurn = !inputScript2.isTurn;
             cameraFollow.tag = "Player 1";
         }
         
@@ -66,6 +62,8 @@ public class TurnHandlerScript : MonoBehaviour
         pcs.isCameraPlayerOne = inputScript.isCamera;
         pcs.diceRolledPlayerOne = inputScript.diceRolled;
         pcs.isAbleToRollPlayerOne = inputScript.isAbleToRoll;
+        pcs.isPlayerOneInCombat = inputScript.isInCombat;
+        
 
         pcs.remaininghp_two = inputScript2.remaininghp;
         pcs.maxhp_two = inputScript2.maxhp;
@@ -81,6 +79,6 @@ public class TurnHandlerScript : MonoBehaviour
         pcs.isCameraPlayerTwo = inputScript2.isCamera;
         pcs.diceRolledPlayerTwo = inputScript2.diceRolled;
         pcs.isAbleToRollPlayerTwo = inputScript2.isAbleToRoll;
-
+        pcs.isPlayerTwoInCombat = inputScript2.isInCombat;
     }
 }

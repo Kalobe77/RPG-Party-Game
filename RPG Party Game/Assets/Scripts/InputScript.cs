@@ -33,6 +33,7 @@ public class InputScript : MonoBehaviour
     public bool diceRolled = false;
     public bool isTurn = true;
     public bool isAbleToRoll = true;
+    public bool isInCombat = false;
 
     // Character offset to adjust character to center of tile
     public float characterOffset = .7f;
@@ -91,7 +92,7 @@ public class InputScript : MonoBehaviour
             isCamera = pcs.isCameraPlayerOne;
             diceRolled = pcs.diceRolledPlayerOne;
             isAbleToRoll = pcs.isAbleToRollPlayerOne;
-            
+            isInCombat = pcs.isPlayerOneInCombat;
         }
         else if (gameObject.tag == "Player 2")
         {
@@ -110,6 +111,7 @@ public class InputScript : MonoBehaviour
             isCamera = pcs.isCameraPlayerTwo;
             diceRolled = pcs.diceRolledPlayerTwo;
             isAbleToRoll = pcs.isAbleToRollPlayerTwo;
+            isInCombat = pcs.isPlayerTwoInCombat;
         }
         Debug.Log(isTurn);
         dice.transform.position = new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z);
@@ -120,6 +122,18 @@ public class InputScript : MonoBehaviour
     {
         if (isTurn)
         {
+            if (isInCombat)
+            {
+                movement.x = 0;
+                movement.y = 0;
+                diceRolled = false;
+                dice.transform.position = new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z);
+                nodesVisited.Clear();
+                isAbleToMove = false;
+                turnHandler.UpdateStatus();
+                turnHandler.ProgressTurn();
+                SceneManager.LoadScene("Scenes/Battle");
+            }
             if (spacesRemaining == 0 && !diceRolled)
             {
                 dice.SetActive(true);
@@ -131,8 +145,11 @@ public class InputScript : MonoBehaviour
                 diceRolled = false;
                 dice.transform.position = new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z);
                 nodesVisited.Clear();
-                turnHandler.ProgressTurn();
+                isAbleToMove = false;
+                RandomizeEnemyStats();
+                isInCombat = !isInCombat;
                 turnHandler.UpdateStatus();
+                turnHandler.ProgressTurn();
                 SceneManager.LoadScene("Scenes/Battle");
             }
             // Movement only enabled if character is able to move and is not controlling the camera
@@ -147,7 +164,7 @@ public class InputScript : MonoBehaviour
             }
 
             // Toggles control to give control to player over the camera if they are not moving and hit space
-            if (Input.GetKeyDown(KeyCode.Space) && isAbleToMove)
+            if (Input.GetKeyDown(KeyCode.Space) && (isAbleToMove || !diceRolled))
             {
                 // Toggles Flags to enable camera movement and no more player movement
                 isCamera = true;
@@ -165,7 +182,15 @@ public class InputScript : MonoBehaviour
                 isCamera = false;
                 isAbleToMove = true;
                 isAbleToRoll = true;
-                dice.SetActive(true);
+                if (spacesRemaining > 0)
+                {
+                    dice.SetActive(false);
+                }
+                else 
+                {
+                    dice.SetActive(true);
+                }
+                
             }
             // Allows control of camera if in camera mode
             if(isCamera){
@@ -344,6 +369,29 @@ public class InputScript : MonoBehaviour
                 spacesRemaining = spacesRemaining + 1;
             }
         }
-        
+    }
+
+    void RandomizeEnemyStats()
+    {
+        if (pcs.isPlayerOneTurn)
+        {
+            pcs.enemy1Stats[0] = 20;
+            pcs.enemy1Stats[1] = 20;
+            pcs.enemy1Stats[2] = 10;
+            pcs.enemy1Stats[3] = 10;
+            pcs.enemy1Stats[4] = 10;
+            pcs.enemy1Stats[5] = 10;
+            pcs.enemy1Stats[6] = 10;
+        }
+        else if (pcs.isPlayerTwoTurn)
+        {
+            pcs.enemy2Stats[0] = 20;
+            pcs.enemy2Stats[1] = 20;
+            pcs.enemy2Stats[2] = 10;
+            pcs.enemy2Stats[3] = 10;
+            pcs.enemy2Stats[4] = 10;
+            pcs.enemy2Stats[5] = 10;
+            pcs.enemy2Stats[6] = 10;
+        }
     }
 }

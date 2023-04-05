@@ -16,12 +16,15 @@ public class PlayerCharacterStatus : ScriptableObject
     public int node_one;
     public bool isPlayerOneTurn = true;
     public Vector3 player1pos;
+    public bool isPlayerOneInCombat = false;
     
     // Flags for character's ability to move and control of the camera object
     public bool isAbleToMovePlayerOne;
     public bool isCameraPlayerOne;
     public bool diceRolledPlayerOne;
     public bool isAbleToRollPlayerOne;
+    
+    public int[] enemy1Stats = new int[7];
 
     // Stats for player two
     public int remaininghp_two;
@@ -33,6 +36,7 @@ public class PlayerCharacterStatus : ScriptableObject
     public int spd_two;
     public int node_two;
     public bool isPlayerTwoTurn = false;
+    public bool isPlayerTwoInCombat = false;
     public Vector3 player2pos;
 
     // Flags for character's ability to move and control of the camera object
@@ -40,4 +44,6 @@ public class PlayerCharacterStatus : ScriptableObject
     public bool isCameraPlayerTwo;
     public bool diceRolledPlayerTwo;
     public bool isAbleToRollPlayerTwo;
+
+    public int[] enemy2Stats = new int[7];
 }
