@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class TurnHandlerScript : MonoBehaviour
 {
+    // Used for health score
+    public Text healthText;
+
     // Handles if game is going on
     public bool isGameHappening = false;
 
@@ -25,12 +29,26 @@ public class TurnHandlerScript : MonoBehaviour
         inputScript2 = GameObject.FindGameObjectWithTag("Player 2").GetComponent<InputScript>();
         // Links the input script using the tag
         cameraFollow = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>();
+        healthUpdate();
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void healthUpdate()
+    {
+        if (inputScript.isTurn){
+
+            healthText.text = "HP: " + inputScript.remaininghp.ToString() + " / " + inputScript.maxhp.ToString();
+        }
+
+        else if (inputScript2.isTurn){
+
+            healthText.text = "HP: " + inputScript2.remaininghp.ToString() + " / " + inputScript2.maxhp.ToString();
+        }
     }
 
     // Rotates Turn Order

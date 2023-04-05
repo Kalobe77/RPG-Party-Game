@@ -54,7 +54,7 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: node_one
-    value: 0
+    value: 82
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: isPlayerOneTurn
@@ -62,11 +62,11 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: player1pos.x
-    value: -20
+    value: 2
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: player1pos.y
-    value: 10.7
+    value: 6.7
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: player1pos.z
@@ -74,7 +74,7 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: isAbleToMovePlayerOne
-    value: 1
+    value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: isCameraPlayerOne
@@ -118,7 +118,7 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: node_two
-    value: 76
+    value: 65
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: isPlayerTwoTurn
@@ -126,11 +126,11 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: player2pos.x
-    value: -20
+    value: -14
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: player2pos.y
-    value: 8.7
+    value: -7.3
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: player2pos.z
@@ -138,7 +138,7 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: isAbleToMovePlayerTwo
-    value: 1
+    value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: isCameraPlayerTwo

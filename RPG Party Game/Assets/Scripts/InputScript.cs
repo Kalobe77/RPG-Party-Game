@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class InputScript : MonoBehaviour
@@ -33,6 +34,7 @@ public class InputScript : MonoBehaviour
     public bool diceRolled = false;
     public bool isTurn = true;
     public bool isAbleToRoll = true;
+//    public bool pause = false; // if the games is paused
 
     // Character offset to adjust character to center of tile
     public float characterOffset = .7f;
@@ -118,65 +120,75 @@ public class InputScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isTurn)
+//        if (Input.GetKeyDown(KeyCode.P))
+//        {
+//            pause = !pause;
+//        }
+
+        if (PauseScript1.isPaused != true)
         {
-            if (spacesRemaining == 0 && !diceRolled)
+            if (isTurn)
             {
-                dice.SetActive(true);
-            }
-            if (spacesRemaining == 0 && diceRolled){
-                // Resets Everything
-                movement.x = 0;
-                movement.y = 0;
-                diceRolled = false;
-                dice.transform.position = new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z);
-                nodesVisited.Clear();
-                turnHandler.ProgressTurn();
-                turnHandler.UpdateStatus();
-                SceneManager.LoadScene("Scenes/Battle");
-            }
-            // Movement only enabled if character is able to move and is not controlling the camera
-            if (isAbleToMove && !isCamera && diceRolled)
-            {
-                // Grabs X and Y of the inputs
-                movement.x = Input.GetAxisRaw("Horizontal");
-                movement.y = Input.GetAxisRaw("Vertical");
+                if (spacesRemaining == 0 && !diceRolled)
+                {
+                    dice.SetActive(true);
+                }
+                if (spacesRemaining == 0 && diceRolled){
+                    // Resets Everything
+                    movement.x = 0;
+                    movement.y = 0;
+                    diceRolled = false;
+                    dice.transform.position = new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z);
+                    nodesVisited.Clear();
+                    isAbleToMove = false;
+                    turnHandler.ProgressTurn();
+                    turnHandler.UpdateStatus();
+                    SceneManager.LoadScene("Scenes/Battle");
+                }
+                // Movement only enabled if character is able to move and is not controlling the camera
+                if (isAbleToMove && !isCamera && diceRolled)
+                {
+                    // Grabs X and Y of the inputs
+                    movement.x = Input.GetAxisRaw("Horizontal");
+                    movement.y = Input.GetAxisRaw("Vertical");
 
-                // Starts Move Function
-                StartCoroutine(Move());
-            }
+                    // Starts Move Function
+                    StartCoroutine(Move());
+                }
 
-            // Toggles control to give control to player over the camera if they are not moving and hit space
-            if (Input.GetKeyDown(KeyCode.Space) && isAbleToMove)
-            {
-                // Toggles Flags to enable camera movement and no more player movement
-                isCamera = true;
-                isAbleToMove = false;
-                isAbleToRoll = false;
-                dice.SetActive(false);
+                // Toggles control to give control to player over the camera if they are not moving and hit space
+                if (Input.GetKeyDown(KeyCode.Space) && (isAbleToRoll || isAbleToMove))
+                {
+                    // Toggles Flags to enable camera movement and no more player movement
+                    isCamera = true;
+                    isAbleToMove = false;
+                    isAbleToRoll = false;
+                    dice.SetActive(false);
 
-                // Initializes camera to be where the player is
-                dot.position = target.position;
+                    // Initializes camera to be where the player is
+                    dot.position = target.position;
+                }
+                // Toggles control to give control to player over the camera if they are in camera movement mode and hit space
+                else if (Input.GetKeyDown(KeyCode.Space) && isCamera && !isAbleToRoll)
+                {
+                    // Toggles Flags to enable character movement and disable camera control
+                    isCamera = false;
+                    isAbleToMove = true;
+                    isAbleToRoll = true;
+                    dice.SetActive(true);
+                }
+                // Allows control of camera if in camera mode
+                if(isCamera){
+                    cameraMovement.x = Input.GetAxisRaw("Horizontal");
+                    cameraMovement.y = Input.GetAxisRaw("Vertical");
+                }
             }
-            // Toggles control to give control to player over the camera if they are in camera movement mode and hit space
-            else if (Input.GetKeyDown(KeyCode.Space) && isCamera && !isAbleToRoll)
-            {
-                // Toggles Flags to enable character movement and disable camera control
-                isCamera = false;
-                isAbleToMove = true;
-                isAbleToRoll = true;
-                dice.SetActive(true);
-            }
-            // Allows control of camera if in camera mode
-            if(isCamera){
-                cameraMovement.x = Input.GetAxisRaw("Horizontal");
-                cameraMovement.y = Input.GetAxisRaw("Vertical");
-            }
+        
+            // Animations for the character when moving
+            animator.SetFloat("Horizontal", movement.x);
+            animator.SetFloat("Vertical", movement.y);
+            animator.SetFloat("Speed", movement.sqrMagnitude);
         }
-        // Animations for the character when moving
-        animator.SetFloat("Horizontal", movement.x);
-        animator.SetFloat("Vertical", movement.y);
-        animator.SetFloat("Speed", movement.sqrMagnitude);
     }
 
     // Function to handle moving

@@ -19,10 +19,10 @@ MonoBehaviour:
   mag_one: 10
   res_one: 10
   spd_one: 10
-  node_one: 1
+  node_one: 82
   isPlayerOneTurn: 1
-  player1pos: {x: -20, y: 12.7, z: 0}
-  isAbleToMovePlayerOne: 1
+  player1pos: {x: 2, y: 6.7, z: 0}
+  isAbleToMovePlayerOne: 0
   isCameraPlayerOne: 0
   diceRolledPlayerOne: 0
   isAbleToRollPlayerOne: 1
@@ -33,10 +33,10 @@ MonoBehaviour:
   mag_two: 10
   res_two: 10
   spd_two: 10
-  node_two: 76
+  node_two: 65
   isPlayerTwoTurn: 0
-  player2pos: {x: -20, y: 8.7, z: 0}
-  isAbleToMovePlayerTwo: 1
+  player2pos: {x: -14, y: -7.3, z: 0}
+  isAbleToMovePlayerTwo: 0
   isCameraPlayerTwo: 0
   diceRolledPlayerTwo: 0
   isAbleToRollPlayerTwo: 1
