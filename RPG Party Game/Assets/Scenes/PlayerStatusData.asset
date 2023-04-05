@@ -23,6 +23,7 @@ MonoBehaviour:
   isPlayerOneTurn: 1
   player1pos: {x: -6, y: 12.7, z: 0}
   isPlayerOneInCombat: 1
+
   isAbleToMovePlayerOne: 0
   isCameraPlayerOne: 0
   diceRolledPlayerOne: 0
@@ -39,6 +40,7 @@ MonoBehaviour:
   isPlayerTwoTurn: 0
   isPlayerTwoInCombat: 0
   player2pos: {x: -20, y: 4.7, z: 0}
+
   isAbleToMovePlayerTwo: 0
   isCameraPlayerTwo: 0
   diceRolledPlayerTwo: 0

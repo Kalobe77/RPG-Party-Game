@@ -49,7 +49,7 @@ public class DiceRoll : MonoBehaviour
     void Update()
     {
         // Checks if T is pressed and if dice has already been rolled
-        if (Input.GetKeyDown(KeyCode.T) && !inputScript.isCamera && !inputScript.diceRolled && inputScript.isAbleToRoll)
+        if (Input.GetKeyDown(KeyCode.T) && !inputScript.isCamera && !inputScript.diceRolled && inputScript.isAbleToRoll && !PauseScript1.isPaused)
         {
             inputScript.diceRolled = true;
             int randomNumber = Random.Range(1,7);
