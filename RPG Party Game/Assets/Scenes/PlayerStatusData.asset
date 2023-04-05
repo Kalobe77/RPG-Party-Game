@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cda3571a51994ca49acd66a3e568ce27, type: 3}
+  m_Name: PlayerStatusData
+  m_EditorClassIdentifier: 
+  remaininghp_one: 25
+  maxhp_one: 40
+  atk_one: 10
+  def_one: 10
+  mag_one: 10
+  res_one: 10
+  spd_one: 10
+  node_one: 8
+  isPlayerOneTurn: 1
+  player1pos: {x: -6, y: 12.7, z: 0}
+  isPlayerOneInCombat: 1
+
+  isAbleToMovePlayerOne: 0
+  isCameraPlayerOne: 0
+  diceRolledPlayerOne: 0
+  isAbleToRollPlayerOne: 1
+  enemy1Stats: 14000000140000000a0000000a0000000a0000000a0000000a000000
+  remaininghp_two: 25
+  maxhp_two: 40
+  atk_two: 10
+  def_two: 10
+  mag_two: 10
+  res_two: 10
+  spd_two: 10
+  node_two: 74
+  isPlayerTwoTurn: 0
+  isPlayerTwoInCombat: 0
+  player2pos: {x: -20, y: 4.7, z: 0}
+
+  isAbleToMovePlayerTwo: 0
+  isCameraPlayerTwo: 0
+  diceRolledPlayerTwo: 0
+  isAbleToRollPlayerTwo: 1
+  enemy2Stats: 05000000140000000a0000000a0000000a0000000a0000000a000000

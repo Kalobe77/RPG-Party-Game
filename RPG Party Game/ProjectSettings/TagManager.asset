@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Player 1
+  - TurnLogic
+  - Player 2
   layers:
   - Default
   - TransparentFX
@@ -44,7 +47,7 @@ TagManager:
   - name: Space Layer
     uniqueID: 1233406787
     locked: 0
-  - name: Player Characters
+  - name: Player Not Turn
     uniqueID: 1355725151
     locked: 0
   - name: Default
