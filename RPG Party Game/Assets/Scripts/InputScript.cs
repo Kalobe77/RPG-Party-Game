@@ -143,7 +143,7 @@ public class InputScript : MonoBehaviour
             {
                 if (canShop)
                 {
-                    if (Input.GetKeyDown(KeyCode.D) && !isCamera)
+                    if (Input.GetKeyDown(KeyCode.E) && !isCamera)
                     {
                         spacesRemaining = 0;
                         canShop = false;
