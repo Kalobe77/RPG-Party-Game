@@ -53,6 +53,14 @@ Preset:
     value: 10
     objectReference: {fileID: 0}
   - target: {fileID: 0}
+    propertyPath: level_one
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: exp_one
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
     propertyPath: node_one
     value: 82
     objectReference: {fileID: 0}
@@ -94,7 +102,7 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: enemy1Stats.Array.size
-    value: 7
+    value: 8
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: enemy1Stats.Array.data[0]
@@ -125,6 +133,10 @@ Preset:
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
+    propertyPath: enemy1Stats.Array.data[7]
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
     propertyPath: remaininghp_two
     value: 40
     objectReference: {fileID: 0}
@@ -151,6 +163,14 @@ Preset:
   - target: {fileID: 0}
     propertyPath: spd_two
     value: 10
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: level_two
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: exp_two
+    value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: node_two
@@ -194,7 +214,7 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: enemy2Stats.Array.size
-    value: 7
+    value: 8
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: enemy2Stats.Array.data[0]
@@ -222,6 +242,10 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: enemy2Stats.Array.data[6]
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: enemy2Stats.Array.data[7]
     value: 0
     objectReference: {fileID: 0}
   m_ExcludedProperties: []

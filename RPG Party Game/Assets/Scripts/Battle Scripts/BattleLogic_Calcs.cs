@@ -29,6 +29,10 @@ public class BattleLogic_Calcs : MonoBehaviour
     public int spd_right;
     public int inputRight;
     public bool rightTurn;
+    public bool rightPlayerIsComputer = true;
+    public int enemy_level;
+
+    public bool state = true;
 
     // UI and allows us to control whether they appear
     public GameObject leftUI;
@@ -71,6 +75,7 @@ public class BattleLogic_Calcs : MonoBehaviour
             mag_right = pcs.enemy1Stats[4];
             res_right = pcs.enemy1Stats[5];
             spd_right = pcs.enemy1Stats[6];
+            enemy_level = pcs.enemy1Stats[7];
         }
         else
         {
@@ -89,36 +94,45 @@ public class BattleLogic_Calcs : MonoBehaviour
             mag_right = pcs.enemy2Stats[4];
             res_right = pcs.enemy2Stats[5];
             spd_right = pcs.enemy2Stats[6];
+            enemy_level = pcs.enemy2Stats[7];
         }
         leftHealthScript.SetMaxHealth(maxhp_left, remaininghp_left);
         rightHealthScript.SetMaxHealth(maxhp_right, remaininghp_right);
-        if (leftIsAttacker)
-        {
-            leftTurn = true;
-            rightTurn = false;
-        }
-        else
-        {
-            leftTurn = false;
-            rightTurn = true;
-        }
+        leftUI.SetActive(false);
+        rightUI.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if(state)
+        {
+            Debug.Log("Did Run");
+            state = false;
+            allowedInput = false;
+            // Starts Move Function
+            StartCoroutine(DelayStart());
+        }
         if (allowedInput)
         {
-            // Grabs X and Y of the inputs
-            input.x = Input.GetAxisRaw("Horizontal");
-            input.y = Input.GetAxisRaw("Vertical");
-
-            if (input.sqrMagnitude > 0)
+            if (rightTurn && rightPlayerIsComputer)
             {
-                // Starts Move Function
+                AI();
                 StartCoroutine(BattleCommand());
             }
+            else
+            {
+                // Grabs X and Y of the inputs
+                input.x = Input.GetAxisRaw("Horizontal");
+                input.y = Input.GetAxisRaw("Vertical");
+
+                if (input.sqrMagnitude > 0)
+                {
+                    // Starts Battle Function
+                    StartCoroutine(BattleCommand());
+                }
+            }
+            
             
         }
         if (remaininghp_right <= 0)
@@ -132,6 +146,7 @@ public class BattleLogic_Calcs : MonoBehaviour
                 pcs.mag_one = mag_left;
                 pcs.res_one = res_left;
                 pcs.spd_one = spd_left;
+                ExperienceGain();
                 pcs.isPlayerOneInCombat = !pcs.isPlayerOneInCombat;
                 NextTurn();
             }
@@ -144,6 +159,7 @@ public class BattleLogic_Calcs : MonoBehaviour
                 pcs.mag_two = mag_left;
                 pcs.res_two = res_left;
                 pcs.spd_two = spd_left;
+                ExperienceGain();
                 pcs.isPlayerTwoInCombat = !pcs.isPlayerTwoInCombat;
                 NextTurn();
             }
@@ -310,7 +326,6 @@ public class BattleLogic_Calcs : MonoBehaviour
         {
             rightUI.SetActive(false);
             leftUI.SetActive(false);
-            Debug.Log(leftIsAttacker);
             if (leftIsAttacker)
             {
                 ModifierCalculation(inputLeft, inputRight);
@@ -369,7 +384,6 @@ public class BattleLogic_Calcs : MonoBehaviour
             if (defenderInput == 1)
             {
                 modifier = 1f;
-                Debug.Log(leftIsAttacker);
                 if (leftIsAttacker)
                 {
                     DamageCalculation(modifier, atk_left, def_right, leftIsAttacker);
@@ -600,13 +614,204 @@ public class BattleLogic_Calcs : MonoBehaviour
 
     public void NextTurn()
     {
-        if (pcs.isPlayerOneTurn){
+        if (pcs.isPlayerOneTurn)
+        {
             pcs.isPlayerOneTurn = !pcs.isPlayerOneTurn;
             pcs.isPlayerTwoTurn = !pcs.isPlayerTwoTurn;
         }
-        else if (pcs.isPlayerTwoTurn){
+        else if (pcs.isPlayerTwoTurn)
+        {
             pcs.isPlayerOneTurn = !pcs.isPlayerOneTurn;
             pcs.isPlayerTwoTurn = !pcs.isPlayerTwoTurn;
         }
     }
+
+    public void ExperienceGain()
+    {
+        if (pcs.isPlayerOneTurn)
+        {
+            int experience = 70;
+            if (pcs.level_one >= pcs.enemy1Stats[7])
+            {
+                experience = Mathf.RoundToInt(70*Mathf.Exp(-.3f*(pcs.level_one-pcs.enemy1Stats[7])));
+            }
+            pcs.exp_one = pcs.exp_one + experience;
+            if (pcs.exp_one >= 100)
+            {
+                LevelUp();
+            }
+        }
+        else if (pcs.isPlayerTwoTurn)
+        {
+            int experience = 70;
+            if (pcs.level_two >= pcs.enemy2Stats[7])
+            {
+                experience = Mathf.RoundToInt(70*Mathf.Exp(-.3f*(pcs.level_one-pcs.enemy1Stats[7])));
+            }
+            if (pcs.exp_two >= 100)
+            {
+                LevelUp();
+            }
+        }
+    }
+
+    public void LevelUp()
+    {
+        if (pcs.isPlayerOneTurn)
+        {
+            pcs.exp_one = pcs.exp_one - 100;
+            pcs.level_one = pcs.level_one + 1;
+            pcs.maxhp_one = pcs.maxhp_one + 10;
+            pcs.remaininghp_one = pcs.maxhp_one;
+            pcs.atk_one = pcs.atk_one + 1;
+            pcs.def_one = pcs.def_one + 1;
+            pcs.mag_one = pcs.mag_one + 1;
+            pcs.res_one = pcs.res_one + 1;
+            pcs.spd_one = pcs.spd_one + 1;
+        }
+        else if (pcs.isPlayerTwoTurn)
+        {
+            pcs.exp_two = pcs.exp_two - 100;
+            pcs.level_two = pcs.level_two + 1;
+            pcs.maxhp_two = pcs.maxhp_two + 10;
+            pcs.remaininghp_two = pcs.maxhp_two;
+            pcs.atk_two = pcs.atk_two + 1;
+            pcs.def_two = pcs.def_two + 1;
+            pcs.mag_two = pcs.mag_two + 1;
+            pcs.res_two = pcs.res_two + 1;
+            pcs.spd_two = pcs.spd_two + 1;
+        }
+    }
+
+    public void AI()
+    {
+        float chanceToGuessCorrectly = (float).7*Mathf.Log(enemy_level)/Mathf.Log(59);
+        float number = Random.Range(0.0f, 1.0f);
+        if (leftIsAttacker)
+        {
+            if (chanceToGuessCorrectly >= number)
+            {
+                if (inputLeft == 1)
+                {
+                    input.x = 1;
+                    input.y = 0;
+                }
+                else if (inputLeft == 2)
+                {
+                    input.x = -1;
+                    input.y = 0;
+                }
+                else if (inputLeft == 3)
+                {
+                    input.x = 0;
+                    input.y = 1;
+                }
+                else if (inputLeft == 4)
+                {
+                    input.x = 0;
+                    input.y = -1;
+                }
+            }
+            else
+            {
+                int aiInput = Random.Range(1,5);
+                if (aiInput == 1)
+                {
+                    input.x = 1;
+                    input.y = 0;
+                }
+                else if (aiInput == 2)
+                {
+                    input.x = -1;
+                    input.y = 0;
+                }
+                else if (aiInput == 3)
+                {
+                    input.x = 0;
+                    input.y = 1;
+                }
+                else if (aiInput == 4)
+                {
+                    input.x = 0;
+                    input.y = -1;
+                }
+            }
+        }
+        else
+        {
+            if (chanceToGuessCorrectly >= number)
+            {
+                if (atk_left - def_left/2 > mag_right - res_left/2)
+                {
+                    input.x = 1;
+                    input.y = 0;
+
+                }
+                else if(atk_left - def_left/2 < mag_right - res_left/2)
+                {
+                    input.x = -1;
+                    input.y = 0;
+                }
+                else
+                {
+                    int variable = Random.Range(0,2);
+                    if (variable == 1)
+                    {
+                        input.x = variable;
+                    }
+                    else
+                    {
+                        input.x = variable - 1;
+                    }
+                    input.y = 0;
+                }
+            }
+            else
+            {
+                int aiInput = Random.Range(1,5);
+                if (aiInput == 1)
+                {
+                    input.x = 1;
+                    input.y = 0;
+                }
+                else if (aiInput == 2)
+                {
+                    input.x = -1;
+                    input.y = 0;
+                }
+                else if (aiInput == 3)
+                {
+                    input.x = 0;
+                    input.y = 1;
+                }
+                else if (aiInput == 4)
+                {
+                    input.x = 0;
+                    input.y = -1;
+                }
+            }
+        }
+        Debug.Log(input);
+    }
+
+    IEnumerator DelayStart()
+    {
+        yield return new WaitForSeconds(10f);
+        if (leftIsAttacker)
+        {
+            leftTurn = true;
+            rightTurn = false;
+            leftUI.SetActive(true);
+        }
+        else
+        {
+            leftTurn = false;
+            rightTurn = true;
+            rightUI.SetActive(true);
+            leftUI.SetActive(false);
+        }
+        allowedInput = true;
+    }
+
 }
+

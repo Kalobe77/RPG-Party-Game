@@ -13,6 +13,9 @@ public class PlayerCharacterStatus : ScriptableObject
     public int mag_one;
     public int res_one;
     public int spd_one;
+    public int level_one = 1;
+    public int exp_one = 0;
+
     public int node_one;
     public bool isPlayerOneTurn = true;
     public Vector3 player1pos;
@@ -24,7 +27,7 @@ public class PlayerCharacterStatus : ScriptableObject
     public bool diceRolledPlayerOne;
     public bool isAbleToRollPlayerOne;
     
-    public int[] enemy1Stats = new int[7];
+    public int[] enemy1Stats = new int[8];
 
     // Stats for player two
     public int remaininghp_two;
@@ -34,6 +37,9 @@ public class PlayerCharacterStatus : ScriptableObject
     public int mag_two;
     public int res_two;
     public int spd_two;
+    public int level_two = 1;
+    public int exp_two = 0;
+
     public int node_two;
     public bool isPlayerTwoTurn = false;
     public bool isPlayerTwoInCombat = false;
@@ -45,5 +51,5 @@ public class PlayerCharacterStatus : ScriptableObject
     public bool diceRolledPlayerTwo;
     public bool isAbleToRollPlayerTwo;
 
-    public int[] enemy2Stats = new int[7];
+    public int[] enemy2Stats = new int[8];
 }

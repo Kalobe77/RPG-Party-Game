@@ -75,7 +75,6 @@ public class InputScript : MonoBehaviour
         // Links the input script using the tag
         cameraFollow = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>();
         turnHandler = GameObject.FindGameObjectWithTag("TurnLogic").GetComponent<TurnHandlerScript>();
-        Debug.Log(gameObject.tag);
         if (gameObject.tag == "Player 1")
         {
             remaininghp = pcs.remaininghp_one;
@@ -114,7 +113,6 @@ public class InputScript : MonoBehaviour
             isAbleToRoll = pcs.isAbleToRollPlayerTwo;
             isInCombat = pcs.isPlayerTwoInCombat;
         }
-        Debug.Log(isTurn);
         dice.transform.position = new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z);
     }
 
@@ -167,24 +165,20 @@ public class InputScript : MonoBehaviour
                     StartCoroutine(Move());
                 }
                 // Toggles control to give control to player over the camera if they are not moving and hit space
-                if (Input.GetKeyDown(KeyCode.Space) && (isAbleToMove || !diceRolled))
+                if (Input.GetKeyDown(KeyCode.Space) && (isAbleToMove || !diceRolled) && !isCamera)
                 {
                     // Toggles Flags to enable camera movement and no more player movement
                     isCamera = true;
-                    isAbleToMove = false;
-                    isAbleToRoll = false;
                     dice.SetActive(false);
 
                     // Initializes camera to be where the player is
                     dot.position = target.position;
                 }
                 // Toggles control to give control to player over the camera if they are in camera movement mode and hit space
-                else if (Input.GetKeyDown(KeyCode.Space) && isCamera && !isAbleToRoll)
+                else if (Input.GetKeyDown(KeyCode.Space) && isCamera)
                 {
                     // Toggles Flags to enable character movement and disable camera control
                     isCamera = false;
-                    isAbleToMove = true;
-                    isAbleToRoll = true;
                     if (spacesRemaining > 0)
                     {
                         dice.SetActive(false);
@@ -193,7 +187,6 @@ public class InputScript : MonoBehaviour
                     {
                         dice.SetActive(true);
                     }
-                    
                 }
                 // Allows control of camera if in camera mode
                 if(isCamera){
@@ -387,6 +380,7 @@ public class InputScript : MonoBehaviour
             pcs.enemy1Stats[4] = 10;
             pcs.enemy1Stats[5] = 10;
             pcs.enemy1Stats[6] = 10;
+            pcs.enemy1Stats[7] = 1;
         }
         else if (pcs.isPlayerTwoTurn)
         {
@@ -397,6 +391,7 @@ public class InputScript : MonoBehaviour
             pcs.enemy2Stats[4] = 10;
             pcs.enemy2Stats[5] = 10;
             pcs.enemy2Stats[6] = 10;
+            pcs.enemy2Stats[7] = 1;
         }
     }
 }
