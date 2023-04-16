@@ -91,7 +91,6 @@ public class InputScript : MonoBehaviour
         // Links the input script using the tag
         cameraFollow = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>();
         turnHandler = GameObject.FindGameObjectWithTag("TurnLogic").GetComponent<TurnHandlerScript>();
-        Debug.Log(gameObject.tag);
         if (gameObject.tag == "Player 1")
         {
             remaininghp = pcs.remaininghp_one;
@@ -130,8 +129,8 @@ public class InputScript : MonoBehaviour
             isAbleToRoll = pcs.isAbleToRollPlayerTwo;
             isInCombat = pcs.isPlayerTwoInCombat;
         }
-        Debug.Log(isTurn);
         dice.transform.position = new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z);
+        Debug.Log(dice);
     }
 
     // Update is called once per frame
@@ -141,18 +140,6 @@ public class InputScript : MonoBehaviour
         {
             if (isTurn)
             {
-                if (canShop)
-                {
-                    if (Input.GetKeyDown(KeyCode.E) && !isCamera)
-                    {
-                        spacesRemaining = 0;
-                        canShop = false;
-                        shopMenu.SetActive(false);
-                        turnHandler.ProgressTurn();
-                        turnHandler.NextTurn();
-                        turnHandler.UpdateStatus();
-                    }
-                }
                 if (isInCombat)
                 {
                     movement.x = 0;
@@ -200,42 +187,20 @@ public class InputScript : MonoBehaviour
                         nodeType = 5;
 
                     }
-
-
-
-                    //if (Input.GetKeyDown(KeyCode.D) )
-                    //{
-                    //    turnHandler.ProgressTurn(); //changes camera to the other player
-                    //SceneManager.LoadScene("Scenes/Battle");
                 }
-
-                //
-               // while (!done) 
-               // {
-                    
-                    /*
-                    // Toggles control to give control of the camera if they are not moving and hit space
-                    //if (Input.GetKeyDown(KeyCode.Space) && (isAbleToMove || !diceRolled))
-                    if (Input.GetKeyDown(KeyCode.Space) && (isAbleToMove || !diceRolled))
+                if (canShop)
+                {
+                    if (Input.GetKeyDown(KeyCode.E) && !isCamera)
                     {
-                        // Toggles Flags to enable camera movement and no more player movement
-                        isCamera = true;
-                        isAbleToMove = false;
-                        isAbleToRoll = false;
-                        dice.SetActive(false);
-
-                        // Initializes camera to be where the player is
-                        dot.position = target.position;
-                    }
-
-                    if (Input.GetKeyDown(KeyCode.D) )
-                    {
-                        done = true;
+                        spacesRemaining = 0;
+                        canShop = false;
+                        diceRolled = false;
+                        shopMenu.SetActive(false);
                         turnHandler.ProgressTurn();
+                        turnHandler.NextTurn();
+                        turnHandler.UpdateStatus();
                     }
-                    */
-              //  }
-                //
+                }
 
 
                 // Movement only enabled if character is able to move and is not controlling the camera
