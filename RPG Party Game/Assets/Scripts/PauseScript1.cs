@@ -52,6 +52,9 @@ public class PauseScript1 : MonoBehaviour
         isPaused = false;
     }
 
+
+
+
     public void Controls()
     {
         pauseMenu.SetActive(false);

@@ -6,6 +6,21 @@ using UnityEngine.SceneManagement;
 
 public class InputScript : MonoBehaviour
 {
+    public bool done = true;
+
+    public GameObject shopMenu;
+
+    public bool canShop = false;
+
+    public bool shopOpen = false;
+
+    public int nodeType;
+
+    public int[] spaceTypes = {0, 1, 2, 3};
+    //int[] spaceAssign = new int[85];
+    //int[] spaceAssign = {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3};
+    public int[] spaceAssign = {2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 3, 3, 3, 3, 3};
+
 
     // Used to change velocity and position
     public Rigidbody2D rb;
@@ -72,9 +87,11 @@ public class InputScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {  
+        shopMenu.SetActive(false);
         // Links the input script using the tag
         cameraFollow = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>();
         turnHandler = GameObject.FindGameObjectWithTag("TurnLogic").GetComponent<TurnHandlerScript>();
+        Debug.Log(gameObject.tag);
         if (gameObject.tag == "Player 1")
         {
             remaininghp = pcs.remaininghp_one;
@@ -113,6 +130,7 @@ public class InputScript : MonoBehaviour
             isAbleToRoll = pcs.isAbleToRollPlayerTwo;
             isInCombat = pcs.isPlayerTwoInCombat;
         }
+        Debug.Log(isTurn);
         dice.transform.position = new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z);
     }
 
@@ -123,7 +141,18 @@ public class InputScript : MonoBehaviour
         {
             if (isTurn)
             {
-            
+                if (canShop)
+                {
+                    if (Input.GetKeyDown(KeyCode.E) && !isCamera)
+                    {
+                        spacesRemaining = 0;
+                        canShop = false;
+                        shopMenu.SetActive(false);
+                        turnHandler.ProgressTurn();
+                        turnHandler.NextTurn();
+                        turnHandler.UpdateStatus();
+                    }
+                }
                 if (isInCombat)
                 {
                     movement.x = 0;
@@ -140,7 +169,8 @@ public class InputScript : MonoBehaviour
                 {
                     dice.SetActive(true);
                 }
-                if (spacesRemaining == 0 && diceRolled){
+                if (spacesRemaining == 0 && diceRolled)
+                {
                     // Resets Everything
                     movement.x = 0;
                     movement.y = 0;
@@ -148,12 +178,66 @@ public class InputScript : MonoBehaviour
                     dice.transform.position = new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z);
                     nodesVisited.Clear();
                     isAbleToMove = false;
-                    RandomizeEnemyStats();
-                    isInCombat = !isInCombat;
-                    turnHandler.UpdateStatus();
-                    turnHandler.ProgressTurn();
-                    SceneManager.LoadScene("Scenes/Battle");
+                    // combat spot
+                    turnHandler.UpdateStatus(); // stores info for new scene
+
+                    nodeType = spaceAssign[node];
+                    if (nodeType == 1)
+                    {
+                        canShop = true;
+                        spacesRemaining = -1;
+                        shopMenu.SetActive(true);
+                    }
+
+                    else if (nodeType == 2)
+                    {
+                        RandomizeEnemyStats();
+                        isInCombat = !isInCombat;
+                    }
+
+                    else if (nodeType == 3)
+                    {
+                        nodeType = 5;
+
+                    }
+
+
+
+                    //if (Input.GetKeyDown(KeyCode.D) )
+                    //{
+                    //    turnHandler.ProgressTurn(); //changes camera to the other player
+                    //SceneManager.LoadScene("Scenes/Battle");
                 }
+
+                //
+               // while (!done) 
+               // {
+                    
+                    /*
+                    // Toggles control to give control of the camera if they are not moving and hit space
+                    //if (Input.GetKeyDown(KeyCode.Space) && (isAbleToMove || !diceRolled))
+                    if (Input.GetKeyDown(KeyCode.Space) && (isAbleToMove || !diceRolled))
+                    {
+                        // Toggles Flags to enable camera movement and no more player movement
+                        isCamera = true;
+                        isAbleToMove = false;
+                        isAbleToRoll = false;
+                        dice.SetActive(false);
+
+                        // Initializes camera to be where the player is
+                        dot.position = target.position;
+                    }
+
+                    if (Input.GetKeyDown(KeyCode.D) )
+                    {
+                        done = true;
+                        turnHandler.ProgressTurn();
+                    }
+                    */
+              //  }
+                //
+
+
                 // Movement only enabled if character is able to move and is not controlling the camera
                 if (isAbleToMove && !isCamera && diceRolled)
                 {
@@ -164,22 +248,30 @@ public class InputScript : MonoBehaviour
                     // Starts Move Function
                     StartCoroutine(Move());
                 }
-                // Toggles control to give control to player over the camera if they are not moving and hit space
+                // Toggles control to give control of the camera if they are not moving and hit space
+                //if (Input.GetKeyDown(KeyCode.Space) && (isAbleToMove || !diceRolled))
                 if (Input.GetKeyDown(KeyCode.Space) && (isAbleToMove || !diceRolled) && !isCamera)
                 {
                     // Toggles Flags to enable camera movement and no more player movement
                     isCamera = true;
                     dice.SetActive(false);
-
+                    if (canShop)
+                    {
+                        shopMenu.SetActive(false);
+                    }
                     // Initializes camera to be where the player is
                     dot.position = target.position;
                 }
-                // Toggles control to give control to player over the camera if they are in camera movement mode and hit space
+                // Toggles control to give control of the player over the camera if they are in camera movement mode and hit space
                 else if (Input.GetKeyDown(KeyCode.Space) && isCamera)
                 {
                     // Toggles Flags to enable character movement and disable camera control
                     isCamera = false;
-                    if (spacesRemaining > 0)
+                    if (canShop)
+                    {
+                        shopMenu.SetActive(true);
+                    }
+                    if (spacesRemaining > 0 || spacesRemaining == -1)
                     {
                         dice.SetActive(false);
                     }
@@ -187,6 +279,7 @@ public class InputScript : MonoBehaviour
                     {
                         dice.SetActive(true);
                     }
+                    
                 }
                 // Allows control of camera if in camera mode
                 if(isCamera){
@@ -200,6 +293,13 @@ public class InputScript : MonoBehaviour
                 animator.SetFloat("Speed", movement.sqrMagnitude);
             }
         }
+    }
+
+    public void ShopEnd()
+    {
+        shopMenu.SetActive(false);
+        shopOpen = false;
+        canShop = false;
     }
 
     // Function to handle moving
@@ -380,7 +480,6 @@ public class InputScript : MonoBehaviour
             pcs.enemy1Stats[4] = 10;
             pcs.enemy1Stats[5] = 10;
             pcs.enemy1Stats[6] = 10;
-            pcs.enemy1Stats[7] = 1;
         }
         else if (pcs.isPlayerTwoTurn)
         {
@@ -391,7 +490,6 @@ public class InputScript : MonoBehaviour
             pcs.enemy2Stats[4] = 10;
             pcs.enemy2Stats[5] = 10;
             pcs.enemy2Stats[6] = 10;
-            pcs.enemy2Stats[7] = 1;
         }
     }
 }

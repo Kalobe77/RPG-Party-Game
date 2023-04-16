@@ -63,6 +63,20 @@ public class TurnHandlerScript : MonoBehaviour
         
     }
 
+    public void NextTurn()
+    {
+        if (inputScript.isTurn)
+        {
+            inputScript.isTurn = !inputScript.isTurn;
+            inputScript2.isTurn = !inputScript2.isTurn;
+        }
+        else if (inputScript2.isTurn)
+        {
+            inputScript.isTurn = !inputScript.isTurn;
+            inputScript2.isTurn = !inputScript2.isTurn;
+        }
+    }
+
     public void UpdateStatus()
     {
         // Sets Variables for players to the correct values
