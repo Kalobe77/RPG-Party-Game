@@ -5,6 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class MenuScript : MonoBehaviour
 {
+    public SaveWrapper saveWrapper;
+    void Start()
+    {
+        saveWrapper = GameObject.FindGameObjectWithTag("SaveWrapper").GetComponent<SaveWrapper>();
+    }
     // Title Screen
     public void PlayGame()
     {
@@ -29,6 +34,7 @@ public class MenuScript : MonoBehaviour
 
     public void LoadGame()
     {
+        saveWrapper.readFromFile("/Saves/saveFile.txt");
         SceneManager.LoadScene("OverWorld");
     }
 
@@ -40,6 +46,7 @@ public class MenuScript : MonoBehaviour
     // Amount of Players Screen
     public void PlayNew()
     {
+        saveWrapper.readFromFile("/Saves/Player2Default.txt");
         SceneManager.LoadScene("OverWorld");
     }
 

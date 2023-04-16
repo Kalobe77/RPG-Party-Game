@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "PlayerStatusData", menuName = "StatusObjects/Players", order = 1)]
+[Serializable]
 public class PlayerCharacterStatus : ScriptableObject
 {
     // Stats for player one
@@ -52,4 +54,10 @@ public class PlayerCharacterStatus : ScriptableObject
     public bool isAbleToRollPlayerTwo;
 
     public int[] enemy2Stats = new int[8];
+
+    public string SaveToString()
+    {
+        return JsonUtility.ToJson(this);
+    } 
+
 }

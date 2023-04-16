@@ -796,7 +796,7 @@ public class BattleLogic_Calcs : MonoBehaviour
 
     IEnumerator DelayStart()
     {
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(2f);
         if (leftIsAttacker)
         {
             leftTurn = true;

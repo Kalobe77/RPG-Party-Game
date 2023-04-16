@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cda3571a51994ca49acd66a3e568ce27, type: 3}
   m_Name: PlayerStatusData
   m_EditorClassIdentifier: 
-  remaininghp_one: 34
+  remaininghp_one: 40
   maxhp_one: 40
   atk_one: 10
   def_one: 10
@@ -21,15 +21,15 @@ MonoBehaviour:
   spd_one: 10
   level_one: 1
   exp_one: 0
-  node_one: 21
-  isPlayerOneTurn: 0
-  player1pos: {x: 10, y: 2.6999998, z: 0}
-  isPlayerOneInCombat: 1
+  node_one: 82
+  isPlayerOneTurn: 1
+  player1pos: {x: 2, y: 6.7, z: 0}
+  isPlayerOneInCombat: 0
   isAbleToMovePlayerOne: 0
   isCameraPlayerOne: 0
   diceRolledPlayerOne: 0
   isAbleToRollPlayerOne: 1
-  enemy1Stats: 0e000000140000000a0000000a0000000a0000000a0000000a00000001000000
+  enemy1Stats: 0000000000000000000000000000000000000000000000000000000000000000
   remaininghp_two: 40
   maxhp_two: 40
   atk_two: 10
@@ -40,7 +40,7 @@ MonoBehaviour:
   level_two: 1
   exp_two: 0
   node_two: 65
-  isPlayerTwoTurn: 1
+  isPlayerTwoTurn: 0
   isPlayerTwoInCombat: 0
   player2pos: {x: -14, y: -7.3, z: 0}
   isAbleToMovePlayerTwo: 0
