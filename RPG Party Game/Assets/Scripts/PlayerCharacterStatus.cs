@@ -57,7 +57,7 @@ public class PlayerCharacterStatus : ScriptableObject
 
     public string SaveToString()
     {
-        return JsonUtility.ToJson(this);
+        return JsonUtility.ToJson(this, true);
     } 
 
 }

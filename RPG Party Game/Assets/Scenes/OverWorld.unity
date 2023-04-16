@@ -258,51 +258,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5613866}
   m_CullTransparentMesh: 1
---- !u!1 &9357793
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 1643771873454298157, guid: 70deda4ade8f2e2419477ffeca5b106d, type: 3}
-  m_PrefabInstance: {fileID: 1630844813}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 9357795}
-  - component: {fileID: 9357794}
-  m_Layer: 0
-  m_Name: SaveWrapper
-  m_TagString: SaveWrapper
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &9357794
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 1643771873454298156, guid: 70deda4ade8f2e2419477ffeca5b106d, type: 3}
-  m_PrefabInstance: {fileID: 1630844813}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9357793}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ac96154e165f2145a7a3041cfc010ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pcs: {fileID: 11400000, guid: 617a17ef434a8974b8cef8b243a0e6be, type: 2}
---- !u!4 &9357795
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 1643771873454298159, guid: 70deda4ade8f2e2419477ffeca5b106d, type: 3}
-  m_PrefabInstance: {fileID: 1630844813}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9357793}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 29.422276, y: 17.35293, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &54250402
 GameObject:
   m_ObjectHideFlags: 0
@@ -29083,7 +29038,6 @@ GameObject:
   - component: {fileID: 1912540897}
   - component: {fileID: 1912540896}
   - component: {fileID: 1912540898}
-  - component: {fileID: 1912540899}
   m_Layer: 0
   m_Name: Turn Handler
   m_TagString: TurnLogic
@@ -29138,52 +29092,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 972429900}
   controlsMenu: {fileID: 1015305264}
---- !u!114 &1912540899
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1912540895}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f570d5a2c9d706441b91eea77d7ccccc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  done: 1
-  shopMenu: {fileID: 179448744}
-  canShop: 0
-  shopOpen: 0
-  nodeType: 0
-  spaceTypes: 00000000010000000200000003000000
-  spaceAssign: 02000000010000000200000001000000020000000100000002000000010000000200000001000000020000000100000002000000010000000200000001000000020000000100000002000000010000000200000001000000020000000100000002000000010000000200000001000000020000000100000002000000010000000200000001000000020000000100000002000000010000000200000001000000020000000100000002000000010000000200000001000000020000000100000002000000010000000200000001000000020000000100000002000000010000000200000001000000020000000100000002000000010000000200000001000000020000000100000002000000010000000200000001000000020000000100000002000000010000000200000001000000020000000100000002000000010000000300000003000000030000000300000003000000
-  rb: {fileID: 0}
-  target: {fileID: 0}
-  dot: {fileID: 0}
-  animator: {fileID: 0}
-  cameraMovement: {x: 0, y: 0}
-  node: 0
-  isAbleToMove: 1
-  isCamera: 0
-  diceRolled: 0
-  isTurn: 1
-  isAbleToRoll: 1
-  isInCombat: 0
-  characterOffset: 0.7
-  routeScript: {fileID: 0}
-  spacesRemaining: 0
-  dice: {fileID: 0}
-  nodesVisited: 
-  cameraFollow: {fileID: 0}
-  turnHandler: {fileID: 0}
-  remaininghp: 0
-  maxhp: 0
-  atk: 0
-  def: 0
-  mag: 0
-  res: 0
-  spd: 0
-  pcs: {fileID: 0}
+  saveWrapper: {fileID: 0}
+  inputScript: {fileID: 0}
+  inputScript2: {fileID: 0}
 --- !u!1 &1915160224
 GameObject:
   m_ObjectHideFlags: 0
