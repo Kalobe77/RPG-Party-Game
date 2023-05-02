@@ -21,16 +21,16 @@ MonoBehaviour:
   spd_one: 10
   level_one: 1
   exp_one: 0
-  node_one: 82
-  isPlayerOneTurn: 1
-  player1pos: {x: 2, y: 6.7, z: 0}
+  node_one: 77
+  isPlayerOneTurn: 0
+  player1pos: {x: -4, y: 10.7, z: 0}
   isPlayerOneInCombat: 0
   isAbleToMovePlayerOne: 0
   isCameraPlayerOne: 0
   diceRolledPlayerOne: 0
   isAbleToRollPlayerOne: 1
   enemy1Stats: 0000000000000000000000000000000000000000000000000000000000000000
-  remaininghp_two: 40
+  remaininghp_two: 30
   maxhp_two: 40
   atk_two: 10
   def_two: 10
@@ -40,7 +40,7 @@ MonoBehaviour:
   level_two: 1
   exp_two: 0
   node_two: 65
-  isPlayerTwoTurn: 0
+  isPlayerTwoTurn: 1
   isPlayerTwoInCombat: 0
   player2pos: {x: -14, y: -7.3, z: 0}
   isAbleToMovePlayerTwo: 0

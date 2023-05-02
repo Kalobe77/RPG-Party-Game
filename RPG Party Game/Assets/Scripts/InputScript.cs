@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class InputScript : MonoBehaviour
 {
-    public bool done = true;
+    //public int[] itemStorage = {3, 4, 5};
 
     public GameObject shopMenu;
 
@@ -88,12 +88,14 @@ public class InputScript : MonoBehaviour
     void Start()
     {  
         shopMenu.SetActive(false);
+        shopOpen = false;
         // Links the input script using the tag
         cameraFollow = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>();
         turnHandler = GameObject.FindGameObjectWithTag("TurnLogic").GetComponent<TurnHandlerScript>();
         if (gameObject.tag == "Player 1")
         {
-            remaininghp = pcs.remaininghp_one;
+            // remaininghp = pcs.remaininghp_one;
+            remaininghp = pcs.remaininghp_one - 10; /////
             maxhp = pcs.maxhp_one;
             atk = pcs.atk_one;
             def = pcs.def_one;
@@ -112,7 +114,8 @@ public class InputScript : MonoBehaviour
         }
         else if (gameObject.tag == "Player 2")
         {
-            remaininghp = pcs.remaininghp_two;
+            // remaininghp = pcs.remaininghp_two;
+            remaininghp = pcs.remaininghp_two - 10; /////
             maxhp = pcs.maxhp_two;
             atk = pcs.atk_two;
             def = pcs.def_two;
@@ -174,6 +177,7 @@ public class InputScript : MonoBehaviour
                         canShop = true;
                         spacesRemaining = -1;
                         shopMenu.SetActive(true);
+                        shopOpen = true;
                     }
 
                     else if (nodeType == 2)
@@ -187,6 +191,12 @@ public class InputScript : MonoBehaviour
                         nodeType = 5;
 
                     }
+
+                    else if (nodeType == 4) // mine
+                    {
+                        nodeType = 5;
+                        remaininghp = remaininghp - 6;
+                    }
                 }
                 if (canShop)
                 {
@@ -196,6 +206,7 @@ public class InputScript : MonoBehaviour
                         canShop = false;
                         diceRolled = false;
                         shopMenu.SetActive(false);
+                        shopOpen = false;
                         turnHandler.ProgressTurn();
                         turnHandler.NextTurn();
                         turnHandler.UpdateStatus();
@@ -223,6 +234,7 @@ public class InputScript : MonoBehaviour
                     if (canShop)
                     {
                         shopMenu.SetActive(false);
+                        shopOpen = false;
                     }
                     // Initializes camera to be where the player is
                     dot.position = target.position;
@@ -235,6 +247,7 @@ public class InputScript : MonoBehaviour
                     if (canShop)
                     {
                         shopMenu.SetActive(true);
+                        shopOpen = true;
                     }
                     if (spacesRemaining > 0 || spacesRemaining == -1)
                     {
