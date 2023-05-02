@@ -8,12 +8,15 @@ public class PauseScript1 : MonoBehaviour
 {
     public GameObject pauseMenu;
     public GameObject controlsMenu;
+    //public static bool isPaused;
     public static bool isPaused;
     public SaveWrapper saveWrapper;
 
     // Takes in input script utilizing player tag
     public InputScript inputScript;
     public InputScript inputScript2;
+    public InventoryScript inventory1;
+    public InventoryScript inventory2;
 
     // Start is called before the first frame update
     void Start()
@@ -24,12 +27,14 @@ public class PauseScript1 : MonoBehaviour
         // Links the input script using the tag
         inputScript = GameObject.FindGameObjectWithTag("Player 1").GetComponent<InputScript>();
         inputScript2 = GameObject.FindGameObjectWithTag("Player 2").GetComponent<InputScript>();
+        inventory1 = GameObject.FindGameObjectWithTag("Player1Inventory").GetComponent<InventoryScript>();
+        inventory2 = GameObject.FindGameObjectWithTag("Player2Inventory").GetComponent<InventoryScript>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P) && !inputScript.canShop && !inputScript2.canShop)
+        if (Input.GetKeyDown(KeyCode.P) && !inputScript.shopOpen && !inputScript2.shopOpen && !inventory1.isInventory && !inventory2.isInventory)
         {
             if (isPaused)
             {
