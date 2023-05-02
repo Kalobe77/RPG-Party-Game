@@ -52,7 +52,7 @@ public class ItemScript : MonoBehaviour
             }
         }
     }
-
+//
     public void Trap()
     {
         if(inputScript.isTurn)
