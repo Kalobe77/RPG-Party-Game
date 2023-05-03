@@ -291,6 +291,8 @@ MonoBehaviour:
   itemTypes: 
   inputScript: {fileID: 0}
   inputScript2: {fileID: 0}
+  inventory1: {fileID: 0}
+  inventory2: {fileID: 0}
 --- !u!4 &30292555
 Transform:
   m_ObjectHideFlags: 0
@@ -3378,6 +3380,18 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 904925835}
+        m_TargetAssemblyTypeName: InventoryScript, Assembly-CSharp
+        m_MethodName: LessChoose
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 855554574}
         m_TargetAssemblyTypeName: InventoryScript, Assembly-CSharp
         m_MethodName: LessChoose
         m_Mode: 1

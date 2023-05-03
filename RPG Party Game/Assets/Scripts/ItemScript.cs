@@ -134,7 +134,7 @@ public class ItemScript : MonoBehaviour
 
     // gives player ablity to choose number on dice
     // heals //
-    // boosts stats by one /
-    // maybe a landmine /
+    // boosts stats by one //
+    // maybe a landmine //
     // teleportation spaces
 }
