@@ -172,6 +172,7 @@ public class InputScript : MonoBehaviour
                     turnHandler.UpdateStatus(); // stores info for new scene
 
                     nodeType = spaceAssign[node];
+                    
                     if (nodeType == 1)
                     {
                         canShop = true;

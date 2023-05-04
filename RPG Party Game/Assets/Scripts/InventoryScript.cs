@@ -44,7 +44,7 @@ public class InventoryScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     { 
-        if (Input.GetKeyDown(KeyCode.I) && !inputScript.shopOpen && !inputScript2.shopOpen && !(PauseScript1.isPaused))
+        if (Input.GetKeyDown(KeyCode.I) && !inputScript.shopOpen && !inputScript2.shopOpen && !(PauseScript1.isPaused)) // && !inputScript.isAbleToRoll && !inputScript2.isAbleToRoll)
         {
             if (gameObject.tag == "Player1Inventory")
             {
@@ -54,7 +54,7 @@ public class InventoryScript : MonoBehaviour
             {
                 isTurn = inputScript2.isTurn;
             }
-            if (isTurn)
+            if (isTurn && (!inputScript.diceRolled && !inputScript2.diceRolled))
             {
                 if (isInventory)
                 {
