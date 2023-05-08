@@ -178,7 +178,7 @@ public class InputScript : MonoBehaviour
 
                     else if (nodeType == 2)
                     {
-                        RandomizeEnemyStats();
+                        RandomizeEnemyStats(node);
                         isInCombat = !isInCombat;
                     }
 
@@ -435,21 +435,32 @@ public class InputScript : MonoBehaviour
     }
 
     // Function to randomize a enemies stats and type using the space they are on
-    void RandomizeEnemyStats(int space)
+    void RandomizeEnemyStats(int onNode)
     {
-        public int[] enemyStats = new int[9];
+        int[] enemyStats = new int[9];
         // Different Level Ranges for Spawns in Different Regions
-        if (space < 20 || space > 50)
+        if(onNode < 20)
         {
             // Randomize between level 1-5 enemy
             enemyStats[7] = Random.Range(1,6);
+            // Randomize Type of Slime
+            enemyStats[8] = Random.Range(1,3);
+        }
+        else if (onNode > 50)
+        {
+            // Randomize between level 1-5 enemy
+            enemyStats[7] = Random.Range(1,6);
+            // Randomize Type of Slime
+            enemyStats[8] = Random.Range(1,3);
         }
         else
         {
             // Randomize between level 1-5 enemy
             enemyStats[7] = Random.Range(6,11);
-        }
-        
+            // Randomize Type of Slime
+            enemyStats[8] = Random.Range(1,5);
+        }        
+
         // Set the stats for the appropriate enemy save
         if (pcs.isPlayerOneTurn)
         {
@@ -460,6 +471,8 @@ public class InputScript : MonoBehaviour
             pcs.enemy1Stats[4] = enemyStats[4];
             pcs.enemy1Stats[5] = enemyStats[5];
             pcs.enemy1Stats[6] = enemyStats[6];
+            pcs.enemy1Stats[7] = enemyStats[7];
+            pcs.enemy1Stats[8] = enemyStats[8];
         }
         else if (pcs.isPlayerTwoTurn)
         {
@@ -470,6 +483,8 @@ public class InputScript : MonoBehaviour
             pcs.enemy2Stats[4] = enemyStats[4];
             pcs.enemy2Stats[5] = enemyStats[5];
             pcs.enemy2Stats[6] = enemyStats[6];
+            pcs.enemy2Stats[7] = enemyStats[7];
+            pcs.enemy2Stats[8] = enemyStats[8];
         }
     }
 }
