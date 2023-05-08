@@ -3940,7 +3940,7 @@ GameObject:
   - component: {fileID: 754657754}
   - component: {fileID: 754657753}
   m_Layer: 5
-  m_Name: Text (Health
+  m_Name: Text (Health)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -7,6 +7,8 @@ using UnityEngine;
 [Serializable]
 public class PlayerCharacterStatus : ScriptableObject
 {
+    public int turn;
+
     // Stats for player one
     public int remaininghp_one;
     public int maxhp_one;
@@ -29,7 +31,7 @@ public class PlayerCharacterStatus : ScriptableObject
     public bool diceRolledPlayerOne;
     public bool isAbleToRollPlayerOne;
     
-    public int[] enemy1Stats = new int[8];
+    public int[] enemy1Stats = new int[9];
 
     // Stats for player two
     public int remaininghp_two;
@@ -53,7 +55,7 @@ public class PlayerCharacterStatus : ScriptableObject
     public bool diceRolledPlayerTwo;
     public bool isAbleToRollPlayerTwo;
 
-    public int[] enemy2Stats = new int[8];
+    public int[] enemy2Stats = new int[9];
 
     public string SaveToString()
     {

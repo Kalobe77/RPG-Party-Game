@@ -18,6 +18,7 @@ public class BattleLogic_Calcs : MonoBehaviour
     public int spd_left;
     public int inputLeft;
     public bool leftTurn;
+    public int experienceGained;
 
     // Stats for character on right
     public int remaininghp_right;
@@ -54,6 +55,8 @@ public class BattleLogic_Calcs : MonoBehaviour
 
     // To Allow Data to be loaded from scriptable object
     public PlayerCharacterStatus pcs;
+
+    public BattleScreenLogic bsl;
 
     // Start is called before the first frame update
     void Start()
@@ -163,6 +166,11 @@ public class BattleLogic_Calcs : MonoBehaviour
                 pcs.isPlayerTwoInCombat = !pcs.isPlayerTwoInCombat;
                 NextTurn();
             }
+            //bsl.ManipulateText(experienceGained, RandomItem(), RandomGems());
+            //while(!Input.GetKeyDown(KeyCode.Space))
+            //{
+            //   experienceGained = 0;
+            //}
             SceneManager.LoadScene("Scenes/Overworld");
         }
         if (remaininghp_left <= 0)
@@ -634,6 +642,7 @@ public class BattleLogic_Calcs : MonoBehaviour
             if (pcs.level_one >= pcs.enemy1Stats[7])
             {
                 experience = Mathf.RoundToInt(70*Mathf.Exp(-.3f*(pcs.level_one-pcs.enemy1Stats[7])));
+                experienceGained = experience;
             }
             pcs.exp_one = pcs.exp_one + experience;
             if (pcs.exp_one >= 100)
@@ -647,6 +656,7 @@ public class BattleLogic_Calcs : MonoBehaviour
             if (pcs.level_two >= pcs.enemy2Stats[7])
             {
                 experience = Mathf.RoundToInt(70*Mathf.Exp(-.3f*(pcs.level_one-pcs.enemy1Stats[7])));
+                experienceGained = experience;
             }
             if (pcs.exp_two >= 100)
             {
@@ -813,5 +823,34 @@ public class BattleLogic_Calcs : MonoBehaviour
         allowedInput = true;
     }
 
+    public string RandomItem()
+    {
+        float probability = Random.value;
+        if (probability <= .05)
+        {
+            return "Heal Potion";
+        }
+        else if (probability >.05 && probability <= .1)
+        {
+            return "Trap";
+        }
+        else if (probability >.1 && probability <= .15)
+        {
+            return "Movement Choice";
+        }
+        else if (probability >.15 && probability <= .2)
+        {
+            return "Energy Potion";
+        }
+        else
+        {
+            return "No Items";
+        }
+    }
+
+    public int RandomGems()
+    {
+        return(Random.Range(1, 6));
+    }
 }
 

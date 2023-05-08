@@ -74,6 +74,7 @@ public class TurnHandlerScript : MonoBehaviour
         {
             inputScript.isTurn = !inputScript.isTurn;
             inputScript2.isTurn = !inputScript2.isTurn;
+            pcs.turn = pcs.turn + 1;
         }
     }
 

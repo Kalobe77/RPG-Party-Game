@@ -434,27 +434,42 @@ public class InputScript : MonoBehaviour
         }
     }
 
-    void RandomizeEnemyStats()
+    // Function to randomize a enemies stats and type using the space they are on
+    void RandomizeEnemyStats(int space)
     {
+        public int[] enemyStats = new int[9];
+        // Different Level Ranges for Spawns in Different Regions
+        if (space < 20 || space > 50)
+        {
+            // Randomize between level 1-5 enemy
+            enemyStats[7] = Random.Range(1,6);
+        }
+        else
+        {
+            // Randomize between level 1-5 enemy
+            enemyStats[7] = Random.Range(6,11);
+        }
+        
+        // Set the stats for the appropriate enemy save
         if (pcs.isPlayerOneTurn)
         {
-            pcs.enemy1Stats[0] = 20;
-            pcs.enemy1Stats[1] = 20;
-            pcs.enemy1Stats[2] = 10;
-            pcs.enemy1Stats[3] = 10;
-            pcs.enemy1Stats[4] = 10;
-            pcs.enemy1Stats[5] = 10;
-            pcs.enemy1Stats[6] = 10;
+            pcs.enemy1Stats[0] = enemyStats[0];
+            pcs.enemy1Stats[1] = enemyStats[1];
+            pcs.enemy1Stats[2] = enemyStats[2];
+            pcs.enemy1Stats[3] = enemyStats[3];
+            pcs.enemy1Stats[4] = enemyStats[4];
+            pcs.enemy1Stats[5] = enemyStats[5];
+            pcs.enemy1Stats[6] = enemyStats[6];
         }
         else if (pcs.isPlayerTwoTurn)
         {
-            pcs.enemy2Stats[0] = 20;
-            pcs.enemy2Stats[1] = 20;
-            pcs.enemy2Stats[2] = 10;
-            pcs.enemy2Stats[3] = 10;
-            pcs.enemy2Stats[4] = 10;
-            pcs.enemy2Stats[5] = 10;
-            pcs.enemy2Stats[6] = 10;
+            pcs.enemy2Stats[0] = enemyStats[0];
+            pcs.enemy2Stats[1] = enemyStats[1];
+            pcs.enemy2Stats[2] = enemyStats[2];
+            pcs.enemy2Stats[3] = enemyStats[3];
+            pcs.enemy2Stats[4] = enemyStats[4];
+            pcs.enemy2Stats[5] = enemyStats[5];
+            pcs.enemy2Stats[6] = enemyStats[6];
         }
     }
 }
