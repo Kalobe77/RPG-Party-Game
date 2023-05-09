@@ -54,4 +54,10 @@ public class MenuScript : MonoBehaviour
     {
         SceneManager.LoadScene("NewLoad Game");
     }
+
+    // Exit to Main Menu
+    public void QuitToMenu()
+    {
+        SceneManager.LoadScene("Title Screen");
+    }
 }

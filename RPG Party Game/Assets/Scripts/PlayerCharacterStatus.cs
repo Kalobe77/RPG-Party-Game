@@ -8,6 +8,7 @@ using UnityEngine;
 public class PlayerCharacterStatus : ScriptableObject
 {
     public int turn;
+    public int turnLimit;
 
     // Stats for player one
     public int remaininghp_one;
@@ -19,6 +20,7 @@ public class PlayerCharacterStatus : ScriptableObject
     public int spd_one;
     public int level_one = 1;
     public int exp_one = 0;
+    public int gems_one;
 
     public int node_one;
     public bool isPlayerOneTurn = true;
@@ -43,6 +45,7 @@ public class PlayerCharacterStatus : ScriptableObject
     public int spd_two;
     public int level_two = 1;
     public int exp_two = 0;
+    public int gems_two;
 
     public int node_two;
     public bool isPlayerTwoTurn = false;

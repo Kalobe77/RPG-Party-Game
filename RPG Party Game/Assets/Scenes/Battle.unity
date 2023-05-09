@@ -1645,6 +1645,7 @@ GameObject:
   - component: {fileID: 1309403108}
   - component: {fileID: 1309403107}
   - component: {fileID: 1309403109}
+  - component: {fileID: 1309403110}
   m_Layer: 0
   m_Name: Left Character
   m_TagString: Untagged
@@ -1732,7 +1733,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: -501262071, guid: 78ae5955f0cb1bb4d9a7dc7a9c5c21ff, type: 3}
+  animator: {fileID: 1309403110}
   spriteRenderer: {fileID: 1309403107}
+--- !u!95 &1309403110
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1309403106}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e04f7843ef7f1a947b60d7ad9ed0a1ce, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &1344164698
 GameObject:
   m_ObjectHideFlags: 0
@@ -2264,6 +2286,7 @@ MonoBehaviour:
   pcs: {fileID: 11400000, guid: 617a17ef434a8974b8cef8b243a0e6be, type: 2}
   bsl: {fileID: 1483597286}
   rs: {fileID: 1468080387}
+  ls: {fileID: 0}
 --- !u!4 &1448768109
 Transform:
   m_ObjectHideFlags: 0

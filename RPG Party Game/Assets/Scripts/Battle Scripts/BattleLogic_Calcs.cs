@@ -59,7 +59,9 @@ public class BattleLogic_Calcs : MonoBehaviour
 
     public BattleScreenLogic bsl;
 
+    // Use to manipulate what animation is playing
     public RightScript rs;
+    public LeftScript ls;
 
     // Start is called before the first frame update
     void Start()
@@ -202,7 +204,7 @@ public class BattleLogic_Calcs : MonoBehaviour
                 pcs.isPlayerTwoInCombat = !pcs.isPlayerTwoInCombat;
                 NextTurn();
             }
-            
+            SceneManager.LoadScene("Scenes/Overworld");
         }
         
     }
@@ -278,7 +280,6 @@ public class BattleLogic_Calcs : MonoBehaviour
         }
         input.x = 0;
         input.y = 0;
-        allowedInput = true;
     }
 
     public void CombatManager()
@@ -331,7 +332,6 @@ public class BattleLogic_Calcs : MonoBehaviour
                 pcs.enemy2Stats[6] = spd_right;
                 NextTurn();
             }
-            SceneManager.LoadScene("Scenes/Overworld");
         }
         else if (actionsOfCombatLeft == 2)
         {
@@ -367,6 +367,7 @@ public class BattleLogic_Calcs : MonoBehaviour
             {
                 rightUI.SetActive(false);
             }
+            allowedInput = true;
         }
         return;
     }
@@ -586,10 +587,12 @@ public class BattleLogic_Calcs : MonoBehaviour
         if(isDamageToLeft)
         {
             rs.ChangeAnimation(3);
+            ls.ChangeAnimation(2);
         }
         else
         {
             rs.ChangeAnimation(2);
+            ls.ChangeAnimation(3);
         }
         int damage = Mathf.RoundToInt((offenseStat - defenseStat/2)*modifier);
         if (damage > 0)
@@ -626,6 +629,7 @@ public class BattleLogic_Calcs : MonoBehaviour
         {
             pcs.isPlayerOneTurn = !pcs.isPlayerOneTurn;
             pcs.isPlayerTwoTurn = !pcs.isPlayerTwoTurn;
+            pcs.turn = pcs.turn + 1;
         }
     }
 

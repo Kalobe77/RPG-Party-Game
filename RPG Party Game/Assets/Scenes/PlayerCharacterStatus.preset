@@ -26,7 +26,11 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: turn
-    value: 0
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: turnLimit
+    value: 20
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: remaininghp_one
@@ -62,6 +66,10 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: exp_one
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: gems_one
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
@@ -178,6 +186,10 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: exp_two
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: gems_two
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}

@@ -7,6 +7,9 @@ public class LeftScript : MonoBehaviour
     // Renders Character Sprite
     public Sprite character;
 
+    // Animations for Player
+    public Animator animator;
+
     // Access to sprite renderer for right script
     public SpriteRenderer spriteRenderer; 
     
@@ -20,10 +23,10 @@ public class LeftScript : MonoBehaviour
         float offSetSprite = spriteRenderer.bounds.size.y/2;
         this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + offSetSprite, this.transform.position.z);
     }
-
-    // Update is called once per frame
-    void Update()
+    
+    // Changes the animation of the player
+    public void ChangeAnimation(int type)
     {
-        
+        animator.SetInteger("playerAnimation", type);
     }
 }
