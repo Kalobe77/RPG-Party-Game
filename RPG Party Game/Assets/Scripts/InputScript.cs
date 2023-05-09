@@ -172,7 +172,7 @@ public class InputScript : MonoBehaviour
                     turnHandler.UpdateStatus(); // stores info for new scene
 
                     nodeType = spaceAssign[node];
-                    
+
                     if (nodeType == 1)
                     {
                         canShop = true;
@@ -280,7 +280,16 @@ public class InputScript : MonoBehaviour
         shopOpen = false;
         canShop = false;
     }
-
+///////////
+    public void GetNum(int num)
+    {
+        spacesRemaining = num;
+        diceRolled = true;
+        dice.SetActive(false);
+        isAbleToMove = true;
+        nodesVisited.Add(node);
+    }
+////////////
     // Function to handle moving
     IEnumerator Move()
     {

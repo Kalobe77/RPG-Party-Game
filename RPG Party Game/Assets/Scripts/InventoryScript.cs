@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class InventoryScript : MonoBehaviour
 {
-    // 0: Health 
+    // 0: Health, 1: Trap, 2: Choose, 3: Boost
     public int[] itemStorage = {3, 4, 5, 6};
 
     public Text hPotionText;
@@ -15,6 +15,7 @@ public class InventoryScript : MonoBehaviour
     public Text ePotionText;
 
     public GameObject inventoryMenu;
+    public GameObject chooseMenu;
     public bool isInventory;
     public bool isTurn;
 
@@ -26,6 +27,7 @@ public class InventoryScript : MonoBehaviour
     void Start()
     {
         inventoryMenu.SetActive(false);
+        chooseMenu.SetActive(false);
 
         inputScript = GameObject.FindGameObjectWithTag("Player 1").GetComponent<InputScript>();
         inputScript2 = GameObject.FindGameObjectWithTag("Player 2").GetComponent<InputScript>();
@@ -123,6 +125,18 @@ public class InventoryScript : MonoBehaviour
                 choiceText.text = "Movement Choice: " + itemStorage[2].ToString();
             }
         }
+    }
+
+    public void Choices()
+    {
+        inventoryMenu.SetActive(false);
+        chooseMenu.SetActive(true);
+    }
+
+    public void ChoicesDown()
+    {
+        chooseMenu.SetActive(false);
+        MenuDown();
     }
 
     public void LessBoost()

@@ -62,7 +62,7 @@ public class ItemScript : MonoBehaviour
             }
         }
     }
-//
+
     public void Trap()
     {
         if(inputScript.isTurn && (inventory1.itemStorage[1] != 0))
@@ -77,40 +77,20 @@ public class ItemScript : MonoBehaviour
             inputScript2.spaceAssign[inputScript2.node] = 4;
         }
     }
-
-    public void Choose()
+////////////
+    public void Choose(int num)
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if(inputScript.isTurn && (inventory1.itemStorage[2] != 0))
         {
-
+            inputScript.GetNum(num);
         }
 
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        else if(inputScript2.isTurn && (inventory2.itemStorage[2] != 0))
         {
-            
-        }
-
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            
-        }
-
-        else if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            
-        }
-
-        else if (Input.GetKeyDown(KeyCode.Alpha5))
-        {
-            
-        }
-
-        else if (Input.GetKeyDown(KeyCode.Alpha6))
-        {
-            
+            inputScript2.GetNum(num);
         }
     }
-
+////////////
     public void Boost()
     {
         if(inputScript.isTurn && (inventory1.itemStorage[3] != 0))
