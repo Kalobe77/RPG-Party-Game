@@ -20,8 +20,11 @@ public class InputScript : MonoBehaviour
     //int[] spaceAssign = new int[85];
     //int[] spaceAssign = {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3};
     public int[] spaceAssign = {2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 3, 3, 3, 3, 3};
-
-
+    
+    // 2D arrays to hold enemy stat information (May use a file in the future)
+    public int[,] enemyStatsMatrix = {{0,1,2,3,4,5,6,7,8,9},{10,11,12,13,14,15,16,17,18,19},{20,21,22,23,24,25,26,27,28,29},{30,31,32,33,34,35,36,37,38,39}};
+    public int[,] enemyStatsTable = {{10,5,5,5,5,5},{20,7,7,7,7,7},{30,9,9,9,9,9},{40,11,11,11,11,11},{50,13,13,13,13,13},{60,15,15,15,15,15},{70,17,17,17,17,17},{80,19,19,19,19,19},{90,21,21,21,21,21},{100,23,23,23,23,23},{10,7,5,2,5,5},{20,10,7,4,7,7},{30,13,9,6,9,9},{40,16,11,8,11,11},{50,19,13,10,13,13},{60,22,15,12,15,15},{70,25,17,14,17,17},{80,28,19,16,19,19},{90,31,21,18,21,21},{100,34,23,20,23,23},{10,2,5,7,6,5},{20,4,7,10,8,7},{30,6,9,13,10,9},{40,8,11,16,12,11},{50,10,13,19,14,13},{60,12,15,22,16,15},{70,14,17,25,18,17},{80,16,19,28,20,19},{90,18,21,31,22,21},{100,20,23,34,24,23},{15,3,7,3,7,3},{30,5,9,5,9,5},{45,7,11,7,11,7},{60,9,13,9,13,9},{75,11,15,11,15,11},{90,13,17,13,17,13},{105,15,19,15,19,15},{120,17,21,17,21,17},{135,19,23,19,23,19},{150,21,25,21,25,21}};
+    
     // Used to change velocity and position
     public Rigidbody2D rb;
 
@@ -412,6 +415,7 @@ public class InputScript : MonoBehaviour
         return new Vector3(goal.x, goal.y+characterOffset, goal.z) != (this.transform.position = Vector3.MoveTowards(this.transform.position, new Vector3(goal.x, goal.y+characterOffset, goal.z), 5f*Time.deltaTime));
     }
 
+    // Checks Path Currently Moved to Make Sure Character Moves to Square that they were not previously on
     void CheckPath()
     {
         if (nodesVisited.Count == 1)
@@ -437,54 +441,56 @@ public class InputScript : MonoBehaviour
     // Function to randomize a enemies stats and type using the space they are on
     void RandomizeEnemyStats(int onNode)
     {
-        int[] enemyStats = new int[9];
+        // Variables to Hold the Enemy's Level and Type
+        int eLevel;
+        int eType;
+        
         // Different Level Ranges for Spawns in Different Regions
-        if(onNode < 20)
+        if(onNode < 20 || onNode > 50)
         {
             // Randomize between level 1-5 enemy
-            enemyStats[7] = Random.Range(1,6);
+            eLevel = Random.Range(1,6);
             // Randomize Type of Slime
-            enemyStats[8] = Random.Range(1,3);
-        }
-        else if (onNode > 50)
-        {
-            // Randomize between level 1-5 enemy
-            enemyStats[7] = Random.Range(1,6);
-            // Randomize Type of Slime
-            enemyStats[8] = Random.Range(1,3);
+            eType = Random.Range(1,3);
         }
         else
         {
             // Randomize between level 1-5 enemy
-            enemyStats[7] = Random.Range(6,11);
+            eLevel = Random.Range(6,11);
             // Randomize Type of Slime
-            enemyStats[8] = Random.Range(1,5);
-        }        
-
+            eType = Random.Range(1,5);
+        }   
+        Debug.Log(eLevel);
+        Debug.Log(eType);
+    
+        // Utilizing the Level and Type, Retrieve the Rest of the stats
+        int index = enemyStatsMatrix[eType-1, eLevel-1];
+        Debug.Log(index);
+        Debug.Log(enemyStatsTable[index,5]);
         // Set the stats for the appropriate enemy save
         if (pcs.isPlayerOneTurn)
         {
-            pcs.enemy1Stats[0] = enemyStats[0];
-            pcs.enemy1Stats[1] = enemyStats[1];
-            pcs.enemy1Stats[2] = enemyStats[2];
-            pcs.enemy1Stats[3] = enemyStats[3];
-            pcs.enemy1Stats[4] = enemyStats[4];
-            pcs.enemy1Stats[5] = enemyStats[5];
-            pcs.enemy1Stats[6] = enemyStats[6];
-            pcs.enemy1Stats[7] = enemyStats[7];
-            pcs.enemy1Stats[8] = enemyStats[8];
+            pcs.enemy1Stats[0] = enemyStatsTable[index,0];
+            pcs.enemy1Stats[1] = enemyStatsTable[index,0];
+            pcs.enemy1Stats[2] = enemyStatsTable[index,1];
+            pcs.enemy1Stats[3] = enemyStatsTable[index,2];
+            pcs.enemy1Stats[4] = enemyStatsTable[index,3];
+            pcs.enemy1Stats[5] = enemyStatsTable[index,4];
+            pcs.enemy1Stats[6] = enemyStatsTable[index,5];
+            pcs.enemy1Stats[7] = eLevel;
+            pcs.enemy1Stats[8] = eType;
         }
         else if (pcs.isPlayerTwoTurn)
         {
-            pcs.enemy2Stats[0] = enemyStats[0];
-            pcs.enemy2Stats[1] = enemyStats[1];
-            pcs.enemy2Stats[2] = enemyStats[2];
-            pcs.enemy2Stats[3] = enemyStats[3];
-            pcs.enemy2Stats[4] = enemyStats[4];
-            pcs.enemy2Stats[5] = enemyStats[5];
-            pcs.enemy2Stats[6] = enemyStats[6];
-            pcs.enemy2Stats[7] = enemyStats[7];
-            pcs.enemy2Stats[8] = enemyStats[8];
+            pcs.enemy2Stats[0] = enemyStatsTable[index,0];
+            pcs.enemy2Stats[1] = enemyStatsTable[index,0];
+            pcs.enemy2Stats[2] = enemyStatsTable[index,1];
+            pcs.enemy2Stats[3] = enemyStatsTable[index,2];
+            pcs.enemy2Stats[4] = enemyStatsTable[index,3];
+            pcs.enemy2Stats[5] = enemyStatsTable[index,4];
+            pcs.enemy2Stats[6] = enemyStatsTable[index,5];
+            pcs.enemy2Stats[7] = eLevel;
+            pcs.enemy2Stats[8] = eType;
         }
     }
 }

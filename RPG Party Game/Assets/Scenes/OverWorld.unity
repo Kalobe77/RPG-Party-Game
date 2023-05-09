@@ -29181,7 +29181,6 @@ GameObject:
   - component: {fileID: 1912540897}
   - component: {fileID: 1912540896}
   - component: {fileID: 1912540898}
-  - component: {fileID: 1912540899}
   m_Layer: 0
   m_Name: Turn Handler
   m_TagString: TurnLogic
@@ -29239,52 +29238,6 @@ MonoBehaviour:
   saveWrapper: {fileID: 0}
   inputScript: {fileID: 0}
   inputScript2: {fileID: 0}
---- !u!114 &1912540899
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1912540895}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f570d5a2c9d706441b91eea77d7ccccc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  done: 1
-  shopMenu: {fileID: 179448744}
-  canShop: 0
-  shopOpen: 0
-  nodeType: 0
-  spaceTypes: 00000000010000000200000003000000
-  spaceAssign: 02000000010000000200000001000000020000000100000002000000010000000200000001000000020000000100000002000000010000000200000001000000020000000100000002000000010000000200000001000000020000000100000002000000010000000200000001000000020000000100000002000000010000000200000001000000020000000100000002000000010000000200000001000000020000000100000002000000010000000200000001000000020000000100000002000000010000000200000001000000020000000100000002000000010000000200000001000000020000000100000002000000010000000200000001000000020000000100000002000000010000000200000001000000020000000100000002000000010000000200000001000000020000000100000002000000010000000300000003000000030000000300000003000000
-  rb: {fileID: 0}
-  target: {fileID: 0}
-  dot: {fileID: 0}
-  animator: {fileID: 0}
-  cameraMovement: {x: 0, y: 0}
-  node: 0
-  isAbleToMove: 1
-  isCamera: 0
-  diceRolled: 0
-  isTurn: 1
-  isAbleToRoll: 1
-  isInCombat: 0
-  characterOffset: 0.7
-  routeScript: {fileID: 0}
-  spacesRemaining: 0
-  dice: {fileID: 0}
-  nodesVisited: 
-  cameraFollow: {fileID: 0}
-  turnHandler: {fileID: 0}
-  remaininghp: 0
-  maxhp: 0
-  atk: 0
-  def: 0
-  mag: 0
-  res: 0
-  spd: 0
-  pcs: {fileID: 0}
 --- !u!1 &1915160224
 GameObject:
   m_ObjectHideFlags: 0

@@ -2263,6 +2263,7 @@ MonoBehaviour:
   rightHealthScript: {fileID: 1235313730}
   pcs: {fileID: 11400000, guid: 617a17ef434a8974b8cef8b243a0e6be, type: 2}
   bsl: {fileID: 1483597286}
+  rs: {fileID: 1468080387}
 --- !u!4 &1448768109
 Transform:
   m_ObjectHideFlags: 0
@@ -2289,6 +2290,7 @@ GameObject:
   - component: {fileID: 1468080386}
   - component: {fileID: 1468080385}
   - component: {fileID: 1468080387}
+  - component: {fileID: 1468080388}
   m_Layer: 0
   m_Name: Right Character
   m_TagString: Untagged
@@ -2375,9 +2377,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ae3a2a7509f08e41937c9db6e4588ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: {fileID: 28885980, guid: bd97b72b9402394449a4d020913e66b2, type: 3}
+  animator: {fileID: 1468080388}
+  slime: {fileID: 9100000, guid: c3ab6221f7c72954f9d8a55417093bcb, type: 2}
+  slime_fire: {fileID: 9100000, guid: 3262b47caad257a4bbf939bfee151732, type: 2}
+  slime_ice: {fileID: 9100000, guid: 6fd6bf91cba8d1447afd36236693aecd, type: 2}
+  slime_toxic: {fileID: 9100000, guid: 2a113dcb9e58f1541ba44c4069b1bcdf, type: 2}
   spriteRenderer: {fileID: 1468080385}
   isAnotherPlayer: 0
+  pcs: {fileID: 11400000, guid: 617a17ef434a8974b8cef8b243a0e6be, type: 2}
+  blc: {fileID: 1448768108}
+  enemyType: 0
+  enemyAnimation: 0
+--- !u!95 &1468080388
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1468080384}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2a113dcb9e58f1541ba44c4069b1bcdf, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &1483597285
 GameObject:
   m_ObjectHideFlags: 0

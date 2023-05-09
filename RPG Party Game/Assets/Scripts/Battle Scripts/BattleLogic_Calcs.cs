@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Threading.Tasks;
 
 public class BattleLogic_Calcs : MonoBehaviour
 {
@@ -57,6 +58,8 @@ public class BattleLogic_Calcs : MonoBehaviour
     public PlayerCharacterStatus pcs;
 
     public BattleScreenLogic bsl;
+
+    public RightScript rs;
 
     // Start is called before the first frame update
     void Start()
@@ -199,7 +202,7 @@ public class BattleLogic_Calcs : MonoBehaviour
                 pcs.isPlayerTwoInCombat = !pcs.isPlayerTwoInCombat;
                 NextTurn();
             }
-            SceneManager.LoadScene("Scenes/Overworld");
+            
         }
         
     }
@@ -343,22 +346,6 @@ public class BattleLogic_Calcs : MonoBehaviour
                 ModifierCalculation(inputRight, inputLeft);
             }
             leftIsAttacker = !leftIsAttacker;
-            if (leftTurn)
-            {
-                leftUI.SetActive(true);
-            }
-            else
-            {
-                leftUI.SetActive(false);
-            }
-            if (rightTurn)
-            {
-                rightUI.SetActive(true);
-            }
-            else
-            {
-                rightUI.SetActive(false);
-            }
         }
         else
         {
@@ -596,6 +583,14 @@ public class BattleLogic_Calcs : MonoBehaviour
 
     public void DamageCalculation(float modifier, int offenseStat, int defenseStat, bool isDamageToLeft)
     {
+        if(isDamageToLeft)
+        {
+            rs.ChangeAnimation(3);
+        }
+        else
+        {
+            rs.ChangeAnimation(2);
+        }
         int damage = Mathf.RoundToInt((offenseStat - defenseStat/2)*modifier);
         if (damage > 0)
         {
@@ -665,6 +660,7 @@ public class BattleLogic_Calcs : MonoBehaviour
         }
     }
 
+    // Levels Up Character
     public void LevelUp()
     {
         if (pcs.isPlayerOneTurn)
@@ -693,6 +689,7 @@ public class BattleLogic_Calcs : MonoBehaviour
         }
     }
 
+    // AI Algorithm For AI to Choose Move Based on Level
     public void AI()
     {
         float chanceToGuessCorrectly = (float).7*Mathf.Log(enemy_level)/Mathf.Log(59);
@@ -804,6 +801,7 @@ public class BattleLogic_Calcs : MonoBehaviour
         Debug.Log(input);
     }
 
+    // Function To Delay Start of Battle Scene
     IEnumerator DelayStart()
     {
         yield return new WaitForSeconds(2f);
@@ -823,8 +821,30 @@ public class BattleLogic_Calcs : MonoBehaviour
         allowedInput = true;
     }
 
+    public void TurnProperUI()
+    {
+        if (leftTurn)
+        {
+            leftUI.SetActive(true);
+        }
+        else
+        {
+            leftUI.SetActive(false);
+        }
+        if (rightTurn)
+        {
+            rightUI.SetActive(true);
+        }
+        else
+        {
+            rightUI.SetActive(false);
+        }
+    }
+
+    // Randomly Generate whether an item is obtained from defeating enemy
     public string RandomItem()
     {
+        // Randomly Generate Number 0-1
         float probability = Random.value;
         if (probability <= .05)
         {
@@ -848,8 +868,13 @@ public class BattleLogic_Calcs : MonoBehaviour
         }
     }
 
-    public int RandomGems()
+    // Randomly Generate Number of Gems Accquired
+    public int RandomGems(bool wasBoss)
     {
+        if (wasBoss)
+        {
+            return (Random.Range(10,16));
+        }
         return(Random.Range(1, 6));
     }
 }

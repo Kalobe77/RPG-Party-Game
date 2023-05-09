@@ -25,6 +25,10 @@ Preset:
     value: 
     objectReference: {fileID: 0}
   - target: {fileID: 0}
+    propertyPath: turn
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
     propertyPath: remaininghp_one
     value: 40
     objectReference: {fileID: 0}
@@ -102,7 +106,7 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: enemy1Stats.Array.size
-    value: 8
+    value: 9
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: enemy1Stats.Array.data[0]
@@ -134,6 +138,10 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: enemy1Stats.Array.data[7]
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: enemy1Stats.Array.data[8]
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
@@ -214,7 +222,7 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: enemy2Stats.Array.size
-    value: 8
+    value: 9
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: enemy2Stats.Array.data[0]
@@ -246,6 +254,10 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: enemy2Stats.Array.data[7]
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: enemy2Stats.Array.data[8]
     value: 0
     objectReference: {fileID: 0}
   m_ExcludedProperties: []
