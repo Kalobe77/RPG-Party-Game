@@ -35,6 +35,7 @@ public class BattleLogic_Calcs : MonoBehaviour
     public int enemy_level;
 
     public bool state = true;
+    public int gems;
 
     // UI and allows us to control whether they appear
     public GameObject leftUI;
@@ -155,6 +156,7 @@ public class BattleLogic_Calcs : MonoBehaviour
                 pcs.res_one = res_left;
                 pcs.spd_one = spd_left;
                 ExperienceGain();
+                pcs.gems_one += gems;
                 pcs.isPlayerOneInCombat = !pcs.isPlayerOneInCombat;
                 NextTurn();
             }
@@ -168,6 +170,7 @@ public class BattleLogic_Calcs : MonoBehaviour
                 pcs.res_two = res_left;
                 pcs.spd_two = spd_left;
                 ExperienceGain();
+                pcs.gems_one += gems;
                 pcs.isPlayerTwoInCombat = !pcs.isPlayerTwoInCombat;
                 NextTurn();
             }
@@ -584,6 +587,7 @@ public class BattleLogic_Calcs : MonoBehaviour
 
     public void DamageCalculation(float modifier, int offenseStat, int defenseStat, bool isDamageToLeft)
     {
+        // Plays the proper animations based on actions and outcome
         if(isDamageToLeft)
         {
             rs.ChangeAnimation(3);
@@ -594,6 +598,7 @@ public class BattleLogic_Calcs : MonoBehaviour
             rs.ChangeAnimation(2);
             ls.ChangeAnimation(3);
         }
+        // Carrys out Damage Calculations
         int damage = Mathf.RoundToInt((offenseStat - defenseStat/2)*modifier);
         if (damage > 0)
         {
@@ -877,9 +882,13 @@ public class BattleLogic_Calcs : MonoBehaviour
     {
         if (wasBoss)
         {
-            return (Random.Range(10,16));
+            gems = Random.Range(10,16);
         }
-        return(Random.Range(1, 6));
+        else
+        {
+            gems = Random.Range(1, 6);
+        }
+        return gems;
     }
 }
 
