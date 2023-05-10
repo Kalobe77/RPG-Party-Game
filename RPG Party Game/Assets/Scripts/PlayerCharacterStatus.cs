@@ -21,6 +21,7 @@ public class PlayerCharacterStatus : ScriptableObject
     public int level_one = 1;
     public int exp_one = 0;
     public int gems_one;
+    public int[] inventory_one = new int[4];
 
     public int node_one;
     public bool isPlayerOneTurn = true;
@@ -46,6 +47,7 @@ public class PlayerCharacterStatus : ScriptableObject
     public int level_two = 1;
     public int exp_two = 0;
     public int gems_two;
+    public int[] inventory_two = new int[4];
 
     public int node_two;
     public bool isPlayerTwoTurn = false;

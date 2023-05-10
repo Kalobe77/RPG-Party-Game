@@ -57,19 +57,23 @@ public class InventoryScript : MonoBehaviour
             }
             if (isTurn && (!inputScript.diceRolled && !inputScript2.diceRolled))
             {
+                Debug.Log("In Inventory");
+                Debug.Log(isInventory);
                 if (isInventory)
                 {
                     MenuDown();
                 }
-                else if (canUse == false)
-                {
-                    MenuDown();
-                }
+
                 else
                 {
                     MenuUp();
                 }
             }
+        }
+        
+        if (canUse == false && isTurn)
+        {
+            MenuDown();
         }
     }
  
@@ -106,6 +110,7 @@ public class InventoryScript : MonoBehaviour
                 itemStorage[0] = itemStorage[0] - 1;
                 hPotionText.text = "Health Potion: " + itemStorage[0].ToString();
                 canUse = false;
+                SaveItems();
             }
         }
     }
@@ -123,6 +128,7 @@ public class InventoryScript : MonoBehaviour
                 hPotionText.text = "Health Potion: " + itemStorage[0].ToString();
                 gems = gems - 2;
                 SetGems();
+                SaveItems();
             }
         }
     }
@@ -136,6 +142,7 @@ public class InventoryScript : MonoBehaviour
                 itemStorage[1] = itemStorage[1] - 1;
                 trapsText.text = "Traps: " + itemStorage[1].ToString();
                 canUse = false;
+                SaveItems();
             }
         }
     }
@@ -151,6 +158,7 @@ public class InventoryScript : MonoBehaviour
                 trapsText.text = "Traps: " + itemStorage[1].ToString();
                 gems = gems - 2;
                 SetGems();
+                SaveItems();
             }
         }
     }
@@ -164,6 +172,12 @@ public class InventoryScript : MonoBehaviour
                 itemStorage[2] = itemStorage[2] - 1;
                 choiceText.text = "Movement Choice: " + itemStorage[2].ToString();
                 canUse = false;
+                SaveItems();
+            }
+            else
+            {
+                MenuDown();
+                ChoicesDown();
             }
         }
     }
@@ -179,6 +193,7 @@ public class InventoryScript : MonoBehaviour
                 choiceText.text = "Movement Choice: " + itemStorage[2].ToString();
                 gems = gems - 3;
                 SetGems();
+                SaveItems();
             }
         }
     }
@@ -207,6 +222,7 @@ public class InventoryScript : MonoBehaviour
                 itemStorage[3] = itemStorage[3] - 1;
                 ePotionText.text = "Energy Potion: " + itemStorage[3].ToString();
                 canUse = false;
+                SaveItems();
             }
         }
     }
@@ -222,11 +238,12 @@ public class InventoryScript : MonoBehaviour
                 ePotionText.text = "Energy Potion: " + itemStorage[3].ToString();
                 gems = gems - 4;
                 SetGems();
+                SaveItems();
             }
         }
     }
  
-
+    // Sets Gems for PlayerCharacterStatus
     public void SetGems()
     {
         if (gameObject.tag == "Player1Inventory")
@@ -245,11 +262,26 @@ public class InventoryScript : MonoBehaviour
         {
             isTurn = inputScript.isTurn;
             gems = pcs.gems_one;
+            itemStorage = pcs.inventory_one;
         }
         else if (gameObject.tag == "Player2Inventory")
         {
             isTurn = inputScript2.isTurn;
             gems = pcs.gems_two;
+            itemStorage = pcs.inventory_two;
+        }
+    }
+
+    // Sets Items for PlayerCharacterStatus
+    public void SaveItems()
+    {
+        if (gameObject.tag == "Player1Inventory")
+        {
+            pcs.inventory_one = itemStorage;
+        }
+        else if (gameObject.tag == "Player2Inventory")
+        {
+            pcs.inventory_two = itemStorage;
         }
     }
 }

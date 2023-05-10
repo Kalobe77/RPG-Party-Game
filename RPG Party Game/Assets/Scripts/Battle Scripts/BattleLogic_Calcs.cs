@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Threading.Tasks;
+using UnityEngine.UI;
 
 public class BattleLogic_Calcs : MonoBehaviour
 {
@@ -47,6 +48,16 @@ public class BattleLogic_Calcs : MonoBehaviour
     public GameObject rightUI;
     public GameObject leftHP;
     public GameObject rightHP;
+
+    // Manipulate Text On UIs
+    public Text left_up;
+    public Text left_down;
+    public Text left_left;
+    public Text left_right;
+    public Text right_up;
+    public Text right_down;
+    public Text right_left;
+    public Text right_right;
 
 
     // Used to manage if a user can put another input in and where in combat
@@ -994,6 +1005,32 @@ public class BattleLogic_Calcs : MonoBehaviour
             pcs.enemy2Stats[6] = spd_right;
             pcs.enemy2Stats[7] = enemy_level;
             pcs.enemy2Stats[8] = enemyType;
+        }
+    }
+
+    public void UpdateUI()
+    {
+        if (leftIsAttacker)
+        {
+            left_left.text = "Strike";
+            left_up.text = "Magic";
+            left_right.text = "Attack";
+            left_down.text = "Special";
+            right_left.text = "Counter";
+            right_up.text = "Magic Defense";
+            right_right.text = "Defend";
+            right_down.text = "Special";
+        }
+        else
+        {
+            left_left.text = "Counter";
+            left_up.text = "Magic Defense";
+            left_right.text = "Defend";
+            left_down.text = "Special";
+            right_left.text = "Strike";
+            right_up.text = "Magic";
+            right_right.text = "Attack";
+            right_down.text = "Special";
         }
     }
 }

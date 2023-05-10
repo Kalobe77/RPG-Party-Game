@@ -225,6 +225,7 @@ public class InputScript : MonoBehaviour
                         shopOpen = false;
                         turnHandler.ProgressTurn();
                         turnHandler.NextTurn();
+                        turnHandler.healthUpdate();
                         turnHandler.UpdateStatus();
                     }
                 }
