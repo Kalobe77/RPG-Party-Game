@@ -9,6 +9,7 @@ public class BattleLogic_Calcs : MonoBehaviour
 {
     // Who is Attacker First
     public bool leftIsAttacker = true;
+    public bool alreadyHappened = false;
 
     // Stats for character on left
     public int remaininghp_left;
@@ -21,6 +22,7 @@ public class BattleLogic_Calcs : MonoBehaviour
     public int inputLeft;
     public bool leftTurn;
     public int experienceGained;
+    public int level_left;
 
     // Stats for character on right
     public int remaininghp_right;
@@ -59,6 +61,19 @@ public class BattleLogic_Calcs : MonoBehaviour
     public Text right_left;
     public Text right_right;
 
+    // Manipulate Stat Text On UIs
+    public Text left_atk_UI;
+    public Text left_def_UI;
+    public Text left_mag_UI;
+    public Text left_res_UI;
+    public Text left_spd_UI;
+    public Text left_level_UI;
+    public Text right_atk_UI;
+    public Text right_def_UI;
+    public Text right_mag_UI;
+    public Text right_res_UI;
+    public Text right_spd_UI;
+    public Text right_level_UI;
 
     // Used to manage if a user can put another input in and where in combat
     public bool allowedInput = true;
@@ -101,6 +116,7 @@ public class BattleLogic_Calcs : MonoBehaviour
             mag_left = pcs.mag_one;
             res_left = pcs.res_one;
             spd_left = pcs.spd_one;
+            level_left = pcs.level_one;
 
             remaininghp_right = pcs.enemy1Stats[0];
             maxhp_right = pcs.enemy1Stats[1];
@@ -121,6 +137,7 @@ public class BattleLogic_Calcs : MonoBehaviour
             mag_left = pcs.mag_two;
             res_left = pcs.res_two;
             spd_left = pcs.spd_two;
+            level_left = pcs.level_two;
 
             remaininghp_right = pcs.enemy2Stats[0];
             maxhp_right = pcs.enemy2Stats[1];
@@ -138,6 +155,7 @@ public class BattleLogic_Calcs : MonoBehaviour
         leftUI.SetActive(false);
         rightUI.SetActive(false);
         endScreenInput = false;
+        UpdateStatUI();
     }
 
     // Update is called once per frame
@@ -848,6 +866,7 @@ public class BattleLogic_Calcs : MonoBehaviour
         res_right = 26;
         spd_right = 31;
         enemyType = 6;
+        UpdateStatUI();
         rs.ChangeAnimation(1);
 
         // Updates Health Bar to Show Proper Health
@@ -861,18 +880,22 @@ public class BattleLogic_Calcs : MonoBehaviour
         float probability = Random.value;
         if (probability <= .05)
         {
+            GiveItem(0);
             return "Heal Potion";
         }
         else if (probability >.05 && probability <= .1)
         {
+            GiveItem(1);
             return "Trap";
         }
-        else if (probability >.1 && probability <= .15)
+        else if (probability > .1 && probability <= .15)
         {
+            GiveItem(2);
             return "Movement Choice";
         }
         else if (probability >.15 && probability <= .2)
         {
+            GiveItem(3);
             return "Energy Potion";
         }
         else
@@ -960,6 +983,18 @@ public class BattleLogic_Calcs : MonoBehaviour
 
     }
 
+    public void GiveItem(int type)
+    {
+        if(pcs.isPlayerOneTurn)
+        {
+            pcs.inventory_one[type] += 1;
+        }
+        else if(pcs.isPlayerTwoTurn)
+        {
+            pcs.inventory_two[type] += 1;
+        }
+    }
+
     public void TurnOffUIs()
     {
         leftUI.SetActive(false);
@@ -1034,6 +1069,23 @@ public class BattleLogic_Calcs : MonoBehaviour
             right_right.text = "Attack";
             right_down.text = "Special";
         }
+    }
+
+    public void UpdateStatUI()
+    {
+        left_atk_UI.text = "ATK: " + atk_left;
+        left_def_UI.text = "DEF: " + def_left;
+        left_mag_UI.text = "MAG: " + mag_left;
+        left_res_UI.text = "RES: " + res_left;
+        left_spd_UI.text = "SPD: " + spd_left;
+        left_level_UI.text = "LVL: " + level_left;
+
+        right_atk_UI.text = "ATK: " + atk_right;
+        right_def_UI.text = "DEF: " + def_right;
+        right_mag_UI.text = "MAG: " + mag_right;
+        right_res_UI.text = "RES: " + res_right;
+        right_spd_UI.text = "SPD: " + spd_right;
+        right_level_UI.text = "LVL: " + enemy_level;
     }
 }
 

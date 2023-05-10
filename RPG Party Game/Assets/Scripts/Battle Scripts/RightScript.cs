@@ -127,7 +127,14 @@ public class RightScript : MonoBehaviour
             blc.allowedInput = false;
             blc.endScreenInput = true;
             blc.TurnOffUIs();
-            bsl.ManipulateText(blc.experienceGained, blc.itemEarned, blc.gems);
+            if (!blc.alreadyHappened)
+            {
+                blc.ExperienceGain();
+                blc.RandomGems();
+                blc.itemEarned = blc.RandomItem();
+                bsl.ManipulateText(blc.experienceGained, blc.itemEarned, blc.gems);
+                blc.alreadyHappened = true;
+            }
         }
         else if (blc.battleStatus == 2)
         {

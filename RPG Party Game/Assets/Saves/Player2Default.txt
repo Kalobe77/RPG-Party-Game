@@ -1,1 +1,82 @@
-{"remaininghp_one":40,"maxhp_one":40,"atk_one":10,"def_one":10,"mag_one":10,"res_one":10,"spd_one":10,"level_one":1,"exp_one":0,"node_one":82,"isPlayerOneTurn":true,"player1pos":{"x":2.0,"y":6.699999809265137,"z":0.0},"isPlayerOneInCombat":false,"isAbleToMovePlayerOne":false,"isCameraPlayerOne":false,"diceRolledPlayerOne":false,"isAbleToRollPlayerOne":true,"enemy1Stats":[0,0,0,0,0,0,0,0],"remaininghp_two":40,"maxhp_two":40,"atk_two":10,"def_two":10,"mag_two":10,"res_two":10,"spd_two":10,"level_two":1,"exp_two":0,"node_two":65,"isPlayerTwoTurn":false,"isPlayerTwoInCombat":false,"player2pos":{"x":-14.0,"y":-7.300000190734863,"z":0.0},"isAbleToMovePlayerTwo":false,"isCameraPlayerTwo":false,"diceRolledPlayerTwo":false,"isAbleToRollPlayerTwo":true,"enemy2Stats":[0,0,0,0,0,0,0,0]}
+{
+    "turn": 1,
+    "turnLimit": 20,
+    "remaininghp_one": 150,
+    "maxhp_one": 150,
+    "atk_one": 23,
+    "def_one": 23,
+    "mag_one": 23,
+    "res_one": 23,
+    "spd_one": 23,
+    "level_one": 5,
+    "exp_one": 0,
+    "gems_one": 62,
+    "inventory_one": [
+        0,
+        0,
+        0,
+        0
+    ],
+    "node_one": 0,
+    "isPlayerOneTurn": true,
+    "player1pos": {
+        "x": -20.0,
+        "y": 10.7,
+        "z": 0.0
+    },
+    "isPlayerOneInCombat": false,
+    "isAbleToMovePlayerOne": false,
+    "isCameraPlayerOne": false,
+    "diceRolledPlayerOne": false,
+    "isAbleToRollPlayerOne": true,
+    "enemy1Stats": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+    ],
+    "remaininghp_two": 150,
+    "maxhp_two": 150,
+    "atk_two": 23,
+    "def_two": 23,
+    "mag_two": 23,
+    "res_two": 23,
+    "spd_two": 23,
+    "level_two": 5,
+    "exp_two": 0,
+    "gems_two": 0,
+    "inventory_two": [
+        0,
+        0,
+        0,
+        0
+    ],
+    "node_two": 0,
+    "isPlayerTwoTurn": false,
+    "isPlayerTwoInCombat": false,
+    "player2pos": {
+        "x": -20.0,
+        "y": 10.7,
+        "z": 0.0
+    },
+    "isAbleToMovePlayerTwo": false,
+    "isCameraPlayerTwo": false,
+    "diceRolledPlayerTwo": false,
+    "isAbleToRollPlayerTwo": true,
+    "enemy2Stats": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+    ]
+}
