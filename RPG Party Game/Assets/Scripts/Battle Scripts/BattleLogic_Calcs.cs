@@ -163,6 +163,15 @@ public class BattleLogic_Calcs : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                if(pcs.isPlayerOneTurn)
+                {
+                    pcs.isPlayerOneInCombat = false;
+                }
+                else
+                {
+                    pcs.isPlayerTwoInCombat = false;
+                }
+                NextTurn(); 
                 SceneManager.LoadScene("Scenes/Overworld");
             }
         }
@@ -260,45 +269,6 @@ public class BattleLogic_Calcs : MonoBehaviour
                 {
                     ModifierCalculation(inputRight, inputLeft);
                 }
-            }
-            // To Allow Data to be loaded from scriptable object
-            if (pcs.isPlayerOneTurn)
-            {
-                pcs.remaininghp_one = remaininghp_left;
-                pcs.maxhp_one = maxhp_left;
-                pcs.atk_one = atk_left;
-                pcs.def_one = def_left;
-                pcs.mag_one = mag_left;
-                pcs.res_one = res_left;
-                pcs.spd_one = spd_left;
-                pcs.enemy1Stats[0] = remaininghp_right;
-                pcs.enemy1Stats[1] = maxhp_right;
-                pcs.enemy1Stats[2] = atk_right;
-                pcs.enemy1Stats[3] = def_right;
-                pcs.enemy1Stats[4] = mag_right;
-                pcs.enemy1Stats[5] = res_right;
-                pcs.enemy1Stats[6] = spd_right;
-                pcs.enemy1Stats[8] = enemyType;
-                NextTurn();
-            }
-            else if (pcs.isPlayerTwoTurn)
-            {    
-                pcs.remaininghp_two= remaininghp_left;
-                pcs.maxhp_two = maxhp_left;
-                pcs.atk_two = atk_left;
-                pcs.def_two = def_left;
-                pcs.mag_two = mag_left;
-                pcs.res_two = res_left;
-                pcs.spd_two = spd_left;
-                pcs.enemy2Stats[0] = remaininghp_right;
-                pcs.enemy2Stats[1] = maxhp_right;
-                pcs.enemy2Stats[2] = atk_right;
-                pcs.enemy2Stats[3] = def_right;
-                pcs.enemy2Stats[4] = mag_right;
-                pcs.enemy2Stats[5] = res_right;
-                pcs.enemy2Stats[6] = spd_right;
-                pcs.enemy2Stats[8] = enemyType;
-                NextTurn();
             }
         }
         else if (actionsOfCombatLeft == 2)
@@ -928,7 +898,6 @@ public class BattleLogic_Calcs : MonoBehaviour
                 itemEarned = RandomItem();
                 pcs.gems_one += gems;
                 pcs.isPlayerOneInCombat = !pcs.isPlayerOneInCombat;
-                NextTurn();
             }
             else if (pcs.isPlayerTwoTurn)
             {    
@@ -944,7 +913,6 @@ public class BattleLogic_Calcs : MonoBehaviour
                 itemEarned = RandomItem();
                 pcs.gems_one += gems;
                 pcs.isPlayerTwoInCombat = !pcs.isPlayerTwoInCombat;
-                NextTurn();
             }
             battleStatus = 1;
         }
@@ -960,7 +928,6 @@ public class BattleLogic_Calcs : MonoBehaviour
                 pcs.res_one = res_left;
                 pcs.spd_one = spd_left;
                 pcs.isPlayerOneInCombat = !pcs.isPlayerOneInCombat;
-                NextTurn();
             }
             else if (pcs.isPlayerTwoTurn)
             {    
@@ -972,7 +939,6 @@ public class BattleLogic_Calcs : MonoBehaviour
                 pcs.res_two = res_left;
                 pcs.spd_two = spd_left;
                 pcs.isPlayerTwoInCombat = !pcs.isPlayerTwoInCombat;
-                NextTurn();
             }
             battleStatus = 2;
         }
@@ -985,6 +951,48 @@ public class BattleLogic_Calcs : MonoBehaviour
         rightUI.SetActive(false);
         leftHP.SetActive(false);
         rightHP.SetActive(false);
+    }
+
+    public void SaveStats()
+    {
+        if (pcs.isPlayerOneTurn)
+        {
+            pcs.remaininghp_one = maxhp_left;
+            pcs.maxhp_one = maxhp_left;
+            pcs.atk_one = atk_left;
+            pcs.def_one = def_left;
+            pcs.mag_one = mag_left;
+            pcs.res_one = res_left;
+            pcs.spd_one = spd_left;
+            pcs.enemy1Stats[0] = remaininghp_right;
+            pcs.enemy1Stats[1] = maxhp_right;
+            pcs.enemy1Stats[2] = atk_right;
+            pcs.enemy1Stats[3] = def_right;
+            pcs.enemy1Stats[4] = mag_right;
+            pcs.enemy1Stats[5] = res_right;
+            pcs.enemy1Stats[6] = spd_right;
+            pcs.enemy1Stats[7] = enemy_level;
+            pcs.enemy1Stats[8] = enemyType;
+        }
+        else if (pcs.isPlayerTwoTurn)
+        {    
+            pcs.remaininghp_two = maxhp_left;
+            pcs.maxhp_two = maxhp_left;
+            pcs.atk_two = atk_left;
+            pcs.def_two = def_left;
+            pcs.mag_two = mag_left;
+            pcs.res_two = res_left;
+            pcs.spd_two = spd_left;
+            pcs.enemy2Stats[0] = remaininghp_right;
+            pcs.enemy2Stats[1] = maxhp_right;
+            pcs.enemy2Stats[2] = atk_right;
+            pcs.enemy2Stats[3] = def_right;
+            pcs.enemy2Stats[4] = mag_right;
+            pcs.enemy2Stats[5] = res_right;
+            pcs.enemy2Stats[6] = spd_right;
+            pcs.enemy2Stats[7] = enemy_level;
+            pcs.enemy2Stats[8] = enemyType;
+        }
     }
 }
 

@@ -118,6 +118,8 @@ public class RightScript : MonoBehaviour
         blc.CheckBattleStatus();
         if (blc.actionsOfCombatLeft == 0 && blc.battleStatus == 0)
         {
+            blc.SaveStats();
+            blc.NextTurn();
             SceneManager.LoadScene("Scenes/Overworld");
         }
         else if (blc.battleStatus == 1)
