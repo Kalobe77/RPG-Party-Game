@@ -94,6 +94,40 @@ public class Route : MonoBehaviour
     //
     private Transform[] childObjects;
     public List<Transform> childNodeList = new List<Transform>();
+    public Sprite normalSpace;
+    public Sprite battleSpace;
+    public Sprite bossSpace;
+    public Sprite itemShopSpace;
+    public PlayerCharacterStatus pcs;
+
+    public SpriteRenderer spriteRenderer;
+
+    void Start()
+    {
+        for(int i = 0; i < childNodeList.Count; i++)
+        {
+            if (pcs.spaceAssign[i] == 0 || pcs.spaceAssign[i] == 4)
+            {
+                spriteRenderer = childNodeList[i].GetComponent<SpriteRenderer>();
+                spriteRenderer.sprite =  normalSpace;
+            }
+            else if (pcs.spaceAssign[i] == 2 || pcs.spaceAssign[i] == 6)
+            {
+                spriteRenderer = childNodeList[i].GetComponent<SpriteRenderer>();
+                spriteRenderer.sprite = battleSpace;
+            }
+            else if (pcs.spaceAssign[i] == 3 || pcs.spaceAssign[i] == 7)
+            {
+                spriteRenderer = childNodeList[i].GetComponent<SpriteRenderer>();
+                spriteRenderer.sprite = bossSpace;
+            }
+            else if (pcs.spaceAssign[i] == 1 || pcs.spaceAssign[i] == 5)
+            {
+                spriteRenderer = childNodeList[i].GetComponent<SpriteRenderer>();
+                spriteRenderer.sprite = itemShopSpace;
+            }
+        }
+    }
 
     void OnDrawGizmos()
     {

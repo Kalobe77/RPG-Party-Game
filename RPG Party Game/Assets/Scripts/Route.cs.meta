@@ -3,7 +3,11 @@ guid: 1328f2399b86bb64b915081cd1c9bf91
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - normalSpace: {fileID: -1912562414, guid: 326ea0aade4a8b146b2bf5d41a4fe648, type: 3}
+  - battleSpace: {fileID: 784733534, guid: 326ea0aade4a8b146b2bf5d41a4fe648, type: 3}
+  - bossSpace: {fileID: -443352378, guid: 326ea0aade4a8b146b2bf5d41a4fe648, type: 3}
+  - itemShopSpace: {fileID: -1903367806, guid: 326ea0aade4a8b146b2bf5d41a4fe648, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
