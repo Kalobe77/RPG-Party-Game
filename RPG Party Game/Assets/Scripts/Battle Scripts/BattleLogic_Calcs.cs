@@ -949,7 +949,7 @@ public class BattleLogic_Calcs : MonoBehaviour
                 ExperienceGain();
                 RandomGems();
                 itemEarned = RandomItem();
-                pcs.gems_one += gems;
+                pcs.gems_two += gems;
                 pcs.isPlayerTwoInCombat = !pcs.isPlayerTwoInCombat;
             }
             battleStatus = 1;

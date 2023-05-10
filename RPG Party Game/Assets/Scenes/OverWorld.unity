@@ -19280,6 +19280,12 @@ MonoBehaviour:
   - {fileID: 576974863}
   - {fileID: 57074294}
   - {fileID: 1623444415}
+  normalSpace: {fileID: -1912562414, guid: 326ea0aade4a8b146b2bf5d41a4fe648, type: 3}
+  battleSpace: {fileID: 784733534, guid: 326ea0aade4a8b146b2bf5d41a4fe648, type: 3}
+  bossSpace: {fileID: -443352378, guid: 326ea0aade4a8b146b2bf5d41a4fe648, type: 3}
+  itemShopSpace: {fileID: -1903367806, guid: 326ea0aade4a8b146b2bf5d41a4fe648, type: 3}
+  pcs: {fileID: 11400000, guid: 617a17ef434a8974b8cef8b243a0e6be, type: 2}
+  spriteRenderer: {fileID: 0}
 --- !u!4 &1174237762
 Transform:
   m_ObjectHideFlags: 0
@@ -33122,10 +33128,10 @@ MonoBehaviour:
   pauseMenu: {fileID: 972429900}
   controlsMenu: {fileID: 1015305264}
   saveWrapper: {fileID: 71140952}
-  inputScript: {fileID: 0}
-  inputScript2: {fileID: 0}
-  inventory1: {fileID: 0}
-  inventory2: {fileID: 0}
+  inputScript: {fileID: 1305823583}
+  inputScript2: {fileID: 1566091251}
+  inventory1: {fileID: 1078932189}
+  inventory2: {fileID: 904925839}
 --- !u!1 &1915160224
 GameObject:
   m_ObjectHideFlags: 0

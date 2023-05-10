@@ -8,9 +8,12 @@ public class SaveWrapper : MonoBehaviour
     // Allow Access to Player Character Status
     public PlayerCharacterStatus pcs;
 
+    
+
     public void writeToFile()
     {
         string jSONresult = pcs.SaveToString();
+        Debug.Log(Application.dataPath + "saveFile.txt");
         File.WriteAllText(Application.dataPath + "/Saves/saveFile.txt", jSONresult);
     }
 

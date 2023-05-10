@@ -236,6 +236,7 @@ public class InputScript : MonoBehaviour
                         turnHandler.ProgressTurn();
                         turnHandler.NextTurn();
                         turnHandler.UpdateStatus();
+                        turnHandler.healthUpdate();
                     }
                     else if (nodeType == 1) // shop space             ****
                     {

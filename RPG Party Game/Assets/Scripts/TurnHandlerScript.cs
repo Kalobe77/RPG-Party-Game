@@ -51,8 +51,9 @@ public class TurnHandlerScript : MonoBehaviour
             gemsText.text = "Gems: " + pcs.gems_one.ToString();
         }
 
-        else if (inputScript2.isTurn){
-
+        else if (inputScript2.isTurn)
+        {
+            Debug.Log(inputScript2.remaininghp);
             healthText.text = "HP: " + inputScript2.remaininghp.ToString() + " / " + inputScript2.maxhp.ToString();
             gemsText.text = "Gems: " + pcs.gems_two.ToString();
         }

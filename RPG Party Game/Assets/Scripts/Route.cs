@@ -94,6 +94,7 @@ public class Route : MonoBehaviour
     //
     private Transform[] childObjects;
     public List<Transform> childNodeList = new List<Transform>();
+    
     public Sprite normalSpace;
     public Sprite battleSpace;
     public Sprite bossSpace;

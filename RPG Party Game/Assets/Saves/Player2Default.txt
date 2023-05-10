@@ -10,7 +10,7 @@
     "spd_one": 23,
     "level_one": 5,
     "exp_one": 0,
-    "gems_one": 62,
+    "gems_one": 0,
     "inventory_one": [
         0,
         0,
