@@ -11,6 +11,7 @@ public class BattleScreenLogic : MonoBehaviour
     public Text gemsTxt;
 
     public GameObject menuStuff;
+    public GameObject lostUI;
 
     // Start is called before the first frame update
     void Start()
@@ -40,5 +41,11 @@ public class BattleScreenLogic : MonoBehaviour
     public void ToggleMenu()
     {
         menuStuff.SetActive(true);
+    }
+
+    public void TurnOnLost()
+    {
+        Debug.Log("Turn On Lost UI");
+        lostUI.SetActive(true);
     }
 }

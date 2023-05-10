@@ -140,13 +140,9 @@ public class InputScript : MonoBehaviour
             isInCombat = pcs.isPlayerTwoInCombat;
             gems = pcs.gems_two;
         }
-        turn = pcs.turn;
         dice.transform.position = new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z);
         Debug.Log(dice);
-        if (turn > pcs.turnLimit)
-        {
-            SceneManager.LoadScene("Scenes/Results");
-        }
+        turnHandler.CheckTurn();
     }
 
     // Update is called once per frame
@@ -166,6 +162,7 @@ public class InputScript : MonoBehaviour
                     isAbleToMove = false;
                     turnHandler.UpdateStatus();
                     turnHandler.ProgressTurn();
+                    turnHandler.CheckTurn();
                     SceneManager.LoadScene("Scenes/Battle");
                 }
                 if (spacesRemaining == 0 && !diceRolled)
@@ -202,6 +199,12 @@ public class InputScript : MonoBehaviour
                     {
                         nodeType = 5;
 
+                    }
+
+                    else if (nodeType == 6)
+                    {
+                        GenerateBossEnemy();
+                        isInCombat = !isInCombat;
                     }
                 }
                 if (canShop)
@@ -504,6 +507,34 @@ public class InputScript : MonoBehaviour
             pcs.enemy2Stats[6] = enemyStatsTable[index,5];
             pcs.enemy2Stats[7] = eLevel;
             pcs.enemy2Stats[8] = eType;
+        }
+    }
+
+    void GenerateBossEnemy()
+    {
+        if (pcs.isPlayerOneTurn)
+        {
+            pcs.enemy1Stats[0] = 200;
+            pcs.enemy1Stats[1] = 200;
+            pcs.enemy1Stats[2] = 15;
+            pcs.enemy1Stats[3] = 25;
+            pcs.enemy1Stats[4] = 15;
+            pcs.enemy1Stats[5] = 25;
+            pcs.enemy1Stats[6] = 30;
+            pcs.enemy1Stats[7] = 10;
+            pcs.enemy1Stats[8] = 5;
+        }
+        else if (pcs.isPlayerTwoTurn)
+        {
+            pcs.enemy2Stats[0] = 200;
+            pcs.enemy2Stats[1] = 200;
+            pcs.enemy2Stats[2] = 15;
+            pcs.enemy2Stats[3] = 25;
+            pcs.enemy2Stats[4] = 15;
+            pcs.enemy2Stats[5] = 25;
+            pcs.enemy2Stats[6] = 30;
+            pcs.enemy2Stats[7] = 10;
+            pcs.enemy2Stats[8] = 5;
         }
     }
 }

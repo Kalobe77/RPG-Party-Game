@@ -13,6 +13,8 @@ public class RightScript : MonoBehaviour
     public RuntimeAnimatorController slime_fire;
     public RuntimeAnimatorController slime_ice;
     public RuntimeAnimatorController slime_toxic;
+    public RuntimeAnimatorController slime_boss;
+    public RuntimeAnimatorController slime_boss_transformed;
 
     // Access to sprite renderer for right script
     public SpriteRenderer spriteRenderer;
@@ -23,7 +25,11 @@ public class RightScript : MonoBehaviour
     // Connects the PlayerCharacterStatus Object
     public PlayerCharacterStatus pcs;
 
+    // Connects to the Battle Logic Calcs Script
     public BattleLogic_Calcs blc;
+    
+    // Connects to Battle Screen Logic Script
+    public BattleScreenLogic bsl;
 
     // Variables to Control Animation
     public int enemyType;
@@ -60,25 +66,79 @@ public class RightScript : MonoBehaviour
             animator.runtimeAnimatorController = slime_toxic;
         }
 
-        // Animations for enemy
-        animator.SetInteger("enemyAnimation", enemyAnimation);
+        if (enemyType == 5)
+        {
+            animator.runtimeAnimatorController = slime_boss;
+
+            // Animations for enemy
+            animator.SetInteger("enemyAnimation", enemyAnimation);
+            transform.localScale = new Vector3(5,5,0);
+            transform.position = new Vector3(6.25f, 0, 0);
+        }
+        else if (enemyType == 6)
+        {
+            animator.runtimeAnimatorController = slime_boss_transformed;
+
+            // Animations for enemy
+            animator.SetInteger("enemyAnimation", enemyAnimation);
+            transform.localScale = new Vector3(5,5,0);
+            transform.position = new Vector3(6.25f, 0, 0);
+        }
+        else
+        {
+            // Animations for enemy
+            animator.SetInteger("enemyAnimation", enemyAnimation);
+            
+            transform.localScale = new Vector3(5,5,0);
+            transform.position = new Vector3(6.25f, -2.75f, 0);
+        }
         
-        transform.localScale = new Vector3(5,5,0);
-        transform.position = new Vector3(6.25f, -2.75f, 0);
     }
 
     public void ChangeAnimation(int type)
     {
-        animator.SetInteger("enemyAnimation", type);
+        blc.CheckBattleStatus();
+        if (blc.battleStatus == 1)
+        {
+            animator.SetInteger("enemyAnimation", 1);
+        }
+        else
+        {
+            animator.SetInteger("enemyAnimation", type);
+        }
+    }
+
+    public void GiveAtkOrientation(int atkType)
+    {
+        animator.SetInteger("enemyAtk", atkType);
     }
 
     public void AnimationComplete()
     {
-        if (blc.actionsOfCombatLeft == 0)
+        blc.CheckBattleStatus();
+        if (blc.actionsOfCombatLeft == 0 && blc.battleStatus == 0)
         {
             SceneManager.LoadScene("Scenes/Overworld");
         }
-        blc.allowedInput = true;
-        blc.TurnProperUI();
+        else if (blc.battleStatus == 1)
+        {
+            blc.allowedInput = false;
+            blc.endScreenInput = true;
+            blc.TurnOffUIs();
+            bsl.ManipulateText(blc.experienceGained, blc.itemEarned, blc.gems);
+        }
+        else if (blc.battleStatus == 2)
+        {
+            blc.allowedInput = false;
+            blc.endScreenInput = true;
+            blc.TurnOffUIs();
+            bsl.TurnOnLost();
+        }
+        else 
+        {
+            blc.allowedInput = true;
+            blc.TurnProperUI();
+        }
     }
+
 }

@@ -33,16 +33,25 @@ public class BattleLogic_Calcs : MonoBehaviour
     public bool rightTurn;
     public bool rightPlayerIsComputer = true;
     public int enemy_level;
+    public int enemyType;
 
     public bool state = true;
     public int gems;
+    public string itemEarned;
 
-    // UI and allows us to control whether they appear
+    // Battle Still in Progress: 0, Won: 1, Lost: 2
+    public int battleStatus = 0;
+
+    // UIs and allows us to control whether they appear
     public GameObject leftUI;
     public GameObject rightUI;
+    public GameObject leftHP;
+    public GameObject rightHP;
+
 
     // Used to manage if a user can put another input in and where in combat
     public bool allowedInput = true;
+    public bool endScreenInput = false;
     public int actionsOfCombatLeft = 4;
 
     // Input holder
@@ -67,6 +76,11 @@ public class BattleLogic_Calcs : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (pcs.turn > pcs.turnLimit)
+        {
+            SceneManager.LoadScene("Scenes/Results");
+        }
+        battleStatus = 0;
         if(pcs.isPlayerOneTurn)
         {
             remaininghp_left = pcs.remaininghp_one;
@@ -85,6 +99,7 @@ public class BattleLogic_Calcs : MonoBehaviour
             res_right = pcs.enemy1Stats[5];
             spd_right = pcs.enemy1Stats[6];
             enemy_level = pcs.enemy1Stats[7];
+            enemyType = pcs.enemy1Stats[8];
         }
         else
         {
@@ -104,11 +119,13 @@ public class BattleLogic_Calcs : MonoBehaviour
             res_right = pcs.enemy2Stats[5];
             spd_right = pcs.enemy2Stats[6];
             enemy_level = pcs.enemy2Stats[7];
+            enemyType = pcs.enemy2Stats[8];
         }
         leftHealthScript.SetMaxHealth(maxhp_left, remaininghp_left);
         rightHealthScript.SetMaxHealth(maxhp_right, remaininghp_right);
         leftUI.SetActive(false);
         rightUI.SetActive(false);
+        endScreenInput = false;
     }
 
     // Update is called once per frame
@@ -119,7 +136,7 @@ public class BattleLogic_Calcs : MonoBehaviour
             Debug.Log("Did Run");
             state = false;
             allowedInput = false;
-            // Starts Move Function
+            // Delays Input
             StartCoroutine(DelayStart());
         }
         if (allowedInput)
@@ -140,76 +157,15 @@ public class BattleLogic_Calcs : MonoBehaviour
                     // Starts Battle Function
                     StartCoroutine(BattleCommand());
                 }
-            }
-            
-            
+            }   
         }
-        if (remaininghp_right <= 0)
+        if (endScreenInput)
         {
-            if (pcs.isPlayerOneTurn)
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                pcs.remaininghp_one = remaininghp_left;
-                pcs.maxhp_one = maxhp_left;
-                pcs.atk_one = atk_left;
-                pcs.def_one = def_left;
-                pcs.mag_one = mag_left;
-                pcs.res_one = res_left;
-                pcs.spd_one = spd_left;
-                ExperienceGain();
-                pcs.gems_one += gems;
-                pcs.isPlayerOneInCombat = !pcs.isPlayerOneInCombat;
-                NextTurn();
+                SceneManager.LoadScene("Scenes/Overworld");
             }
-            else if (pcs.isPlayerTwoTurn)
-            {    
-                pcs.remaininghp_two = remaininghp_left;
-                pcs.maxhp_two = maxhp_left;
-                pcs.atk_two = atk_left;
-                pcs.def_two = def_left;
-                pcs.mag_two = mag_left;
-                pcs.res_two = res_left;
-                pcs.spd_two = spd_left;
-                ExperienceGain();
-                pcs.gems_one += gems;
-                pcs.isPlayerTwoInCombat = !pcs.isPlayerTwoInCombat;
-                NextTurn();
-            }
-            //bsl.ManipulateText(experienceGained, RandomItem(), RandomGems());
-            //while(!Input.GetKeyDown(KeyCode.Space))
-            //{
-            //   experienceGained = 0;
-            //}
-            SceneManager.LoadScene("Scenes/Overworld");
         }
-        if (remaininghp_left <= 0)
-        {
-            if (pcs.isPlayerOneTurn)
-            {
-                pcs.remaininghp_one = maxhp_left;
-                pcs.maxhp_one = maxhp_left;
-                pcs.atk_one = atk_left;
-                pcs.def_one = def_left;
-                pcs.mag_one = mag_left;
-                pcs.res_one = res_left;
-                pcs.spd_one = spd_left;
-                pcs.isPlayerOneInCombat = !pcs.isPlayerOneInCombat;
-                NextTurn();
-            }
-            else if (pcs.isPlayerTwoTurn)
-            {    
-                pcs.remaininghp_two = maxhp_left;
-                pcs.maxhp_two = maxhp_left;
-                pcs.atk_two = atk_left;
-                pcs.def_two = def_left;
-                pcs.mag_two = mag_left;
-                pcs.res_two = res_left;
-                pcs.spd_two = spd_left;
-                pcs.isPlayerTwoInCombat = !pcs.isPlayerTwoInCombat;
-                NextTurn();
-            }
-            SceneManager.LoadScene("Scenes/Overworld");
-        }
-        
     }
 
     IEnumerator BattleCommand()
@@ -296,7 +252,14 @@ public class BattleLogic_Calcs : MonoBehaviour
             }
             else
             {
-                ModifierCalculation(inputRight, inputLeft);
+                if (enemyType == 5 && inputRight == 4)
+                {
+                    Transform();
+                }
+                else
+                {
+                    ModifierCalculation(inputRight, inputLeft);
+                }
             }
             // To Allow Data to be loaded from scriptable object
             if (pcs.isPlayerOneTurn)
@@ -315,6 +278,7 @@ public class BattleLogic_Calcs : MonoBehaviour
                 pcs.enemy1Stats[4] = mag_right;
                 pcs.enemy1Stats[5] = res_right;
                 pcs.enemy1Stats[6] = spd_right;
+                pcs.enemy1Stats[8] = enemyType;
                 NextTurn();
             }
             else if (pcs.isPlayerTwoTurn)
@@ -333,6 +297,7 @@ public class BattleLogic_Calcs : MonoBehaviour
                 pcs.enemy2Stats[4] = mag_right;
                 pcs.enemy2Stats[5] = res_right;
                 pcs.enemy2Stats[6] = spd_right;
+                pcs.enemy2Stats[8] = enemyType;
                 NextTurn();
             }
         }
@@ -346,7 +311,16 @@ public class BattleLogic_Calcs : MonoBehaviour
             }
             else
             {
-                ModifierCalculation(inputRight, inputLeft);
+                // If these the 4th input is used for the boss it transforms
+                if (enemyType == 5 && inputRight == 4)
+                {
+                    Transform();
+                }
+                // Otherwise carry out like normal
+                else
+                {
+                    ModifierCalculation(inputRight, inputLeft);
+                }
             }
             leftIsAttacker = !leftIsAttacker;
         }
@@ -590,11 +564,28 @@ public class BattleLogic_Calcs : MonoBehaviour
         // Plays the proper animations based on actions and outcome
         if(isDamageToLeft)
         {
+            // Checks if enemy is a boss type
+            if(enemyType == 5 || enemyType == 6)
+            {
+                rs.GiveAtkOrientation(inputRight);
+            }
             rs.ChangeAnimation(3);
             ls.ChangeAnimation(2);
         }
         else
         {
+            // Checks if enemy is a boss type
+            if(enemyType == 5 || enemyType == 6)
+            {
+                if (inputRight == 4)
+                {
+                    rs.GiveAtkOrientation(1);
+                }
+                else
+                {
+                    rs.GiveAtkOrientation(inputRight);
+                }
+            }
             rs.ChangeAnimation(2);
             ls.ChangeAnimation(3);
         }
@@ -755,6 +746,12 @@ public class BattleLogic_Calcs : MonoBehaviour
         }
         else
         {
+            if (enemyType == 5 && remaininghp_right < maxhp_right/2)
+            {
+                input.x = 0;
+                input.y = -1;
+                return;
+            }
             if (chanceToGuessCorrectly >= number)
             {
                 if (atk_left - def_left/2 > mag_right - res_left/2)
@@ -850,6 +847,28 @@ public class BattleLogic_Calcs : MonoBehaviour
         }
     }
 
+    // For Transforming the boss
+    public void Transform()
+    {
+        // Heals Boss 50% HP lost
+        remaininghp_right += Mathf.RoundToInt((maxhp_right - remaininghp_right)/2);
+        if (remaininghp_right > maxhp_right)
+        {
+            remaininghp_right = maxhp_right;
+        }
+        // Boosts the rest of its stats
+        atk_right = 31;
+        def_right = 26;
+        mag_right = 31;
+        res_right = 26;
+        spd_right = 31;
+        enemyType = 6;
+        rs.ChangeAnimation(1);
+
+        // Updates Health Bar to Show Proper Health
+        rightHealthScript.SetHealth(remaininghp_right);
+    }
+
     // Randomly Generate whether an item is obtained from defeating enemy
     public string RandomItem()
     {
@@ -878,9 +897,9 @@ public class BattleLogic_Calcs : MonoBehaviour
     }
 
     // Randomly Generate Number of Gems Accquired
-    public int RandomGems(bool wasBoss)
+    public void RandomGems()
     {
-        if (wasBoss)
+        if (enemyType == 5 || enemyType == 6)
         {
             gems = Random.Range(10,16);
         }
@@ -888,7 +907,84 @@ public class BattleLogic_Calcs : MonoBehaviour
         {
             gems = Random.Range(1, 6);
         }
-        return gems;
+    }
+
+    // Check if either side is dead
+    public void CheckBattleStatus()
+    {
+        if (remaininghp_right <= 0)
+        {
+            if (pcs.isPlayerOneTurn)
+            {
+                pcs.remaininghp_one = remaininghp_left;
+                pcs.maxhp_one = maxhp_left;
+                pcs.atk_one = atk_left;
+                pcs.def_one = def_left;
+                pcs.mag_one = mag_left;
+                pcs.res_one = res_left;
+                pcs.spd_one = spd_left;
+                ExperienceGain();
+                RandomGems();
+                itemEarned = RandomItem();
+                pcs.gems_one += gems;
+                pcs.isPlayerOneInCombat = !pcs.isPlayerOneInCombat;
+                NextTurn();
+            }
+            else if (pcs.isPlayerTwoTurn)
+            {    
+                pcs.remaininghp_two = remaininghp_left;
+                pcs.maxhp_two = maxhp_left;
+                pcs.atk_two = atk_left;
+                pcs.def_two = def_left;
+                pcs.mag_two = mag_left;
+                pcs.res_two = res_left;
+                pcs.spd_two = spd_left;
+                ExperienceGain();
+                RandomGems();
+                itemEarned = RandomItem();
+                pcs.gems_one += gems;
+                pcs.isPlayerTwoInCombat = !pcs.isPlayerTwoInCombat;
+                NextTurn();
+            }
+            battleStatus = 1;
+        }
+        if (remaininghp_left <= 0)
+        {
+            if (pcs.isPlayerOneTurn)
+            {
+                pcs.remaininghp_one = maxhp_left;
+                pcs.maxhp_one = maxhp_left;
+                pcs.atk_one = atk_left;
+                pcs.def_one = def_left;
+                pcs.mag_one = mag_left;
+                pcs.res_one = res_left;
+                pcs.spd_one = spd_left;
+                pcs.isPlayerOneInCombat = !pcs.isPlayerOneInCombat;
+                NextTurn();
+            }
+            else if (pcs.isPlayerTwoTurn)
+            {    
+                pcs.remaininghp_two = maxhp_left;
+                pcs.maxhp_two = maxhp_left;
+                pcs.atk_two = atk_left;
+                pcs.def_two = def_left;
+                pcs.mag_two = mag_left;
+                pcs.res_two = res_left;
+                pcs.spd_two = spd_left;
+                pcs.isPlayerTwoInCombat = !pcs.isPlayerTwoInCombat;
+                NextTurn();
+            }
+            battleStatus = 2;
+        }
+
+    }
+
+    public void TurnOffUIs()
+    {
+        leftUI.SetActive(false);
+        rightUI.SetActive(false);
+        leftHP.SetActive(false);
+        rightHP.SetActive(false);
     }
 }
 

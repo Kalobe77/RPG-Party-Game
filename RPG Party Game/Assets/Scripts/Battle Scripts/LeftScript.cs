@@ -11,7 +11,10 @@ public class LeftScript : MonoBehaviour
     public Animator animator;
 
     // Access to sprite renderer for right script
-    public SpriteRenderer spriteRenderer; 
+    public SpriteRenderer spriteRenderer;
+
+    // Connects to the Battle Logic Calcs Script
+    public BattleLogic_Calcs blc;
     
     // Start is called before the first frame update
     void Start()
@@ -27,6 +30,14 @@ public class LeftScript : MonoBehaviour
     // Changes the animation of the player
     public void ChangeAnimation(int type)
     {
-        animator.SetInteger("playerAnimation", type);
+        blc.CheckBattleStatus();
+        if (blc.battleStatus == 2)
+        {
+            animator.SetInteger("playerAnimation", 1);
+        }
+        else
+        {
+            animator.SetInteger("playerAnimation", type);
+        }   
     }
 }
