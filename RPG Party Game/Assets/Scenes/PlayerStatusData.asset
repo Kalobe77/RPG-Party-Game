@@ -23,12 +23,12 @@ MonoBehaviour:
   spd_one: 100
   level_one: 100
   exp_one: 0
-  gems_one: 0
-  inventory_one: 00000000000000000000000000000000
+  gems_one: 62
+  inventory_one: 00000000000000000100000000000000
   node_one: 82
   isPlayerOneTurn: 1
   player1pos: {x: 2, y: 6.7, z: 0}
-  isPlayerOneInCombat: 1
+  isPlayerOneInCombat: 0
   isAbleToMovePlayerOne: 0
   isCameraPlayerOne: 0
   diceRolledPlayerOne: 0
