@@ -15,6 +15,8 @@ public class TurnHandlerScript : MonoBehaviour
     // Takes in input script utilizing player tag
     public InputScript inputScript;
     public InputScript inputScript2;
+    public InventoryScript inventory1;
+    public InventoryScript inventory2;
     
     public CameraFollow cameraFollow;
 
@@ -30,6 +32,8 @@ public class TurnHandlerScript : MonoBehaviour
         // Links the input script using the tag
         cameraFollow = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>();
         healthUpdate();
+        inventory1 = GameObject.FindGameObjectWithTag("Player1Inventory").GetComponent<InventoryScript>();
+        inventory2 = GameObject.FindGameObjectWithTag("Player2Inventory").GetComponent<InventoryScript>();
     }
 
     // Update is called once per frame
@@ -56,11 +60,13 @@ public class TurnHandlerScript : MonoBehaviour
     {
         if (inputScript.isTurn){
             cameraFollow.tag = "Player 2";
+            inventory2.canUse = true;
         }
         else if (inputScript2.isTurn){
             cameraFollow.tag = "Player 1";
+            inventory1.canUse = true;
         }
-        
+        healthUpdate();
     }
 
     public void NextTurn()

@@ -16,8 +16,10 @@ public class InventoryScript : MonoBehaviour
 
     public GameObject inventoryMenu;
     public GameObject chooseMenu;
+
     public bool isInventory;
     public bool isTurn;
+    public bool canUse;
 
     public InputScript inputScript;
     public InputScript inputScript2;
@@ -26,6 +28,8 @@ public class InventoryScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        canUse = true;
+
         inventoryMenu.SetActive(false);
         chooseMenu.SetActive(false);
 
@@ -69,8 +73,13 @@ public class InventoryScript : MonoBehaviour
                 }
             }
         }
+        
+        if (canUse == false)
+        {
+            MenuDown();
+        }
     }
-
+ 
     public void MenuUp()
     {
         inventoryMenu.SetActive(true);
@@ -93,44 +102,63 @@ public class InventoryScript : MonoBehaviour
 
     public void LessHeal()
     {
+        if (isTurn && canUse)
+        {
+            if (itemStorage[0] > 0)
+            {
+                itemStorage[0] = itemStorage[0] - 1;
+                hPotionText.text = "Health Potion: " + itemStorage[0].ToString();
+                canUse = false;
+            }
+        }
+    }
+ /*
+    public void MoreHeal()
+    {
         if (isTurn)
         {
             if (itemStorage[0] > 0)
             {
                 itemStorage[0] = itemStorage[0] - 1;
                 hPotionText.text = "Health Potion: " + itemStorage[0].ToString();
+                canUse = false;
             }
         }
     }
-
+ */
     public void LessTrap()
     {
-        if (isTurn)
+        if (isTurn && canUse)
         {
             if (itemStorage[1] > 0)
             {
                 itemStorage[1] = itemStorage[1] - 1;
                 trapsText.text = "Traps: " + itemStorage[1].ToString();
+                canUse = false;
             }
         }
     }
 
     public void LessChoose()
     {
-        if (isTurn)
+        if (isTurn && canUse)
         {
             if (itemStorage[2] > 0)
             {
                 itemStorage[2] = itemStorage[2] - 1;
                 choiceText.text = "Movement Choice: " + itemStorage[2].ToString();
+                canUse = false;
             }
         }
     }
 
     public void Choices()
     {
-        inventoryMenu.SetActive(false);
-        chooseMenu.SetActive(true);
+        if (isTurn && canUse)
+        {
+            inventoryMenu.SetActive(false);
+            chooseMenu.SetActive(true);
+        }
     }
 
     public void ChoicesDown()
@@ -141,12 +169,13 @@ public class InventoryScript : MonoBehaviour
 
     public void LessBoost()
     {
-        if (isTurn)
+        if (isTurn && canUse)
         {
             if (itemStorage[3] > 0)
             {
                 itemStorage[3] = itemStorage[3] - 1;
                 ePotionText.text = "Energy Potion: " + itemStorage[3].ToString();
+                canUse = false;
             }
         }
     }
