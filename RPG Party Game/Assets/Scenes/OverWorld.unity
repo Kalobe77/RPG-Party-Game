@@ -292,6 +292,7 @@ MonoBehaviour:
   inputScript2: {fileID: 0}
   inventory1: {fileID: 0}
   inventory2: {fileID: 0}
+  pcs: {fileID: 11400000, guid: 617a17ef434a8974b8cef8b243a0e6be, type: 2}
 --- !u!4 &30292555
 Transform:
   m_ObjectHideFlags: 0
@@ -18941,6 +18942,18 @@ PrefabInstance:
       propertyPath: cameraFollow
       value: 
       objectReference: {fileID: 519420033}
+    - target: {fileID: 8925741756164194636, guid: 8709fa114aad5a64094e509df57771f7, type: 3}
+      propertyPath: spaceAssign1.Array.data[50]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925741756164194636, guid: 8709fa114aad5a64094e509df57771f7, type: 3}
+      propertyPath: spaceAssign1.Array.data[59]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925741756164194636, guid: 8709fa114aad5a64094e509df57771f7, type: 3}
+      propertyPath: spaceAssign1.Array.data[81]
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8925741757026899065, guid: 8709fa114aad5a64094e509df57771f7, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -32788,11 +32801,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!4 &1845667211 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8925741757105283906, guid: 8709fa114aad5a64094e509df57771f7, type: 3}
-  m_PrefabInstance: {fileID: 1166636201}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1872684918
 GameObject:
   m_ObjectHideFlags: 0
@@ -34717,26 +34725,18 @@ PrefabInstance:
       propertyPath: despawnTime
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8925741756064931278, guid: 8709fa114aad5a64094e509df57771f7, type: 3}
+      propertyPath: inventoryScript
+      value: 
+      objectReference: {fileID: 1078932189}
     - target: {fileID: 8925741756164194636, guid: 8709fa114aad5a64094e509df57771f7, type: 3}
       propertyPath: dot
       value: 
-      objectReference: {fileID: 1845667211}
-    - target: {fileID: 8925741756164194636, guid: 8709fa114aad5a64094e509df57771f7, type: 3}
-      propertyPath: pcs
-      value: 
-      objectReference: {fileID: 11400000, guid: 617a17ef434a8974b8cef8b243a0e6be, type: 2}
+      objectReference: {fileID: 100477777}
     - target: {fileID: 8925741756164194636, guid: 8709fa114aad5a64094e509df57771f7, type: 3}
       propertyPath: shopMenu
       value: 
       objectReference: {fileID: 179448744}
-    - target: {fileID: 8925741756164194636, guid: 8709fa114aad5a64094e509df57771f7, type: 3}
-      propertyPath: healthText
-      value: 
-      objectReference: {fileID: 754657753}
-    - target: {fileID: 8925741756164194636, guid: 8709fa114aad5a64094e509df57771f7, type: 3}
-      propertyPath: remaininghp
-      value: 60
-      objectReference: {fileID: 0}
     - target: {fileID: 8925741756164194636, guid: 8709fa114aad5a64094e509df57771f7, type: 3}
       propertyPath: routeScript
       value: 
@@ -34749,6 +34749,18 @@ PrefabInstance:
       propertyPath: cameraFollow
       value: 
       objectReference: {fileID: 519420033}
+    - target: {fileID: 8925741756164194636, guid: 8709fa114aad5a64094e509df57771f7, type: 3}
+      propertyPath: spaceAssign1.Array.data[50]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925741756164194636, guid: 8709fa114aad5a64094e509df57771f7, type: 3}
+      propertyPath: spaceAssign1.Array.data[59]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925741756164194636, guid: 8709fa114aad5a64094e509df57771f7, type: 3}
+      propertyPath: spaceAssign1.Array.data[81]
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8925741757026899065, guid: 8709fa114aad5a64094e509df57771f7, type: 3}
       propertyPath: m_RootOrder
       value: 0

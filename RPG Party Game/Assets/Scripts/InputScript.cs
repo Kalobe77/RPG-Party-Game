@@ -20,9 +20,9 @@ public class InputScript : MonoBehaviour
     public int[] spaceTypes = {0, 1, 2, 3};
     //int[] spaceAssign = new int[85];
     //                            0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 
-    //public int[] spaceAssign = {0, 2, 2, 2, 2, 2, 0, 2, 2, 2, 2, 2, 2, 2, 1, 0, 2, 2, 2, 0, 2, 2, 2, 2, 1, 2, 0, 2, 2, 2, 2, 2, 2, 0, 2, 2, 2, 2, 2, 2, 0, 2, 2, 2, 2, 0, 0, 2, 0, 2, 5, 2, 2, 2, 0, 0, 0, 2, 2, 5, 0, 0, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 2, 0, 2, 1, 5, 0, 2, 2};
+    public int[] spaceAssign1 = {0, 2, 2, 2, 2, 2, 0, 2, 2, 2, 2, 2, 2, 2, 1, 0, 2, 2, 2, 0, 2, 2, 2, 2, 1, 2, 0, 2, 2, 2, 2, 2, 2, 0, 2, 2, 2, 2, 2, 2, 0, 2, 2, 2, 2, 0, 0, 2, 0, 2, 3, 2, 2, 2, 0, 0, 0, 2, 2, 3, 0, 0, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 2, 0, 2, 1, 3, 0, 2, 2};
 
-    public int[] spaceAssign = {2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 3, 3, 3, 3, 3};
+    //public int[] spaceAssign = {2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 3, 3, 3, 3, 3};
     
     // 2D arrays to hold enemy stat information (May use a file in the future)
     public int[,] enemyStatsMatrix = {{0,1,2,3,4,5,6,7,8,9},{10,11,12,13,14,15,16,17,18,19},{20,21,22,23,24,25,26,27,28,29},{30,31,32,33,34,35,36,37,38,39}};
@@ -182,11 +182,62 @@ public class InputScript : MonoBehaviour
                     // combat spot
                     turnHandler.UpdateStatus(); // stores info for new scene
 
-                    nodeType = spaceAssign[node]; 
+                    nodeType = pcs.spaceAssign[node]; 
 
-                    // 0 is a normal space                       ****
+                    //////// different mine spaces //////////
+                    if (nodeType == 4)
+                    {
+                        pcs.spaceAssign[node] = 0;
+                        nodeType = 0;
+                        remaininghp = remaininghp - 6;
+                        if (remaininghp <= 0)
+                        {
+                            remaininghp = 1;
+                        }
+                        turnHandler.healthUpdate();
+                    }
+                    else if (nodeType == 5)
+                    {
+                        pcs.spaceAssign[node] = 1;
+                        nodeType = 1;
+                        remaininghp = remaininghp - 6;
+                        if (remaininghp <= 0)
+                        {
+                            remaininghp = 1;
+                        }
+                        turnHandler.healthUpdate();
+                    }
+                    else if (nodeType == 6)
+                    {
+                        pcs.spaceAssign[node] = 2;
+                        nodeType = 2;
+                        remaininghp = remaininghp - 6;
+                        if (remaininghp <= 0)
+                        {
+                            remaininghp = 1;
+                        }
+                        turnHandler.healthUpdate();
+                    }
+                    else if (nodeType == 7)
+                    {
+                        pcs.spaceAssign[node] = 3;
+                        nodeType = 3;
+                        remaininghp = remaininghp - 6;
+                        if (remaininghp <= 0)
+                        {
+                            remaininghp = 1;
+                        }
+                        turnHandler.healthUpdate();
+                    }
 
-                    if (nodeType == 1) // shop space             ****
+                    // Events Spaces
+                    if (nodeType == 0)
+                    {
+                        turnHandler.ProgressTurn();
+                        turnHandler.NextTurn();
+                        turnHandler.UpdateStatus();
+                    }
+                    else if (nodeType == 1) // shop space             ****
                     {
                         canShop = true;
                         spacesRemaining = -1;
@@ -200,35 +251,11 @@ public class InputScript : MonoBehaviour
                         isInCombat = !isInCombat;
                     }
 
-                    else if (nodeType == 3) // roll again
-                    {
-                        //nodeType = 5;
-
-                    }
-
-                    else if (nodeType == 4) // free item
-                    {
-                        //nodeType = 5;
-
-                    }
-
-                    else if (nodeType == 5) // boss space         ****
+                    else if (nodeType == 3) // boss space        ****
                     {
                         GenerateBossEnemy();
                         isInCombat = !isInCombat;
                     }
-
-                    //////// different mine spaces //////////
-
-                    else if (nodeType == 6) // mine normal space    
-                    {
-                        nodeType = 0;
-                        remaininghp = remaininghp - 6;
-                    }
-
-                    
-
-
                 }
 
                 if (canShop)

@@ -14,6 +14,8 @@ public class ItemScript : MonoBehaviour
     public InventoryScript inventory1;
     public InventoryScript inventory2;
 
+    public PlayerCharacterStatus pcs;
+
     // Start is called before the first frame update
     void Start() 
     {
@@ -72,16 +74,44 @@ public class ItemScript : MonoBehaviour
     {
         if(inputScript.isTurn && (inventory1.itemStorage[1] != 0) && inventory1.canUse)
         {
-            inputScript.spaceAssign[inputScript.node] = 6;
-            inputScript2.spaceAssign[inputScript.node] = 6;
+            if (inputScript.node == 0)
+            {
+                pcs.spaceAssign[inputScript.node] = 4;
+            }
+            else if (inputScript.node == 1)
+            {
+                pcs.spaceAssign[inputScript.node] = 5;
+            }
+            else if (inputScript.node == 2)
+            {
+                pcs.spaceAssign[inputScript.node] = 6;
+            }
+            else if (inputScript.node == 3)
+            {
+                pcs.spaceAssign[inputScript.node] = 7;
+            }
 
             //inventory1.canUse = false;
         }
 
         else if(inputScript2.isTurn && (inventory2.itemStorage[1] != 0) && inventory2.canUse)
         {
-            inputScript.spaceAssign[inputScript2.node] = 6;
-            inputScript2.spaceAssign[inputScript2.node] = 6;
+            if (inputScript.node == 0)
+            {
+                pcs.spaceAssign[inputScript2.node] = 4;
+            }
+            else if (inputScript.node == 1)
+            {
+                pcs.spaceAssign[inputScript2.node] = 5;
+            }
+            else if (inputScript.node == 2)
+            {
+                pcs.spaceAssign[inputScript2.node] = 6;
+            }
+            else if (inputScript.node == 3)
+            {
+                pcs.spaceAssign[inputScript2.node] = 7;
+            }
 
             //inventory2.canUse = false;
         }
@@ -89,14 +119,14 @@ public class ItemScript : MonoBehaviour
 ////////////
     public void Choose(int num)
     {
-        if(inputScript.isTurn && (inventory1.itemStorage[2] != 0)) //&& inventory1.canUse)
+        if(inputScript.isTurn) //&& inventory1.canUse)
         {
             inputScript.GetNum(num);
 
             //inventory1.canUse = false;
         }
 
-        else if(inputScript2.isTurn && (inventory2.itemStorage[2] != 0)) //&& inventory2.canUse)
+        else if(inputScript2.isTurn) //&& inventory2.canUse)
         {
             inputScript2.GetNum(num);
 

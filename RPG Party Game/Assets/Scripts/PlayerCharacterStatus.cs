@@ -62,6 +62,8 @@ public class PlayerCharacterStatus : ScriptableObject
 
     public int[] enemy2Stats = new int[9];
 
+    public int[] spaceAssign = {0, 2, 2, 2, 2, 2, 0, 2, 2, 2, 2, 2, 2, 2, 1, 0, 2, 2, 2, 0, 2, 2, 2, 2, 1, 2, 0, 2, 2, 2, 2, 2, 2, 0, 2, 2, 2, 2, 2, 2, 0, 2, 2, 2, 2, 0, 0, 2, 0, 2, 3, 2, 2, 2, 0, 0, 0, 2, 2, 3, 0, 0, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 2, 0, 2, 1, 3, 0, 2, 2};
+
     public string SaveToString()
     {
         return JsonUtility.ToJson(this, true);
