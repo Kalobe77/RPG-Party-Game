@@ -74,7 +74,9 @@ public class TurnHandlerScript : MonoBehaviour
         {
             inputScript.isTurn = !inputScript.isTurn;
             inputScript2.isTurn = !inputScript2.isTurn;
+            pcs.turn = pcs.turn + 1;
         }
+        CheckTurn();
     }
 
     public void UpdateStatus()
@@ -112,5 +114,13 @@ public class TurnHandlerScript : MonoBehaviour
         pcs.diceRolledPlayerTwo = inputScript2.diceRolled;
         pcs.isAbleToRollPlayerTwo = inputScript2.isAbleToRoll;
         pcs.isPlayerTwoInCombat = inputScript2.isInCombat;
+    }
+
+    public void CheckTurn()
+    {
+        if (pcs.turn > pcs.turnLimit)
+        {
+            SceneManager.LoadScene("Scenes/Results");
+        }
     }
 }

@@ -101,6 +101,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -2044,8 +2056,8 @@ TextureImporter:
       six sided die_45: -1314847747
       six sided die_85: -1449926411
       six sided die_4: -717708832
-      six sided die_67: -171136569
       six sided die_75: 1859884340
+      six sided die_67: -171136569
       six sided die_49: 952082027
       six sided die_42: 452639862
       six sided die_28: 172085977
