@@ -21,9 +21,11 @@ public class InventoryScript : MonoBehaviour
     public bool isTurn;
     public bool canUse;
 
+    public PlayerCharacterStatus pcs;
     public InputScript inputScript;
     public InputScript inputScript2;
     public PauseScript1 pause;
+    public int gems;
 
     // Start is called before the first frame update
     void Start()
@@ -37,19 +39,12 @@ public class InventoryScript : MonoBehaviour
         inputScript2 = GameObject.FindGameObjectWithTag("Player 2").GetComponent<InputScript>();
         pause = GameObject.FindGameObjectWithTag("TurnLogic").GetComponent<PauseScript1>();
 
-        if (gameObject.tag == "Player1Inventory")
-        {
-            isTurn = inputScript.isTurn;
-        }
-        else if (gameObject.tag == "Player2Inventory")
-        {
-            isTurn = inputScript2.isTurn;
-        }
+        SetFlag();
     }
 
     // Update is called once per frame
     void Update()
-    { 
+    {
         if (Input.GetKeyDown(KeyCode.I) && !inputScript.shopOpen && !inputScript2.shopOpen && !(PauseScript1.isPaused)) // && !inputScript.isAbleToRoll && !inputScript2.isAbleToRoll)
         {
             if (gameObject.tag == "Player1Inventory")
@@ -112,20 +107,24 @@ public class InventoryScript : MonoBehaviour
             }
         }
     }
- /*
+ /////////
     public void MoreHeal()
     {
+        SetFlag();
         if (isTurn)
         {
-            if (itemStorage[0] > 0)
+            Debug.Log(gems);
+            if (gems >= 2)
             {
-                itemStorage[0] = itemStorage[0] - 1;
+                Debug.Log("Had Enough Gems");
+                itemStorage[0]++;
                 hPotionText.text = "Health Potion: " + itemStorage[0].ToString();
-                canUse = false;
+                gems = gems - 2;
+                SetGems();
             }
         }
     }
- */
+ 
     public void LessTrap()
     {
         if (isTurn && canUse)
@@ -138,7 +137,22 @@ public class InventoryScript : MonoBehaviour
             }
         }
     }
-
+ 
+    public void MoreTrap()
+    {
+        SetFlag();
+        if (isTurn)
+        {
+            if (gems >= 2)
+            {
+                itemStorage[1]++;
+                trapsText.text = "Traps: " + itemStorage[1].ToString();
+                gems = gems - 2;
+                SetGems();
+            }
+        }
+    }
+ 
     public void LessChoose()
     {
         if (isTurn && canUse)
@@ -151,7 +165,22 @@ public class InventoryScript : MonoBehaviour
             }
         }
     }
-
+ 
+    public void MoreChoose()
+    {
+        SetFlag();
+        if (isTurn)
+        {
+            if (gems >= 3)
+            {
+                itemStorage[2]++;
+                choiceText.text = "Movement Choice: " + itemStorage[2].ToString();
+                gems = gems - 3;
+                SetGems();
+            }
+        }
+    }
+ 
     public void Choices()
     {
         if (isTurn && canUse)
@@ -179,9 +208,46 @@ public class InventoryScript : MonoBehaviour
             }
         }
     }
+ 
+    public void MoreBoost()
+    {
+        SetFlag();
+        if (isTurn)
+        {
+            if (gems >= 4)
+            {
+                itemStorage[3]++;
+                ePotionText.text = "Energy Potion: " + itemStorage[3].ToString();
+                gems = gems - 4;
+                SetGems();
+            }
+        }
+    }
+ 
 
-   // public void UpdateInventory()
-   // {
-        
-   // }
+    public void SetGems()
+    {
+        if (gameObject.tag == "Player1Inventory")
+        {
+            pcs.gems_one = gems;
+        }
+        else if (gameObject.tag == "Player2Inventory")
+        {
+            pcs.gems_two = gems;
+        }
+    }
+
+    public void SetFlag()
+    {
+        if (gameObject.tag == "Player1Inventory")
+        {
+            isTurn = inputScript.isTurn;
+            gems = pcs.gems_one;
+        }
+        else if (gameObject.tag == "Player2Inventory")
+        {
+            isTurn = inputScript2.isTurn;
+            gems = pcs.gems_two;
+        }
+    }
 }

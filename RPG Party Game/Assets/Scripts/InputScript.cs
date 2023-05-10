@@ -90,9 +90,6 @@ public class InputScript : MonoBehaviour
     // Each Player Keeps Track of the Turn
     public int turn;
 
-    // Each players currency
-    public int gems;
-
     // Start is called before the first frame update
     void Start()
     {  
@@ -120,7 +117,6 @@ public class InputScript : MonoBehaviour
             diceRolled = pcs.diceRolledPlayerOne;
             isAbleToRoll = pcs.isAbleToRollPlayerOne;
             isInCombat = pcs.isPlayerOneInCombat;
-            gems = pcs.gems_one;
         }
         else if (gameObject.tag == "Player 2")
         {
@@ -141,7 +137,6 @@ public class InputScript : MonoBehaviour
             diceRolled = pcs.diceRolledPlayerTwo;
             isAbleToRoll = pcs.isAbleToRollPlayerTwo;
             isInCombat = pcs.isPlayerTwoInCombat;
-            gems = pcs.gems_two;
         }
         dice.transform.position = new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z);
         Debug.Log(dice);

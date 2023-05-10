@@ -8,6 +8,7 @@ public class TurnHandlerScript : MonoBehaviour
 {
     // Used for health score
     public Text healthText;
+    public Text gemsText;
 
     // Handles if game is going on
     public bool isGameHappening = false;
@@ -47,11 +48,13 @@ public class TurnHandlerScript : MonoBehaviour
         if (inputScript.isTurn){
 
             healthText.text = "HP: " + inputScript.remaininghp.ToString() + " / " + inputScript.maxhp.ToString();
+            gemsText.text = "Gems: " + pcs.gems_one.ToString();
         }
 
         else if (inputScript2.isTurn){
 
             healthText.text = "HP: " + inputScript2.remaininghp.ToString() + " / " + inputScript2.maxhp.ToString();
+            gemsText.text = "Gems: " + pcs.gems_two.ToString();
         }
     }
 
