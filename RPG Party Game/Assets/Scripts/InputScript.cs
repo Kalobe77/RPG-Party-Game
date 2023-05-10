@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class InputScript : MonoBehaviour
 {
-    public bool done = true;
+    //public int[] itemStorage = {3, 4, 5};
 
     public GameObject shopMenu;
 
@@ -97,12 +97,14 @@ public class InputScript : MonoBehaviour
     void Start()
     {  
         shopMenu.SetActive(false);
+        shopOpen = false;
         // Links the input script using the tag
         cameraFollow = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>();
         turnHandler = GameObject.FindGameObjectWithTag("TurnLogic").GetComponent<TurnHandlerScript>();
         if (gameObject.tag == "Player 1")
         {
-            remaininghp = pcs.remaininghp_one;
+            // remaininghp = pcs.remaininghp_one;
+            remaininghp = pcs.remaininghp_one - 10; /////
             maxhp = pcs.maxhp_one;
             atk = pcs.atk_one;
             def = pcs.def_one;
@@ -122,7 +124,8 @@ public class InputScript : MonoBehaviour
         }
         else if (gameObject.tag == "Player 2")
         {
-            remaininghp = pcs.remaininghp_two;
+            // remaininghp = pcs.remaininghp_two;
+            remaininghp = pcs.remaininghp_two - 10; /////
             maxhp = pcs.maxhp_two;
             atk = pcs.atk_two;
             def = pcs.def_two;
@@ -181,12 +184,14 @@ public class InputScript : MonoBehaviour
                     // combat spot
                     turnHandler.UpdateStatus(); // stores info for new scene
 
-                    nodeType = spaceAssign[node];
+                    nodeType = spaceAssign3[node];
+
                     if (nodeType == 1)
                     {
                         canShop = true;
                         spacesRemaining = -1;
                         shopMenu.SetActive(true);
+                        shopOpen = true;
                     }
 
                     else if (nodeType == 2)
@@ -195,9 +200,17 @@ public class InputScript : MonoBehaviour
                         isInCombat = !isInCombat;
                     }
 
-                    else if (nodeType == 3)
+                    else if (nodeType == 3) // another roll
+                    {
+                        //nodeType = 5;
+
+                    }
+
+                    else if (nodeType == 4) // mine
                     {
                         nodeType = 5;
+                        remaininghp = remaininghp - 6;
+                    }
 
                     }
 
@@ -207,6 +220,7 @@ public class InputScript : MonoBehaviour
                         isInCombat = !isInCombat;
                     }
                 }
+
                 if (canShop)
                 {
                     if (Input.GetKeyDown(KeyCode.E) && !isCamera)
@@ -215,6 +229,7 @@ public class InputScript : MonoBehaviour
                         canShop = false;
                         diceRolled = false;
                         shopMenu.SetActive(false);
+                        shopOpen = false;
                         turnHandler.ProgressTurn();
                         turnHandler.NextTurn();
                         turnHandler.UpdateStatus();
@@ -242,6 +257,7 @@ public class InputScript : MonoBehaviour
                     if (canShop)
                     {
                         shopMenu.SetActive(false);
+                        shopOpen = false;
                     }
                     // Initializes camera to be where the player is
                     dot.position = target.position;
@@ -254,6 +270,7 @@ public class InputScript : MonoBehaviour
                     if (canShop)
                     {
                         shopMenu.SetActive(true);
+                        shopOpen = true;
                     }
                     if (spacesRemaining > 0 || spacesRemaining == -1)
                     {
@@ -285,7 +302,16 @@ public class InputScript : MonoBehaviour
         shopOpen = false;
         canShop = false;
     }
-
+///////////
+    public void GetNum(int num)
+    {
+        spacesRemaining = num;
+        diceRolled = true;
+        dice.SetActive(false);
+        isAbleToMove = true;
+        nodesVisited.Add(node);
+    }
+////////////
     // Function to handle moving
     IEnumerator Move()
     {

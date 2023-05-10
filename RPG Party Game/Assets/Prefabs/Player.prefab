@@ -1,5 +1,52 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5626120349243409425
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7429833042013299415}
+  - component: {fileID: 9006160468190766696}
+  m_Layer: 0
+  m_Name: Inventory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7429833042013299415
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5626120349243409425}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 392.16046, y: 154.41881, z: -3.2748349}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8925741757026899065}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9006160468190766696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5626120349243409425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 160ef57d2204e4ee186de06b2eaa5e51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryMenu: {fileID: 5626120349243409425}
+  inputScript: {fileID: 0}
+  inputScript2: {fileID: 0}
 --- !u!1 &8925741756064931272
 GameObject:
   m_ObjectHideFlags: 0
@@ -251,6 +298,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f570d5a2c9d706441b91eea77d7ccccc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  done: 1
+  shopMenu: {fileID: 0}
+  canShop: 0
+  shopOpen: 0
+  nodeType: 0
+  spaceTypes: 00000000010000000200000003000000
+  spaceAssign: 02000000010000000200000001000000020000000100000002000000010000000200000001000000020000000100000002000000010000000200000001000000020000000100000002000000010000000200000001000000020000000100000002000000010000000200000001000000020000000100000002000000010000000200000001000000020000000100000002000000010000000200000001000000020000000100000002000000010000000200000001000000020000000100000002000000010000000200000001000000020000000100000002000000010000000200000001000000020000000100000002000000010000000200000001000000020000000100000002000000010000000200000001000000020000000100000002000000010000000200000001000000020000000100000002000000010000000300000003000000030000000300000003000000
   rb: {fileID: 8925741756164194675}
   target: {fileID: 8925741756164194639}
   dot: {fileID: 8925741756064931279}
@@ -261,6 +315,8 @@ MonoBehaviour:
   isCamera: 0
   diceRolled: 0
   isTurn: 1
+  isAbleToRoll: 1
+  isInCombat: 0
   characterOffset: 0.7
   routeScript: {fileID: 0}
   spacesRemaining: 0
@@ -268,6 +324,14 @@ MonoBehaviour:
   nodesVisited: 
   cameraFollow: {fileID: 0}
   turnHandler: {fileID: 0}
+  remaininghp: 0
+  maxhp: 0
+  atk: 0
+  def: 0
+  mag: 0
+  res: 0
+  spd: 0
+  pcs: {fileID: 0}
 --- !u!95 &8925741756164194637
 Animator:
   serializedVersion: 5
@@ -345,6 +409,7 @@ Transform:
   - {fileID: 8925741756164194639}
   - {fileID: 8925741756064931279}
   - {fileID: 8925741757105283906}
+  - {fileID: 7429833042013299415}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

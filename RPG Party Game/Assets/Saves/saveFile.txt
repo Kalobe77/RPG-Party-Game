@@ -7,12 +7,12 @@
     "res_one": 10,
     "spd_one": 10,
     "level_one": 1,
-    "exp_one": 0,
-    "node_one": 82,
+    "exp_one": 52,
+    "node_one": 77,
     "isPlayerOneTurn": true,
     "player1pos": {
-        "x": 2.0,
-        "y": 6.699999809265137,
+        "x": -4.0,
+        "y": 10.699999809265137,
         "z": 0.0
     },
     "isPlayerOneInCombat": false,
@@ -21,13 +21,13 @@
     "diceRolledPlayerOne": false,
     "isAbleToRollPlayerOne": true,
     "enemy1Stats": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
+        1,
+        20,
+        10,
+        10,
+        10,
+        10,
+        10,
         0
     ],
     "remaininghp_two": 40,
@@ -39,11 +39,11 @@
     "spd_two": 10,
     "level_two": 1,
     "exp_two": 0,
-    "node_two": 65,
+    "node_two": 64,
     "isPlayerTwoTurn": false,
     "isPlayerTwoInCombat": false,
     "player2pos": {
-        "x": -14.0,
+        "x": -12.0,
         "y": -7.300000190734863,
         "z": 0.0
     },
@@ -52,13 +52,13 @@
     "diceRolledPlayerTwo": false,
     "isAbleToRollPlayerTwo": true,
     "enemy2Stats": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
+        5,
+        20,
+        10,
+        10,
+        10,
+        10,
+        10,
         0
     ]
 }

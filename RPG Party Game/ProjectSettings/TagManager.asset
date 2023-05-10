@@ -8,6 +8,8 @@ TagManager:
   - TurnLogic
   - Player 2
   - SaveWrapper
+  - Player1Inventory
+  - Player2Inventory
   layers:
   - Default
   - TransparentFX

@@ -23,16 +23,15 @@ MonoBehaviour:
   spd_one: 100
   level_one: 100
   exp_one: 0
-  gems_one: 90
-  node_one: 51
+  node_one: 82
   isPlayerOneTurn: 1
-  player1pos: {x: 6, y: 0.6999998, z: 0}
+  player1pos: {x: 2, y: 6.7, z: 0}
   isPlayerOneInCombat: 0
   isAbleToMovePlayerOne: 0
   isCameraPlayerOne: 0
   diceRolledPlayerOne: 0
   isAbleToRollPlayerOne: 1
-  enemy1Stats: 0a0000000a00000007000000050000000200000005000000050000000100000002000000
+  enemy1Stats: 0000000000000000000000000000000000000000000000000000000000000000
   remaininghp_two: 40
   maxhp_two: 40
   atk_two: 10
@@ -42,11 +41,10 @@ MonoBehaviour:
   spd_two: 10
   level_two: 1
   exp_two: 0
-  gems_two: 0
-  node_two: 58
+  node_two: 65
   isPlayerTwoTurn: 0
   isPlayerTwoInCombat: 0
-  player2pos: {x: 0, y: -7.3, z: 0}
+  player2pos: {x: -14, y: -7.3, z: 0}
   isAbleToMovePlayerTwo: 0
   isCameraPlayerTwo: 0
   diceRolledPlayerTwo: 0
