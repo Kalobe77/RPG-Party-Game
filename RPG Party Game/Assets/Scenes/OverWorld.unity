@@ -285,10 +285,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 30292553}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 762992125d47f4443956817d393960bb, type: 3}
+  m_Script: {fileID: 11500000, guid: 7ebf4ab7beed1fb46a8a4db51b054d9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canUse: 0
   inputScript: {fileID: 0}
   inputScript2: {fileID: 0}
   inventory1: {fileID: 0}
@@ -935,6 +934,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &162838449 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5626120349243409425, guid: 8709fa114aad5a64094e509df57771f7, type: 3}
+  m_PrefabInstance: {fileID: 1166636201}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &167011769
 GameObject:
   m_ObjectHideFlags: 0
@@ -1019,7 +1023,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 855554574}
+      - m_Target: {fileID: 1078932187}
         m_TargetAssemblyTypeName: InventoryScript, Assembly-CSharp
         m_MethodName: MenuDown
         m_Mode: 1
@@ -1031,7 +1035,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 904925835}
+      - m_Target: {fileID: 904925837}
         m_TargetAssemblyTypeName: InventoryScript, Assembly-CSharp
         m_MethodName: MenuDown
         m_Mode: 1
@@ -1098,7 +1102,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &179448745
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3438,7 +3442,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 855554574}
+      - m_Target: {fileID: 1078932187}
         m_TargetAssemblyTypeName: InventoryScript, Assembly-CSharp
         m_MethodName: LessTrap
         m_Mode: 1
@@ -3450,7 +3454,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 904925835}
+      - m_Target: {fileID: 904925837}
         m_TargetAssemblyTypeName: InventoryScript, Assembly-CSharp
         m_MethodName: LessTrap
         m_Mode: 1
@@ -4001,7 +4005,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 855554574}
+      - m_Target: {fileID: 1078932187}
         m_TargetAssemblyTypeName: InventoryScript, Assembly-CSharp
         m_MethodName: ChoicesDown
         m_Mode: 1
@@ -4013,7 +4017,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 904925835}
+      - m_Target: {fileID: 904925837}
         m_TargetAssemblyTypeName: InventoryScript, Assembly-CSharp
         m_MethodName: ChoicesDown
         m_Mode: 1
@@ -4147,7 +4151,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 855554574}
+      - m_Target: {fileID: 1078932187}
         m_TargetAssemblyTypeName: InventoryScript, Assembly-CSharp
         m_MethodName: Choices
         m_Mode: 1
@@ -4159,7 +4163,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 904925835}
+      - m_Target: {fileID: 904925837}
         m_TargetAssemblyTypeName: InventoryScript, Assembly-CSharp
         m_MethodName: Choices
         m_Mode: 1
@@ -4171,7 +4175,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 855554574}
+      - m_Target: {fileID: 1078932187}
         m_TargetAssemblyTypeName: InventoryScript, Assembly-CSharp
         m_MethodName: LessChoose
         m_Mode: 1
@@ -4183,7 +4187,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 904925835}
+      - m_Target: {fileID: 904925837}
         m_TargetAssemblyTypeName: InventoryScript, Assembly-CSharp
         m_MethodName: LessChoose
         m_Mode: 1
@@ -4586,7 +4590,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &611431880
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5474,7 +5478,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 855554574}
+      - m_Target: {fileID: 1078932187}
         m_TargetAssemblyTypeName: InventoryScript, Assembly-CSharp
         m_MethodName: ChoicesDown
         m_Mode: 1
@@ -5486,7 +5490,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 904925835}
+      - m_Target: {fileID: 904925837}
         m_TargetAssemblyTypeName: InventoryScript, Assembly-CSharp
         m_MethodName: ChoicesDown
         m_Mode: 1
@@ -5971,7 +5975,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &770987377
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6212,7 +6216,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 855554574}
+      - m_Target: {fileID: 1078932187}
         m_TargetAssemblyTypeName: InventoryScript, Assembly-CSharp
         m_MethodName: ChoicesDown
         m_Mode: 1
@@ -6224,7 +6228,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 904925835}
+      - m_Target: {fileID: 904925837}
         m_TargetAssemblyTypeName: InventoryScript, Assembly-CSharp
         m_MethodName: ChoicesDown
         m_Mode: 1
@@ -6470,17 +6474,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 826429766}
   m_CullTransparentMesh: 1
---- !u!114 &855554574 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9006160468190766696, guid: 8709fa114aad5a64094e509df57771f7, type: 3}
-  m_PrefabInstance: {fileID: 8925741757033646099}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 160ef57d2204e4ee186de06b2eaa5e51, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &860879663
 GameObject:
   m_ObjectHideFlags: 0
@@ -6649,17 +6642,31 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &904925835 stripped
+--- !u!114 &904925837
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9006160468190766696, guid: 8709fa114aad5a64094e509df57771f7, type: 3}
-  m_PrefabInstance: {fileID: 1166636201}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 162838449}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 160ef57d2204e4ee186de06b2eaa5e51, type: 3}
+  m_Script: {fileID: 11500000, guid: be5ba6be6dc6f2f4b87a3abec89ac7e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemStorage: 03000000040000000500000006000000
+  hPotionText: {fileID: 1964193218}
+  trapsText: {fileID: 1718601827}
+  choiceText: {fileID: 793148507}
+  ePotionText: {fileID: 1638180677}
+  inventoryMenu: {fileID: 770987376}
+  chooseMenu: {fileID: 611431879}
+  isInventory: 0
+  isTurn: 0
+  canUse: 0
+  inputScript: {fileID: 0}
+  inputScript2: {fileID: 0}
+  pause: {fileID: 0}
 --- !u!1 &941919140
 GameObject:
   m_ObjectHideFlags: 0
@@ -17373,7 +17380,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &972429901
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17672,7 +17679,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1015305265
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17985,6 +17992,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1078932185 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5626120349243409425, guid: 8709fa114aad5a64094e509df57771f7, type: 3}
+  m_PrefabInstance: {fileID: 8925741757033646099}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1078932187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078932185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be5ba6be6dc6f2f4b87a3abec89ac7e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemStorage: 03000000040000000500000006000000
+  hPotionText: {fileID: 1964193218}
+  trapsText: {fileID: 1718601827}
+  choiceText: {fileID: 793148507}
+  ePotionText: {fileID: 1638180677}
+  inventoryMenu: {fileID: 770987376}
+  chooseMenu: {fileID: 611431879}
+  isInventory: 0
+  isTurn: 0
+  canUse: 0
+  inputScript: {fileID: 0}
+  inputScript2: {fileID: 0}
+  pause: {fileID: 0}
 --- !u!1 &1088684690
 GameObject:
   m_ObjectHideFlags: 0
@@ -18620,7 +18657,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 855554574}
+      - m_Target: {fileID: 1078932187}
         m_TargetAssemblyTypeName: InventoryScript, Assembly-CSharp
         m_MethodName: ChoicesDown
         m_Mode: 1
@@ -18632,7 +18669,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 904925835}
+      - m_Target: {fileID: 904925837}
         m_TargetAssemblyTypeName: InventoryScript, Assembly-CSharp
         m_MethodName: ChoicesDown
         m_Mode: 1
@@ -19093,7 +19130,8 @@ PrefabInstance:
       propertyPath: inventoryMenu
       value: 
       objectReference: {fileID: 770987376}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9006160468190766696, guid: 8709fa114aad5a64094e509df57771f7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8709fa114aad5a64094e509df57771f7, type: 3}
 --- !u!1 &1170949232
 GameObject:
@@ -19928,7 +19966,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 855554574}
+      - m_Target: {fileID: 1078932187}
         m_TargetAssemblyTypeName: InventoryScript, Assembly-CSharp
         m_MethodName: ChoicesDown
         m_Mode: 1
@@ -19940,7 +19978,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 904925835}
+      - m_Target: {fileID: 904925837}
         m_TargetAssemblyTypeName: InventoryScript, Assembly-CSharp
         m_MethodName: ChoicesDown
         m_Mode: 1
@@ -20261,7 +20299,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 855554574}
+      - m_Target: {fileID: 1078932187}
         m_TargetAssemblyTypeName: InventoryScript, Assembly-CSharp
         m_MethodName: LessBoost
         m_Mode: 1
@@ -20273,7 +20311,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 904925835}
+      - m_Target: {fileID: 904925837}
         m_TargetAssemblyTypeName: InventoryScript, Assembly-CSharp
         m_MethodName: LessBoost
         m_Mode: 1
@@ -20431,7 +20469,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 855554574}
+      - m_Target: {fileID: 1078932187}
         m_TargetAssemblyTypeName: InventoryScript, Assembly-CSharp
         m_MethodName: LessHeal
         m_Mode: 1
@@ -20443,7 +20481,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 904925835}
+      - m_Target: {fileID: 904925837}
         m_TargetAssemblyTypeName: InventoryScript, Assembly-CSharp
         m_MethodName: LessHeal
         m_Mode: 1
@@ -33107,6 +33145,8 @@ MonoBehaviour:
   isGameHappening: 0
   inputScript: {fileID: 1305823583}
   inputScript2: {fileID: 1566091251}
+  inventory1: {fileID: 0}
+  inventory2: {fileID: 0}
   cameraFollow: {fileID: 519420033}
   pcs: {fileID: 11400000, guid: 617a17ef434a8974b8cef8b243a0e6be, type: 2}
 --- !u!4 &1912540897
@@ -33710,7 +33750,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 855554574}
+      - m_Target: {fileID: 1078932187}
         m_TargetAssemblyTypeName: InventoryScript, Assembly-CSharp
         m_MethodName: ChoicesDown
         m_Mode: 1
@@ -33722,7 +33762,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 904925835}
+      - m_Target: {fileID: 904925837}
         m_TargetAssemblyTypeName: InventoryScript, Assembly-CSharp
         m_MethodName: ChoicesDown
         m_Mode: 1
@@ -34786,5 +34826,6 @@ PrefabInstance:
       propertyPath: inventoryMenu
       value: 
       objectReference: {fileID: 770987376}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9006160468190766696, guid: 8709fa114aad5a64094e509df57771f7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8709fa114aad5a64094e509df57771f7, type: 3}

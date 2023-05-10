@@ -72,16 +72,16 @@ public class ItemScript : MonoBehaviour
     {
         if(inputScript.isTurn && (inventory1.itemStorage[1] != 0) && inventory1.canUse)
         {
-            inputScript.spaceAssign3[inputScript.node] = 4;
-            inputScript2.spaceAssign3[inputScript.node] = 4;
+            inputScript.spaceAssign[inputScript.node] = 4;
+            inputScript2.spaceAssign[inputScript.node] = 4;
 
             //inventory1.canUse = false;
         }
 
         else if(inputScript2.isTurn && (inventory2.itemStorage[1] != 0) && inventory2.canUse)
         {
-            inputScript.spaceAssign3[inputScript2.node] = 4;
-            inputScript2.spaceAssign3[inputScript2.node] = 4;
+            inputScript.spaceAssign[inputScript2.node] = 4;
+            inputScript2.spaceAssign[inputScript2.node] = 4;
 
             //inventory2.canUse = false;
         }

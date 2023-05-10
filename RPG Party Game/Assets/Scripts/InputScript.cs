@@ -184,7 +184,7 @@ public class InputScript : MonoBehaviour
                     // combat spot
                     turnHandler.UpdateStatus(); // stores info for new scene
 
-                    nodeType = spaceAssign3[node];
+                    nodeType = spaceAssign[node];
 
                     if (nodeType == 1)
                     {
@@ -210,8 +210,6 @@ public class InputScript : MonoBehaviour
                     {
                         nodeType = 5;
                         remaininghp = remaininghp - 6;
-                    }
-
                     }
 
                     else if (nodeType == 6)
