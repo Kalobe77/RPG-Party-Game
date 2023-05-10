@@ -14,41 +14,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turn: 1
   turnLimit: 20
-  remaininghp_one: 300
-  maxhp_one: 300
-  atk_one: 100
-  def_one: 100
-  mag_one: 100
-  res_one: 100
-  spd_one: 100
-  level_one: 100
+  remaininghp_one: 150
+  maxhp_one: 150
+  atk_one: 23
+  def_one: 23
+  mag_one: 23
+  res_one: 23
+  spd_one: 23
+  level_one: 5
   exp_one: 0
   gems_one: 62
-  inventory_one: 00000000000000000100000000000000
-  node_one: 82
+  inventory_one: 00000000000000000000000000000000
+  node_one: 0
   isPlayerOneTurn: 1
-  player1pos: {x: 2, y: 6.7, z: 0}
+  player1pos: {x: -20, y: 10.7, z: 0}
   isPlayerOneInCombat: 0
   isAbleToMovePlayerOne: 0
   isCameraPlayerOne: 0
   diceRolledPlayerOne: 0
   isAbleToRollPlayerOne: 1
-  enemy1Stats: 0a000000c80000000f000000190000000f000000190000001e0000000a00000006000000
-  remaininghp_two: 40
-  maxhp_two: 40
-  atk_two: 10
-  def_two: 10
-  mag_two: 10
-  res_two: 10
-  spd_two: 10
-  level_two: 1
+  enemy1Stats: 000000000000000000000000000000000000000000000000000000000000000000000000
+  remaininghp_two: 150
+  maxhp_two: 150
+  atk_two: 23
+  def_two: 23
+  mag_two: 23
+  res_two: 23
+  spd_two: 23
+  level_two: 5
   exp_two: 0
   gems_two: 0
   inventory_two: 00000000000000000000000000000000
-  node_two: 65
+  node_two: 0
   isPlayerTwoTurn: 0
   isPlayerTwoInCombat: 0
-  player2pos: {x: -14, y: -7.3, z: 0}
+  player2pos: {x: -20, y: 10.7, z: 0}
   isAbleToMovePlayerTwo: 0
   isCameraPlayerTwo: 0
   diceRolledPlayerTwo: 0
