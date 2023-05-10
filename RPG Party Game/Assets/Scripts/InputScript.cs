@@ -101,7 +101,7 @@ public class InputScript : MonoBehaviour
         if (gameObject.tag == "Player 1")
         {
             // remaininghp = pcs.remaininghp_one;
-            remaininghp = pcs.remaininghp_one - 10; /////
+            remaininghp = pcs.remaininghp_one;
             maxhp = pcs.maxhp_one;
             atk = pcs.atk_one;
             def = pcs.def_one;
@@ -121,7 +121,7 @@ public class InputScript : MonoBehaviour
         else if (gameObject.tag == "Player 2")
         {
             // remaininghp = pcs.remaininghp_two;
-            remaininghp = pcs.remaininghp_two - 10; /////
+            remaininghp = pcs.remaininghp_two;
             maxhp = pcs.maxhp_two;
             atk = pcs.atk_two;
             def = pcs.def_two;

@@ -61,17 +61,15 @@ public class InventoryScript : MonoBehaviour
                 {
                     MenuDown();
                 }
-
+                else if (canUse == false)
+                {
+                    MenuDown();
+                }
                 else
                 {
                     MenuUp();
                 }
             }
-        }
-        
-        if (canUse == false)
-        {
-            MenuDown();
         }
     }
  
@@ -80,6 +78,8 @@ public class InventoryScript : MonoBehaviour
         inventoryMenu.SetActive(true);
         Time.timeScale = 0f;
         isInventory = true;
+        inputScript.isAbleToRoll = false;
+        inputScript2.isAbleToRoll = false;
         ///
         //Debug.Log("Health Potion: " + item.ToString());
         hPotionText.text = "Health Potion: " + itemStorage[0].ToString();
@@ -91,6 +91,8 @@ public class InventoryScript : MonoBehaviour
     public void MenuDown()
     {
         inventoryMenu.SetActive(false);
+        inputScript.isAbleToRoll = true;
+        inputScript2.isAbleToRoll = true;
         Time.timeScale = 1f;
         isInventory = false;
     }

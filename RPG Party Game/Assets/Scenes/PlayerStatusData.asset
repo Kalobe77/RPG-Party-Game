@@ -12,28 +12,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cda3571a51994ca49acd66a3e568ce27, type: 3}
   m_Name: PlayerStatusData
   m_EditorClassIdentifier: 
-  turn: 2
+  turn: 11
   turnLimit: 20
-  remaininghp_one: 10
-  maxhp_one: 40
-  atk_one: 10
-  def_one: 10
-  mag_one: 10
-  res_one: 10
-  spd_one: 10
-  level_one: 1
-  exp_one: 0
-  gems_one: 6
-  node_one: 9
-  isPlayerOneTurn: 1
-  player1pos: {x: -4, y: 12.7, z: 0}
+  remaininghp_one: 50
+  maxhp_one: 50
+  atk_one: 41
+  def_one: 11
+  mag_one: 11
+  res_one: 11
+  spd_one: 11
+  level_one: 3
+  exp_one: 10
+  gems_one: 7
+  node_one: 8
+  isPlayerOneTurn: 0
+  player1pos: {x: -6, y: 12.7, z: 0}
   isPlayerOneInCombat: 0
   isAbleToMovePlayerOne: 0
   isCameraPlayerOne: 0
   diceRolledPlayerOne: 0
   isAbleToRollPlayerOne: 1
-  enemy1Stats: 28000000280000000b0000000b0000000b0000000b0000000b0000000400000001000000
-  remaininghp_two: 20
+  enemy1Stats: 1000000032000000130000000d0000000a0000000d0000000d0000000500000002000000
+  remaininghp_two: 40
   maxhp_two: 40
   atk_two: 10
   def_two: 10
@@ -43,12 +43,12 @@ MonoBehaviour:
   level_two: 1
   exp_two: 0
   gems_two: 0
-  node_two: 62
-  isPlayerTwoTurn: 0
+  node_two: 75
+  isPlayerTwoTurn: 1
   isPlayerTwoInCombat: 0
-  player2pos: {x: -8, y: -7.3, z: 0}
+  player2pos: {x: -20, y: 6.7, z: 0}
   isAbleToMovePlayerTwo: 0
   isCameraPlayerTwo: 0
   diceRolledPlayerTwo: 0
   isAbleToRollPlayerTwo: 1
-  enemy2Stats: 1e0000001e00000009000000090000000900000009000000090000000300000001000000
+  enemy2Stats: 2800000032000000130000000d0000000a0000000d0000000d0000000500000002000000

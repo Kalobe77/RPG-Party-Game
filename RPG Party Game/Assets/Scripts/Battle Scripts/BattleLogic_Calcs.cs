@@ -604,11 +604,11 @@ public class BattleLogic_Calcs : MonoBehaviour
         if (pcs.isPlayerOneTurn)
         {
             int experience = 70;
-            if (pcs.level_one >= pcs.enemy1Stats[7])
+            if (pcs.level_one >= enemy_level)
             {
-                experience = Mathf.RoundToInt(70*Mathf.Exp(-.3f*(pcs.level_one-pcs.enemy1Stats[7])));
-                experienceGained = experience;
+                experience = Mathf.RoundToInt(70*Mathf.Exp(-.3f*(pcs.level_one-enemy_level)));
             }
+            experienceGained = experience;
             pcs.exp_one = pcs.exp_one + experience;
             if (pcs.exp_one >= 100)
             {
@@ -618,11 +618,13 @@ public class BattleLogic_Calcs : MonoBehaviour
         else if (pcs.isPlayerTwoTurn)
         {
             int experience = 70;
-            if (pcs.level_two >= pcs.enemy2Stats[7])
+            if (pcs.level_two >= enemy_level)
             {
-                experience = Mathf.RoundToInt(70*Mathf.Exp(-.3f*(pcs.level_one-pcs.enemy1Stats[7])));
+                experience = Mathf.RoundToInt(70*Mathf.Exp(-.3f*(pcs.level_two-enemy_level)));
                 experienceGained = experience;
             }
+            experienceGained = experience;
+            pcs.exp_two = pcs.exp_two + experience;
             if (pcs.exp_two >= 100)
             {
                 LevelUp();
@@ -957,7 +959,7 @@ public class BattleLogic_Calcs : MonoBehaviour
     {
         if (pcs.isPlayerOneTurn)
         {
-            pcs.remaininghp_one = maxhp_left;
+            pcs.remaininghp_one = remaininghp_left;
             pcs.maxhp_one = maxhp_left;
             pcs.atk_one = atk_left;
             pcs.def_one = def_left;
@@ -976,7 +978,7 @@ public class BattleLogic_Calcs : MonoBehaviour
         }
         else if (pcs.isPlayerTwoTurn)
         {    
-            pcs.remaininghp_two = maxhp_left;
+            pcs.remaininghp_two = remaininghp_left;
             pcs.maxhp_two = maxhp_left;
             pcs.atk_two = atk_left;
             pcs.def_two = def_left;

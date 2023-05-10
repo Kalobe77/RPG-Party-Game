@@ -6,6 +6,7 @@ public class DiceRoll : MonoBehaviour
 {
     // Takes in input script utilizing player tag
     public InputScript inputScript;
+    public InventoryScript inventoryScript;
 
     // Grab dice object
     public GameObject dice;
@@ -30,15 +31,19 @@ public class DiceRoll : MonoBehaviour
     // Tag for connection to correct player
     public string tag;
 
+    
+
     // Start is called before the first frame update
     void Start()
     {
         // Links the input script using the tag
         if (tag == "Player 1"){
             inputScript = GameObject.FindGameObjectWithTag("Player 1").GetComponent<InputScript>();
+            inventoryScript = GameObject.FindGameObjectWithTag("Player1Inventory").GetComponent<InventoryScript>();
         }
         else if (tag == "Player 2"){
             inputScript = GameObject.FindGameObjectWithTag("Player 2").GetComponent<InputScript>();
+            inventoryScript = GameObject.FindGameObjectWithTag("Player2Inventory").GetComponent<InventoryScript>();
         }
         
         diceAnimator = GetComponent<Animator>();
@@ -52,6 +57,7 @@ public class DiceRoll : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.T) && !inputScript.isCamera && !inputScript.diceRolled && inputScript.isAbleToRoll &&!PauseScript1.isPaused)
         {
             inputScript.diceRolled = true;
+            inventoryScript.canUse = false;
             int randomNumber = Random.Range(1,7);
             inputScript.spacesRemaining = randomNumber;
             StartCoroutine(ChangeSprite(randomNumber));
