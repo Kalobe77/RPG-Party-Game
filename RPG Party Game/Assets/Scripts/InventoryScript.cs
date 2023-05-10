@@ -70,11 +70,6 @@ public class InventoryScript : MonoBehaviour
                 }
             }
         }
-        
-        if (canUse == false && isTurn)
-        {
-            MenuDown();
-        }
     }
  
     public void MenuUp()
@@ -176,8 +171,7 @@ public class InventoryScript : MonoBehaviour
             }
             else
             {
-                MenuDown();
-                ChoicesDown();
+                chooseMenu.SetActive(false);
             }
         }
     }
@@ -200,8 +194,9 @@ public class InventoryScript : MonoBehaviour
  
     public void Choices()
     {
-        if (isTurn && canUse)
+        if (isTurn && canUse && itemStorage[2] > 0)
         {
+            Debug.Log(gameObject.tag);
             inventoryMenu.SetActive(false);
             chooseMenu.SetActive(true);
         }

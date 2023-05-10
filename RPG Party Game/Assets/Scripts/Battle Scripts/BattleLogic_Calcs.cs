@@ -134,6 +134,7 @@ public class BattleLogic_Calcs : MonoBehaviour
         }
         leftHealthScript.SetMaxHealth(maxhp_left, remaininghp_left);
         rightHealthScript.SetMaxHealth(maxhp_right, remaininghp_right);
+        UpdateUI();
         leftUI.SetActive(false);
         rightUI.SetActive(false);
         endScreenInput = false;
@@ -304,6 +305,7 @@ public class BattleLogic_Calcs : MonoBehaviour
                 }
             }
             leftIsAttacker = !leftIsAttacker;
+            UpdateUI();
         }
         else
         {

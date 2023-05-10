@@ -295,7 +295,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Magic
+  m_Text: Up
 --- !u!222 &218715515
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2386,6 +2386,14 @@ MonoBehaviour:
   rightUI: {fileID: 1391628929}
   leftHP: {fileID: 487653033}
   rightHP: {fileID: 1435512491}
+  left_up: {fileID: 218715514}
+  left_down: {fileID: 729689545}
+  left_left: {fileID: 1073601469}
+  left_right: {fileID: 1431705673}
+  right_up: {fileID: 669623576}
+  right_down: {fileID: 1640584502}
+  right_left: {fileID: 412406773}
+  right_right: {fileID: 1089053151}
   allowedInput: 1
   endScreenInput: 0
   actionsOfCombatLeft: 4
