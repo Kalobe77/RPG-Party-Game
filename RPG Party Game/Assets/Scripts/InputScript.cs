@@ -15,10 +15,13 @@ public class InputScript : MonoBehaviour
     public bool shopOpen = false;
 
     public int nodeType;
-
+  // 5 shop 70 battle rest normal 3 boss spaces
+  // 0 normal 1 shop 2 battle 5 boss
     public int[] spaceTypes = {0, 1, 2, 3};
     //int[] spaceAssign = new int[85];
-    //int[] spaceAssign = {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3};
+    //                            0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 
+    //public int[] spaceAssign = {0, 2, 2, 2, 2, 2, 0, 2, 2, 2, 2, 2, 2, 2, 1, 0, 2, 2, 2, 0, 2, 2, 2, 2, 1, 2, 0, 2, 2, 2, 2, 2, 2, 0, 2, 2, 2, 2, 2, 2, 0, 2, 2, 2, 2, 0, 0, 2, 0, 2, 5, 2, 2, 2, 0, 0, 0, 2, 2, 5, 0, 0, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 2, 0, 2, 1, 5, 0, 2, 2};
+
     public int[] spaceAssign = {2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 3, 3, 3, 3, 3};
     
     // 2D arrays to hold enemy stat information (May use a file in the future)
@@ -179,9 +182,11 @@ public class InputScript : MonoBehaviour
                     // combat spot
                     turnHandler.UpdateStatus(); // stores info for new scene
 
-                    nodeType = spaceAssign[node];
+                    nodeType = spaceAssign[node]; 
 
-                    if (nodeType == 1)
+                    // 0 is a normal space                       ****
+
+                    if (nodeType == 1) // shop space             ****
                     {
                         canShop = true;
                         spacesRemaining = -1;
@@ -189,29 +194,41 @@ public class InputScript : MonoBehaviour
                         shopOpen = true;
                     }
 
-                    else if (nodeType == 2)
+                    else if (nodeType == 2) // battle space      ****
                     {
                         RandomizeEnemyStats(node);
                         isInCombat = !isInCombat;
                     }
 
-                    else if (nodeType == 3) // another roll
+                    else if (nodeType == 3) // roll again
                     {
                         //nodeType = 5;
 
                     }
 
-                    else if (nodeType == 4) // mine
+                    else if (nodeType == 4) // free item
                     {
-                        nodeType = 5;
-                        remaininghp = remaininghp - 6;
+                        //nodeType = 5;
+
                     }
 
-                    else if (nodeType == 6)
+                    else if (nodeType == 5) // boss space         ****
                     {
                         GenerateBossEnemy();
                         isInCombat = !isInCombat;
                     }
+
+                    //////// different mine spaces //////////
+
+                    else if (nodeType == 6) // mine normal space    
+                    {
+                        nodeType = 0;
+                        remaininghp = remaininghp - 6;
+                    }
+
+                    
+
+
                 }
 
                 if (canShop)
