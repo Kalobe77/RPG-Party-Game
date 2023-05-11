@@ -1,3 +1,19 @@
+/********************************************************************************
+ *   Filename:   InputScript.cs
+ *   Date:       2023-05-10
+ *   Authors:    Kaleb Gearinger and Adam Stefan
+ *   Email:      kgearinger@muhlenberg.edu and astefan@muhlenberg.edu
+ *   Description:
+ *       This file handles many features, which are listed below:
+ *          - Player Movement
+ *          - Player Controls
+ *          - Triggering Events Based on Space Such As:
+ *              - Generating Random Enemy Stats
+ *              - Generating Boss Enemy Stats
+ *              - Activating the Shop Menu
+ *              - Activating Trap (Taking Damage)
+ ********************************************************************************/
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

@@ -1,3 +1,14 @@
+/********************************************************************************
+ *   Filename:   CameraFollow.cs
+ *   Date:       2023-05-10
+ *   Authors:     Kaleb Gearinger and Adam Stefan
+ *   Email:      kgearinger@muhlenberg.edu and astefan@muhlenberg.edu
+ *   Description:
+ *       This file contains the CameraFollow Class which when applied to a Unity
+ *       Camera object allows it to follow the player characters or be controlled
+ *       by following the invisible cursor object.
+ ********************************************************************************/
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

@@ -1,3 +1,20 @@
+/********************************************************************************
+ *   Filename:   ItemScript.cs
+ *   Date:       2023-05-10
+ *   Authors:    Kaleb Gearinger and Adam Stefan
+ *   Email:      kgearinger@muhlenberg.edu and astefan@muhlenberg.edu
+ *   Description:
+ *       This file handles the different item effects. Currently there are four
+ *       types of items.
+ *          1. Health Potion - Heals the character 5hp
+ *          2. Trap - Sets a trap on the characters current space
+ *          3. Movement Choice - Allows character to select the amount of spaces
+ *                               they can move on there next turn
+ *          4. Energy Potion - Boosts Characters stats by 1 for rest of game
+ *                             (Will be probably adjusted to decay or end after
+ *                              so many turns)
+ ********************************************************************************/
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

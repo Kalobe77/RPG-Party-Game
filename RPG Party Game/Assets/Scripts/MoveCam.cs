@@ -1,3 +1,15 @@
+/********************************************************************************
+ *   Filename:   MoveCam.cs
+ *   Date:       2023-05-10
+ *   Authors:    Kaleb Gearinger and Adam Stefan
+ *   Email:      kgearinger@muhlenberg.edu and astefan@muhlenberg.edu
+ *   Description:
+ *       This file handles the controls for the camera. It takes in the flag from
+ *       the input scripts to make sure the character is able to control the camera
+ *       then allows the camera to be controlled using the traditional keys for
+ *       movement.
+ ********************************************************************************/
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

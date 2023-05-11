@@ -1,3 +1,13 @@
+/********************************************************************************
+ *   Filename:   BattleScreenLogic.cs
+ *   Date:       2023-05-10
+ *   Authors:    Kaleb Gearinger and Adam Stefan
+ *   Email:      kgearinger@muhlenberg.edu and astefan@muhlenberg.edu
+ *   Description:
+ *       This file handles the logic for manipulating the battle win UI that
+ *       so that it displays what the character was able to recieve from winning.
+ ********************************************************************************/
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

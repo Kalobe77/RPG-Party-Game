@@ -1,3 +1,14 @@
+/********************************************************************************
+ *   Filename:   ResultsScreenManipulator.cs
+ *   Date:       2023-05-10
+ *   Authors:    Kaleb Gearinger and Adam Stefan
+ *   Email:      kgearinger@muhlenberg.edu and astefan@muhlenberg.edu
+ *   Description:
+ *       This file simply handles modifying the text on the results screen to
+ *       based on which player won the match and the amount of gems each had.
+ *       (Will be adapted in future development of the results screen)
+ ********************************************************************************/
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

@@ -1,3 +1,13 @@
+/********************************************************************************
+ *   Filename:   RouteScript.cs
+ *   Date:       2023-05-10
+ *   Authors:    Kaleb Gearinger and Adam Stefan
+ *   Email:      kgearinger@muhlenberg.edu and astefan@muhlenberg.edu
+ *   Description:
+ *       Stores the connections of the nodes as well as sets each node to the
+ *       right sprite based on the type of space it is.
+ ********************************************************************************/
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

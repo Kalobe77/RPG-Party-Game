@@ -1,3 +1,14 @@
+/********************************************************************************
+ *   Filename:   DiceRoll.cs
+ *   Date:       2023-05-10
+ *   Authors:    Kaleb Gearinger and Adam Stefan
+ *   Email:      kgearinger@muhlenberg.edu and astefan@muhlenberg.edu
+ *   Description:
+ *       This file handles each character's dice object. It provides the ability
+ *       to roll the dice to figure out how many spaces the character can move. It
+ *       also handles the animation of the dice object.
+ ********************************************************************************/
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -67,6 +78,7 @@ public class DiceRoll : MonoBehaviour
     // Function to modify dice after rolling
     IEnumerator ChangeSprite(int numberRolled)
     {
+        // Based on what number is rolled, a different number is displayed on the dice
         if (numberRolled == 1)
         {
             spriteRenderer.sprite = one;

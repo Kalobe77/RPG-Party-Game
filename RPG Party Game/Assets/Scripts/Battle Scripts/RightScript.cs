@@ -1,3 +1,15 @@
+/********************************************************************************
+ *   Filename:   RightScript.cs
+ *   Date:       2023-05-10
+ *   Authors:    Kaleb Gearinger and Adam Stefan
+ *   Email:      kgearinger@muhlenberg.edu and astefan@muhlenberg.edu
+ *   Description:
+ *       This file primarily handles the animations that happen regarding the
+ *       character that is on the right of the screen. It's functions work to
+ *       manipulate the animator based on what outcome has occured from the inputs
+ *       given in the BattleLogic_Calcs.cs.
+ ********************************************************************************/
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

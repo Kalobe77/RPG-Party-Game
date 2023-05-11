@@ -1,3 +1,18 @@
+/********************************************************************************
+ *   Filename:   TurnHandler.cs
+ *   Date:       2023-05-10
+ *   Authors:    Kaleb Gearinger and Adam Stefan
+ *   Email:      kgearinger@muhlenberg.edu and astefan@muhlenberg.edu
+ *   Description:
+ *       This file handles much of the logic needed in the overworld to progress
+ *       the turn. This includes the following:
+ *          - Switch the camera to follow the appropriate player
+ *          - Switch the controls for which player can move
+ *          - Update the UI to show the data for the proper player
+ *          - Update the PlayerCharacterStatus variables when moving to the
+ *            battle scene
+ ********************************************************************************/
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

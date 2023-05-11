@@ -1,3 +1,20 @@
+ /********************************************************************************
+ *   Filename:   Inventory.cs
+ *   Date:       2023-05-10
+ *   Authors:    Kaleb Gearinger and Adam Stefan
+ *   Email:      kgearinger@muhlenberg.edu and astefan@muhlenberg.edu
+ *   Description:
+ *       This file implements a variety of features related to inventory and shop 
+ *       functionality, encompassing a range of capabilities and operations. This  
+ *       includes the following:
+ *          - Controls to open and close the inventory
+ *          - Command to open and close the inventory (for other files or functions to use)
+ *          - The ability to add or remove an item from the inventory
+ *          - Ability to buy items from shop and remove proper amount of gems
+ *          - Save Gems to PlayerCharacterStatus
+ *          - Open and close the choice menu (for choose movement item)
+ ********************************************************************************/
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

@@ -1,3 +1,25 @@
+/********************************************************************************
+ *   Filename:   BattleLogic_Calcs.cs
+ *   Date:       2023-05-10
+ *   Authors:    Kaleb Gearinger and Adam Stefan
+ *   Email:      kgearinger@muhlenberg.edu and astefan@muhlenberg.edu
+ *   Description:
+ *       This file handles features regarding the battle logic and calculations
+ *       such as the following:
+ *          - Player Input
+ *          - AI Input
+ *          - Damage Calculations - Including Damage Modifier Assignment
+ *          - Progressing the turn after combat finishes
+ *          - Experience For Defeating Enemy*
+ *          - Level Up for Gaining Enough Experience*
+ *          - The ability for the boss to transform to 2nd form (Really Cool!)
+ *          - Ability to Manipulate Proper UI's
+ *          - Generate a Random Item and Give it to Player*
+ *          - Generate a Random Number of Gems and Give them to Player*
+ *          - Save Stats of enemy and player to PlayerCharacterStatus.cs
+ *       (Values with * are only used when player wins combat)
+ ********************************************************************************/
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -161,6 +183,7 @@ public class BattleLogic_Calcs : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Only Used to Delay Start
         if(state)
         {
             Debug.Log("Did Run");
@@ -169,6 +192,7 @@ public class BattleLogic_Calcs : MonoBehaviour
             // Delays Input
             StartCoroutine(DelayStart());
         }
+        // For both Player input and AI input
         if (allowedInput)
         {
             if (rightTurn && rightPlayerIsComputer)
@@ -189,6 +213,7 @@ public class BattleLogic_Calcs : MonoBehaviour
                 }
             }   
         }
+        // Used to allow for space key to be pressed to go back to overworld when battle is won or lost
         if (endScreenInput)
         {
             if (Input.GetKeyDown(KeyCode.Space))
@@ -207,6 +232,7 @@ public class BattleLogic_Calcs : MonoBehaviour
         }
     }
 
+    // Takes input from character
     IEnumerator BattleCommand()
     {
         // Checks that character is not unable to move
@@ -280,6 +306,7 @@ public class BattleLogic_Calcs : MonoBehaviour
         input.y = 0;
     }
 
+    // Logic to handle where in combat damage calculations should be carried out
     public void CombatManager()
     {
         actionsOfCombatLeft = actionsOfCombatLeft - 1;
@@ -350,6 +377,7 @@ public class BattleLogic_Calcs : MonoBehaviour
         return;
     }
 
+    // Calculates Modifier to Damage Calculation
     public void ModifierCalculation(int attackerInput, int defenderInput)
     {
         float modifier;
@@ -560,6 +588,7 @@ public class BattleLogic_Calcs : MonoBehaviour
         return;
     }
 
+    // Calulcates amount of damage dealt and to whom
     public void DamageCalculation(float modifier, int offenseStat, int defenseStat, bool isDamageToLeft)
     {
         // Plays the proper animations based on actions and outcome
@@ -615,6 +644,7 @@ public class BattleLogic_Calcs : MonoBehaviour
         }
     }
 
+    // Progress to next turn
     public void NextTurn()
     {
         if (pcs.isPlayerOneTurn)
@@ -630,6 +660,7 @@ public class BattleLogic_Calcs : MonoBehaviour
         }
     }
 
+    // Determines How Much Experience A Player Gains
     public void ExperienceGain()
     {
         if (pcs.isPlayerOneTurn)
@@ -830,6 +861,7 @@ public class BattleLogic_Calcs : MonoBehaviour
         allowedInput = true;
     }
 
+    // Turn on UI of character who is awaiting to input action
     public void TurnProperUI()
     {
         if (leftTurn)
@@ -983,6 +1015,7 @@ public class BattleLogic_Calcs : MonoBehaviour
 
     }
 
+    // Give Player an Item
     public void GiveItem(int type)
     {
         if(pcs.isPlayerOneTurn)
@@ -995,6 +1028,7 @@ public class BattleLogic_Calcs : MonoBehaviour
         }
     }
 
+    // Turn Off All UI's
     public void TurnOffUIs()
     {
         leftUI.SetActive(false);
@@ -1003,6 +1037,7 @@ public class BattleLogic_Calcs : MonoBehaviour
         rightHP.SetActive(false);
     }
 
+    // Save stats to PlayerCharacterStatus
     public void SaveStats()
     {
         if (pcs.isPlayerOneTurn)
@@ -1045,6 +1080,7 @@ public class BattleLogic_Calcs : MonoBehaviour
         }
     }
 
+    // Update the Action UI of both characters
     public void UpdateUI()
     {
         if (leftIsAttacker)
@@ -1071,6 +1107,7 @@ public class BattleLogic_Calcs : MonoBehaviour
         }
     }
 
+    // Update the Stat UI of both characters
     public void UpdateStatUI()
     {
         left_atk_UI.text = "ATK: " + atk_left;

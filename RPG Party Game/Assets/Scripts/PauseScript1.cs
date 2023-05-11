@@ -1,3 +1,17 @@
+/********************************************************************************
+ *   Filename:   PauseScript1.cs
+ *   Date:       2023-05-10
+ *   Authors:    Kaleb Gearinger and Adam Stefan
+ *   Email:      kgearinger@muhlenberg.edu and astefan@muhlenberg.edu
+ *   Description:
+ *       This file handles the functionality of the pause menu and its buttons.
+ *       This includes the following:
+ *          - Pause the game and bring up the pause menu
+ *          - Unpause the game and hide the pause menu
+ *          - Activate the controls menu (still in development)
+ *          - Save and Quit Game to Menu (Utilizes SaveWrapper.cs)
+ ********************************************************************************/
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

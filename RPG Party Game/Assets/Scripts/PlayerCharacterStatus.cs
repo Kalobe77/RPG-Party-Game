@@ -1,3 +1,15 @@
+/********************************************************************************
+ *   Filename:   PlayerCharacterStatus.cs
+ *   Date:       2023-05-10
+ *   Authors:    Kaleb Gearinger and Adam Stefan
+ *   Email:      kgearinger@muhlenberg.edu and astefan@muhlenberg.edu
+ *   Description:
+ *       This file is an instance of a scriptable object in Unity. We utilize the
+ *       its ability to serialize to store variables to be used acrossed scenes as
+ *       well as in the creation of the text files used to store the games data
+ *       when saving.
+ ********************************************************************************/
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
